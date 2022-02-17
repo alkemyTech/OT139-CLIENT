@@ -1,6 +1,6 @@
 import React from 'react'
-import '../assets/css/components/footer.css'
-import logo from '../assets/images/LOGO-SOMOS MAS.png'
+import './footer.css'
+import logo from '../../assets/images/LOGO-SOMOS MAS.png'
 
 export const Footer = () => {
   return (
