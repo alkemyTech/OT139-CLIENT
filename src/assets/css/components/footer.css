@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+.footer {
+    border-top: 1.5px solid #000;
+    height: 310px;
+}
+.footer-nav {
+   display: grid;
+   grid-template-columns: auto auto auto;
+   max-width: 1520px;
+}
+.footer-nav_column {
+   text-align: center;
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+}
+.footer-nav_column span {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 24px;
+    letter-spacing: -0.015em;
+    cursor: pointer;
+}
+.footer-nav_column span:hover {
+    color: #ccc;
+}
+.footer-nav_column img {
+    width: 130px;
+}
+hr {
+    max-width: 1520px;
+}
+.footer-social {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footer-social_icons .icon {
+     background:#ccc;
+     width: 44px;
+     height: 44px;
+     border-radius: 25px;
+     margin: 20px;
+}
+
+@media screen and (max-width: 621px){
+    .footer-nav {
+        display: grid;
+        grid-template-columns: auto;
+     }
+    .footer-nav_column:nth-child(2) {
+        order: -1;
+    }
+    .footer-nav_column {
+       display: flex;
+       flex-direction: column;
+    }
+    .footer-social_icons .icon {
+       margin: 12px;
+   }
+}

@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';
 import './App.css';
+import { Footer } from './components/Footer';
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
           Edit <code>src/App.js</code> and save to reload.
         </p>
         <span>
-          <span>Learn </span>
+          <span>Learn</span>
           <a
             className="App-link"
             href="https://reactjs.org/"
@@ -51,6 +52,7 @@ function App() {
           </a>
         </span>
       </header>
+      <Footer />
     </div>
   );
 }
