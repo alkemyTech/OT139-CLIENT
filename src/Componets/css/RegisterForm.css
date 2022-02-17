@@ -1,0 +1,78 @@
+.conteiner-register {
+  border-radius: 6px;
+  border: 1px solid #18a0fb;
+  margin: 10px;
+  width: 50%;
+  margin-right: auto !important;
+  margin-left: auto !important;
+}
+
+Form{
+  width:50%;
+  margin-right: auto !important;
+  margin-left: auto !important;
+}
+
+label {
+  display: inline-flex;
+  font-weight: 600;
+  width: 80px;
+  margin-bottom: 5px;
+}
+
+.field {
+  border: 1px solid #18a0fb;
+  border-radius: 6px;
+  box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 5px rgba(0, 132, 255, 0.6);
+}
+
+button {
+  background-color: white;
+  color: #18a0fb;
+  box-sizing: border-box;
+  border-radius: 6px;
+  border: 1px solid #18a0fb;
+}
+
+button:hover {
+color: white;
+background-color: #18a0fb; 
+}
+
+.conteiner-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8px;
+  
+}
+
+.label-ConfirmPass{
+ width: max-content;
+}
+
+.conteiner-button {
+  margin-top: 10px;
+}
+
+.button {
+  width: 200px;
+  height: 30px;
+}
+.conteiner-button > h6 {
+    margin-top: 5px;
+    margin-bottom: 15px; 
+}
+
+.error {
+  color:red;
+}
+
+h6 {
+  margin: 0px;
+}
+
+.exito {
+  color: green;
+  padding: 10px;
+  border:  1px solid green;
+}
