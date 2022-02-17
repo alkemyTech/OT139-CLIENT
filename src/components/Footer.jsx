@@ -1,23 +1,23 @@
 import React from 'react'
-import './footer.css'
-import logo from '../../assets/images/LOGO-SOMOS MAS.png'
+import '../assets/css/components/footer.css'
+import logo from '../assets/images/LOGO-SOMOS MAS.png'
 
 export const Footer = () => {
   return (
     <footer className='footer'>
         <div className='footer-nav'>
             <div className='footer-nav_column'>
-                <a href="#" className="link">Noticias</a>
-                <a href="#" className="link">Actividades</a>
-                <a href="#" className="link">Novedades</a>
+                <span>Noticias</span>
+                <span>Actividades</span>
+                <span>Novedades</span>
             </div>
             <div className='footer-nav_column'>
                 <img src={logo} alt="Logo somos mas"></img>
             </div>
             <div className='footer-nav_column'>
-                <a href="#" className="link">Testimonios</a>
-                <a href="#" className="link">Nosotros</a>
-                <a href="#" className="link">Contacto</a>
+                <span>Testimonios</span>
+                <span>Nosotros</span>
+                <span>Contacto</span>
             </div>
         </div>
         <hr></hr>
