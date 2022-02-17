@@ -15,16 +15,18 @@
    justify-content: space-around;
    align-items: center;
 }
-.footer-nav_column span {
+.footer-nav_column .link {
     font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 15px;
+    color: #000;
+    text-decoration: none;
     line-height: 24px;
     letter-spacing: -0.015em;
     cursor: pointer;
 }
-.footer-nav_column span:hover {
+.footer-nav_column .link:hover {
     color: #ccc;
 }
 .footer-nav_column img {
