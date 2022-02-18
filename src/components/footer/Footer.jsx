@@ -1,8 +1,21 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import './footer.css'
-import logo from '../../assets/images/LOGO-SOMOS MAS.png'
 
 export const Footer = () => {
+  const [logo, setLogo] = useState("");
+  const [socialMedia, setSocialMedia] = useState([]);
+
+  useEffect(() => {
+    async function getFooterData() {
+        const response = await fetch("/1/public");
+        const data = await response.json();
+        
+        setLogo(data.logo);
+        setSocialMedia(data.socialMedia);
+    }
+
+    getFooterData();
+  });
   return (
     <footer className='footer'>
         <div className='footer-nav'>
@@ -23,10 +36,15 @@ export const Footer = () => {
         <hr></hr>
         <div className='footer-social'>
             <div className='footer-social_icons'>
-            <img src={logo} className="icon" alt="Logo somos mas"></img>
-            <img src={logo} className="icon" alt="Logo somos mas"></img>
-            <img src={logo} className="icon" alt="Logo somos mas"></img>
-            <img src={logo} className="icon" alt="Logo somos mas"></img>
+            {
+                socialMedia.map((socialMediaItem) => {
+                  return (
+                    <a src={socialMediaItem.link} className='icon'>
+                        <i className={`fab fa-${socialMediaItem.linkName}`}></i>
+                    </a>
+                  )
+                })
+            }
             <p>2021 by Alkemy. All Rights Reserved</p>
             </div>
         </div>
