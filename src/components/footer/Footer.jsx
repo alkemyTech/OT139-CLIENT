@@ -27,7 +27,7 @@ export const Footer = () => {
             <img src={logo} className="icon" alt="Logo somos mas"></img>
             <img src={logo} className="icon" alt="Logo somos mas"></img>
             <img src={logo} className="icon" alt="Logo somos mas"></img>
-            <p>2021 by Alkemy. All Rights Reserved.</p>
+            <p>2021 by Alkemy. All Rights Reserved</p>
             </div>
         </div>
     </footer>
