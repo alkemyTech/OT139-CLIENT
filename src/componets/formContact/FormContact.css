@@ -1,0 +1,25 @@
+.main{
+width:50vw;
+
+}
+.Form-Text{
+width:50%;
+position: absolute;
+top:0;
+left:25%;
+}
+.Form-Text H1 {
+  text-transform: uppercase;
+
+}
+.Form-Contact{
+width:40%;
+position: absolute;
+top: 45%;
+left:30%;
+}
+.Form-Contact button {
+  width: 100%;
+}
+
+
