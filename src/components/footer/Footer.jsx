@@ -4,6 +4,7 @@ import './footer.css'
 export const Footer = () => {
   const [logo, setLogo] = useState("");
   const [socialMedia, setSocialMedia] = useState([]);
+  const [error, setError] = useState("")
 
   useEffect(() => {
     async function getFooterData() {
@@ -14,8 +15,15 @@ export const Footer = () => {
         setSocialMedia(data.socialMedia);
     }
 
+    try {
+      getFooterData()
+    } catch(err) {
+      setError(err)
+    }
+
     getFooterData();
   });
+
   return (
     <footer className='footer'>
         <div className='footer-nav'>
