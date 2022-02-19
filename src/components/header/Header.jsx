@@ -9,12 +9,17 @@ export function Header() {
     async function getDataOfHeader() {
       const response = await fetch("/1/public");
       const data = await response.json();
-      console.log({ data });
       setLogo(data.image);
       setMenu(data.menu);
     }
 
-    getDataOfHeader();
+    try {
+      getDataOfHeader();
+    } catch (error) {
+      return (
+        <div><h2>{error.message}</h2></div>
+      );
+      }
   });
 
   return (
@@ -48,5 +53,3 @@ export function Header() {
     </>
   );
 }
-
-
