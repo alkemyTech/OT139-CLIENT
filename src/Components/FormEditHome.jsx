@@ -98,7 +98,9 @@ export default function FormEditHome() {
         </div>
       </Form>
       <h3>Imagenes Cargadas</h3>
-      {arrayImgState.length === 0 && <Alert variant="danger">NO HAY IMAGENES CARGADAS</Alert>}
+      {arrayImgState.length === 0 && (
+        <Alert variant="danger">NO HAY IMAGENES CARGADAS</Alert>
+      )}
       <div className="d-flex">
         {arrayImgState.map((image) => (
           <Card style={{ width: "18rem" }}>
@@ -111,9 +113,11 @@ export default function FormEditHome() {
         ))}
       </div>
       <div>
-      <h3>Vista Previa Sliders</h3>
-      {arrayImgState.length === 0 && <Alert variant="danger">NO HAY IMAGENES CARGADAS</Alert>}
-      <CarouselComponent arrayImgState={arrayImgState} />
+        <h3>Vista Previa Sliders</h3>
+        {arrayImgState.length === 0 && (
+          <Alert variant="danger">NO HAY IMAGENES CARGADAS</Alert>
+        )}
+        <CarouselComponent arrayImgState={arrayImgState} />
       </div>
     </div>
   );
