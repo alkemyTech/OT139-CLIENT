@@ -1,4 +1,4 @@
-.conteiner-register {
+.container_register {
   border-radius: 6px;
   border: 1px solid #18a0fb;
   margin: 10px;
@@ -7,8 +7,8 @@
   margin-left: auto !important;
 }
 
-Form{
-  width:50%;
+form {
+  width: 50%;
   margin-right: auto !important;
   margin-left: auto !important;
 }
@@ -23,7 +23,8 @@ label {
 .field {
   border: 1px solid #18a0fb;
   border-radius: 6px;
-  box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 5px rgba(0, 132, 255, 0.6);
+  box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075) inset,
+    0 0 5px rgba(0, 132, 255, 0.6);
 }
 
 button {
@@ -35,22 +36,21 @@ button {
 }
 
 button:hover {
-color: white;
-background-color: #18a0fb; 
+  color: white;
+  background-color: #18a0fb;
 }
 
-.conteiner-field {
+.container_field {
   display: flex;
   flex-direction: column;
   margin-bottom: 8px;
-  
 }
 
-.label-ConfirmPass{
- width: max-content;
+.label_confirmpass {
+  width: max-content;
 }
 
-.conteiner-button {
+.container_button {
   margin-top: 10px;
 }
 
@@ -58,21 +58,21 @@ background-color: #18a0fb;
   width: 200px;
   height: 30px;
 }
-.conteiner-button > h6 {
-    margin-top: 5px;
-    margin-bottom: 15px; 
+.container_button > h6 {
+  margin-top: 5px;
+  margin-bottom: 15px;
 }
 
-.error {
-  color:red;
+.color_red {
+  color: red;
 }
 
-h6 {
+.without-margin {
   margin: 0px;
 }
 
-.exito {
+.success {
   color: green;
   padding: 10px;
-  border:  1px solid green;
+  border: 1px solid green;
 }
