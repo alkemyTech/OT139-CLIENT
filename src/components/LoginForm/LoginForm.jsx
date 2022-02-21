@@ -28,10 +28,12 @@ const LoginForm = (props) => {
                     return errors
                 }}
                 onSubmit={(values, { setSubmitting }) => {
-                    setTimeout(() => {
-                      alert(JSON.stringify(values, null, 2));
-                      setSubmitting(false);
-                    }, 400);
+                    let usuario = {
+                        email: values.email,
+                        password: values.password
+                    }
+                    formikBag.setSubmitting(false);
+                    console.log(usuario);
                   }}
             >
                 <Form className={styles.form}>
