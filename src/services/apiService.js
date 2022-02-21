@@ -1,5 +1,5 @@
 import axios from "axios";
-axios.defaults.baseURL = process.env.baseUrl;
+axios.defaults.baseURL = process.env.BASE_URL;
 
 export const post = async (endPoint, body) => {
   try {
