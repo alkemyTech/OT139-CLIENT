@@ -1,24 +1,23 @@
-import React from 'react'
-
+import React from 'react';
 
 //Mock header
-const Header=()=>{
-    return <>header</>
-}
+const Header = () => {
+  return <>header</>;
+};
 
 //Mock footer
-const Footer=()=>{
-    return <>footer</>
-}
+const Footer = () => {
+  return <>footer</>;
+};
 
-const BackOffice = ({children}) => {
+const BackOffice = ({ children }) => {
   return (
-   <>
-    <Header/>
-    {children}
-    <Footer/>
-   </>
-  )
-}
+    <>
+      <Header />
+      {children}
+      <Footer />
+    </>
+  );
+};
 
-export default BackOffice
+export default BackOffice;
