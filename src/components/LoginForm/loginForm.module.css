@@ -1,25 +1,36 @@
-.container{
+.container {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.form{
+
+.form {
     width: 50%;
     margin-top: 180px; 
     padding: 35px;
     box-shadow: 0 0 9px rgba(0, 0, 0, 0.3);
 }
-.group{
+
+.group {
     width: 85%;
     margin-bottom: 30px;
 }
-.input{
+
+.input {
     border-radius: 3px;
     border: 0;
     width: 100%;
     height: 40px;
+    margin-top: 15px;
     box-shadow: 0 1px 1px rgba(95, 95, 94, 0.075)inset, 0 0 8px rgba(61, 61, 60, 0.6);
 }
-.error{
+
+.margin_top{
+    margin-top: 10px;
+}
+
+.error {
     color: red;
+    display: block;
+    margin-top: 4px;
 }
