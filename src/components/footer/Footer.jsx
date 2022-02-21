@@ -8,17 +8,15 @@ export const Footer = () => {
 
   useEffect(() => {
     async function getFooterData() {
+      try {
         const response = await fetch("/1/public");
         const data = await response.json();
         
         setLogo(data.logo);
         setSocialMedia(data.socialMedia);
-    }
-
-    try {
-      getFooterData()
-    } catch(err) {
-      setError(err)
+      } catch(err) {
+        setError(err)
+      }
     }
 
     getFooterData();
