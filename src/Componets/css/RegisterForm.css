@@ -76,3 +76,9 @@ button:hover {
   padding: 10px;
   border: 1px solid green;
 }
+
+@media only screen and (max-width: 896px) {
+  .container_register {
+    width: 95%;
+  }
+}

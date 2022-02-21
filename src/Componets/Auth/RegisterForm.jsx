@@ -23,7 +23,7 @@ export default function RegisterForm() {
     return errorsObject;
   };
 
-  const validateFirtName = (values , errorsObject) => {
+  const validateFirtName = (values, errorsObject) => {
     if (!values.firstName) {
       errorsObject.firstName = "Por Favor Ingresa Un Nombre!";
     } else if (!/^[a-zA-Z\s]{3,40}$/.test(values.firstName)) {
@@ -66,11 +66,12 @@ export default function RegisterForm() {
   const validateConfirmPassword = (values, errorsObject) => {
     if (values.password !== values.passwordConfirm) {
       errorsObject.passwordConfirm = "Las contrasenas no coinciden";
-      }
-      return errorsObject;
-  }
+    }
+    return errorsObject;
+  };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (values, resetForm) => {
+    resetForm();
     setSendForm(true);
     setTimeout(() => {
       setSendForm(false);
@@ -85,7 +86,7 @@ export default function RegisterForm() {
       <Formik
         initialValues={initialValuesForm}
         validate={funcionValidate}
-        onSubmit={handleSubmit}
+        onSubmit={(values, { resetForm }) => handleSubmit(values, resetForm)}
       >
         {() => (
           <Form>
@@ -100,7 +101,11 @@ export default function RegisterForm() {
                 className="field"
                 required
               />
-              <ErrorMessage name="firstName" component="h6" className="color_red" />
+              <ErrorMessage
+                name="firstName"
+                component="h6"
+                className="color_red without-margin"
+              />
             </div>
             <div className="container_field">
               <label htmlFor="lastName">Apellido</label>
@@ -112,7 +117,11 @@ export default function RegisterForm() {
                 className="field"
                 required
               />
-              <ErrorMessage name="lastName" component="h6" className="color_red" />
+              <ErrorMessage
+                name="lastName"
+                component="h6"
+                className="color_red without-margin"
+              />
             </div>
             <div className="container_field">
               <label htmlFor="email">Email</label>
@@ -124,7 +133,11 @@ export default function RegisterForm() {
                 className="field"
                 required
               />
-              <ErrorMessage name="email" component="h6" className="color_red" />
+              <ErrorMessage
+                name="email"
+                component="h6"
+                className="color_red without-margin"
+              />
             </div>
             <div className="container_field">
               <label htmlFor="password">Contraseña</label>
@@ -137,13 +150,16 @@ export default function RegisterForm() {
                 required
               />
               <ErrorMessage
-                  name="password"
-                  className="color_red"
-                  component="h6"
-                />
+                name="password"
+                className="color_red without-margin"
+                component="h6"
+              />
             </div>
             <div className="container_field">
-              <label htmlFor="passwordConfirm" className="label_confirmpass">
+              <label
+                htmlFor="passwordConfirm"
+                className="label_confirmpass without-margin"
+              >
                 Confirmar Contraseña
               </label>
               <Field
@@ -154,9 +170,9 @@ export default function RegisterForm() {
                 className="field"
                 required
               />
-                <ErrorMessage
+              <ErrorMessage
                 name="passwordConfirm"
-                className="color_red"
+                className="color_red without-margin"
                 component="h6"
               />
             </div>
