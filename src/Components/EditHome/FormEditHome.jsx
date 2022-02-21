@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./FormEditHome.css";
+import "./formEditHome.css";
 import CarouselComponent from "./CarouselComponent";
 import {
   Form,
@@ -22,13 +22,13 @@ export default function FormEditHome() {
     setInputEdit(input);
   };
 
-  const handleSubmit = (e) => {
+  const addImg = (e) => {
     e.preventDefault();
+    const arrayImg = [];
     const form = e.currentTarget;
     if (arrayImgState.length === 3) {
       return setAlert("Ya hay 3 imagenes cargadas, Elimine una para continuar");
     }
-    const arrayImg = [];
     arrayImg.push(inputEdit);
     const newArrayImg = arrayImg.concat(arrayImgState);
     setArrayImgState(newArrayImg);
@@ -37,6 +37,16 @@ export default function FormEditHome() {
       setAlert("");
     }, 8000);
   };
+
+  const ImgDelete = (index) => {
+    const newArray = arrayImgState.filter((value, pos) => pos != index);
+    return setArrayImgState(newArray);
+  };
+
+  const handleSubmit = () => {
+    console.log('prueba')
+    // submit Form here
+  }
 
   return (
     <div className="w-75 mx-auto my-auto">
@@ -57,14 +67,14 @@ export default function FormEditHome() {
         </InputGroup>
         <div className="mb-2">
           <Button type="submit" className="mt-3 w-50">
-            Editar Titulo
+            Actualizar Titulo
           </Button>
         </div>
       </Form>
       {alert && <Alert variant="danger">{alert}</Alert>}
       {alertSuccess && <Alert variant="success">{alertSuccess}</Alert>}
-      <Form onSubmit={(e) => handleSubmit(e)}>
-        <div className="conteiner-img d-flex border mt-2">
+      <Form onSubmit={(e) => addImg(e)}>
+        <div className="container_img d-flex border mt-2">
           <InputGroup className="mb-3 mt-3 w-50 me-2 ms-2">
             <InputGroup.Text id="inputGroup-sizing-default">
               Direccion https:// de Imagen:
@@ -90,29 +100,37 @@ export default function FormEditHome() {
             />
           </InputGroup>
         </div>
-
-        <div>
-          <Button type="submit" className="mt-2 w-50">
+        <div className="d-flex justify-content-around">
+          <Button type="submit" className="mt-2 w-25">
             Agregar Imagen
           </Button>
         </div>
       </Form>
-      <h3>Imagenes Cargadas</h3>
-      {arrayImgState.length === 0 && (
-        <Alert variant="danger">NO HAY IMAGENES CARGADAS</Alert>
-      )}
-      <div className="d-flex">
-        {arrayImgState.map((image) => (
-          <Card style={{ width: "18rem" }}>
-            <Card.Img variant="top" src={image.img} />
-            <Card.Body>
-              <Card.Title>{image.text}</Card.Title>
-              <Button variant="danger">Eliminar</Button>
-            </Card.Body>
-          </Card>
-        ))}
-      </div>
       <div>
+      <Button type='submit' Onclick={() => handleSubmit()} className="mt-2 w-25">
+            Actualizar imagenes
+          </Button>
+          </div>
+      <div className="mt-3 border">
+        <h3>Imagenes Cargadas</h3>
+        {arrayImgState.length === 0 && (
+          <Alert variant="danger">NO HAY IMAGENES CARGADAS</Alert>
+        )}
+        <div className="d-flex justify-content-center">
+          {arrayImgState.map((image, index) => (
+            <Card className="m-2" key={index}>
+              <Card.Img variant="top" src={image.img} />
+              <Card.Body>
+                <Card.Title>{image.text}</Card.Title>
+                <Button variant="danger" onClick={() => ImgDelete(index)}>
+                  Eliminar
+                </Button>
+              </Card.Body>
+            </Card>
+          ))}
+        </div>
+      </div>
+      <div className="border mt-3">
         <h3>Vista Previa Sliders</h3>
         {arrayImgState.length === 0 && (
           <Alert variant="danger">NO HAY IMAGENES CARGADAS</Alert>

@@ -5,8 +5,8 @@ export default function CarouselComponent({ arrayImgState }) {
   return (
     <div className="h-50">
       <Carousel fade>
-        {arrayImgState.map((image) => (
-          <Carousel.Item key={image.index}>
+        {arrayImgState.map((image , index) => (
+          <Carousel.Item key={index}>
             <img className="d-block w-100" src={image.img} alt={image.text} />
             <Carousel.Caption>
               <h3 className="text-black">{image.text}</h3>

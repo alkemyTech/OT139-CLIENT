@@ -1,5 +1,5 @@
 import React from 'react';
-import FormEditHome from './Components/FormEditHome'
+import FormEditHome from './Components/EditHome/FormEditHome'
 import './App.css';
 
 function App() {
