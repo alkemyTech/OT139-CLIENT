@@ -5,7 +5,7 @@ import styles from './loginForm.module.css';
 import { Formik,Form,  Field, ErrorMessage } from 'formik';
 
 const LoginForm = (props) => {
-    const {isSubmitting, isValid} = props 
+   /*  const {isSubmitting, isValid} = props  */
 
     return (
         <div className={styles.container}>
@@ -27,12 +27,12 @@ const LoginForm = (props) => {
                     }
                     return errors
                 }}
-                onSubmit={(values, { setSubmitting }) => {
+                onSubmit={(values, /* { setSubmitting } */) => {
                     let usuario = {
                         email: values.email,
                         password: values.password
                     }
-                    formikBag.setSubmitting(false);
+                    /* formikBag.setSubmitting(false); */
                     console.log(usuario);
                   }}
             >
@@ -62,7 +62,7 @@ const LoginForm = (props) => {
                        </ErrorMessage>}
 
                     <Button
-                        disabled={isSubmitting || !isValid}
+                       /*  disabled={isSubmitting || !isValid} */
                         variant="primary"
                         type="submit"
                         className={styles.margin_top}
