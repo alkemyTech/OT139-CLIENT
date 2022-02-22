@@ -1,14 +1,16 @@
 import React from "react";
 import { Form, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import './FormContact.css'
+import './formContact.css'
 import 'animate.css';
 import Logo from './Logo.png';
 import { useForm } from "react-hook-form";
 
-export default function FormContact() {
+export default function FormContact(){
+    
     const { register, handleSubmit } = useForm();
     const onSubmit = data => console.log(data);
+
     return (
         <div className="main">
             <div className="flex-child animate__animated animate__fadeInLeft ">

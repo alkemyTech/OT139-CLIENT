@@ -7,19 +7,13 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
-<<<<<<< Updated upstream
-=======
     "animate.css": "^4.1.1",
->>>>>>> Stashed changes
     "bootstrap": "^5.1.3",
     "react": "^16.13.1",
     "react-bootstrap": "^2.1.2",
     "react-dom": "^16.13.1",
-<<<<<<< Updated upstream
-=======
     "react-hook-form": "^7.27.1",
     "react-loader-spinner": "^5.1.4",
->>>>>>> Stashed changes
     "react-redux": "^7.1.3",
     "react-scripts": "3.4.3"
   },
