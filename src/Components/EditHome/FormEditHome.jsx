@@ -193,13 +193,6 @@ export default function FormEditHome() {
           ))}
         </div>
       </div>
-      <div className="border mt-3 mb-5 background_gray">
-        <h3 className="mt-2">Vista Previa Sliders</h3>
-        {arrayImgState.length === 0 && (
-          <Alert variant="danger">NO HAY IMAGENES CARGADAS</Alert>
-        )}
-        <CarouselComponent arrayImgState={arrayImgState} />
-      </div>
     </div>
   );
 }
