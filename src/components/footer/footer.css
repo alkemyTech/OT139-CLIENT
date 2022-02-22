@@ -73,4 +73,8 @@ hr {
     .footer-social_icons .icon {
        margin: 12px;
    }
+   
+   .footer-nav_column span {
+       padding: 6px 0;
+   }
 }
