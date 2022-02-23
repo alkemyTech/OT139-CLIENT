@@ -1,40 +1,39 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button } from 'react-bootstrap';
-import styles from './loginForm.module.css';
 import { Formik,Form,  Field, ErrorMessage } from 'formik';
+import styles from './loginForm.module.css';
 
-const LoginForm = (props) => {
-   /*  const {isSubmitting, isValid} = props  */
+const LoginForm = () => {
+    const validate = values => {
+        let regExEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+        let errors = {};
+
+        if (!values.email) {
+            errors.email = "El email es requerido";
+        } else if (!regExEmail.test(values.email)) {
+            errors.email = "Debes introducir un email valido";
+        }
+        if (!values.password) {
+            errors.password = "La contraseña es requerida";
+        } else if (values.password.length < 6) {
+            errors.password = "La contraseña debe tener más de 6 caracteres";
+        }
+        return errors
+    }
+    const onSubmit = values => {
+        let usuario = {
+            email: values.email,
+            password: values.password
+        }
+      }
 
     return (
         <div className={styles.container}>
             <Formik
                 initialValues={{ email: "", password: "" }}
-                validate={values => {
-                    let regExEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
-                    let errors = {};
-
-                    if (!values.email) {
-                        errors.email = "El email es requerido";
-                    } else if (!regExEmail.test(values.email)) {
-                        errors.email = "Debes introducir un email valido";
-                    }
-                    if (!values.password) {
-                        errors.password = "La contraseña es requerida";
-                    } else if (values.password.length < 6) {
-                        errors.password = "La contraseña debe tener más de 6 caracteres";
-                    }
-                    return errors
-                }}
-                onSubmit={(values, /* { setSubmitting } */) => {
-                    let usuario = {
-                        email: values.email,
-                        password: values.password
-                    }
-                    /* formikBag.setSubmitting(false); */
-                    console.log(usuario);
-                  }}
+                validate={validate}
+                onSubmit={onSubmit}
             >
                 <Form className={styles.form}>
                         <h2>Iniciar sesión</h2>
@@ -45,11 +44,9 @@ const LoginForm = (props) => {
                         type="email"
                         name="email" 
                         placeholder="Introduzca su Email" />
-                       {<ErrorMessage component="div" name="email"/> && <ErrorMessage name="email">
+                       {<ErrorMessage name="email"/> && <ErrorMessage name="email">
                            {message => <small className={styles.error}>{message}</small>}
                        </ErrorMessage>}
-                    
-
                    
                         <label className={styles.margin_top}>Contraseña</label>
                         <Field 
@@ -62,7 +59,6 @@ const LoginForm = (props) => {
                        </ErrorMessage>}
 
                     <Button
-                       /*  disabled={isSubmitting || !isValid} */
                         variant="primary"
                         type="submit"
                         className={styles.margin_top}
@@ -71,7 +67,6 @@ const LoginForm = (props) => {
                     </Button>
 
                 </Form>
-
             </Formik>
         </div>
     );
