@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
+import { Nav } from "react-bootstrap";
 import './footer.css'
 
 export const Footer = () => {
   const [logo, setLogo] = useState("");
-  const [socialMedia, setSocialMedia] = useState([]);
-  const [error, setError] = useState("")
+  const [links, setLinks] = useState([]);
 
   useEffect(() => {
     async function getFooterData() {
@@ -13,9 +13,9 @@ export const Footer = () => {
         const data = await response.json();
         
         setLogo(data.logo);
-        setSocialMedia(data.socialMedia);
-      } catch(err) {
-        setError(err)
+        setLinks(data.link);
+      } catch(error) {
+        console.log(error)
       }
     }
 
@@ -26,27 +26,38 @@ export const Footer = () => {
     <footer className='footer'>
         <div className='footer-nav'>
             <div className='footer-nav_column'>
-                <span>Noticias</span>
-                <span>Actividades</span>
-                <span>Novedades</span>
+                <Nav.Item>
+                  <Nav.Link href={`/`}>Noticias</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link href={`/`}>Actividades</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link href={`/`}>Novedades</Nav.Link>
+                </Nav.Item>
             </div>
             <div className='footer-nav_column'>
                 <img src={logo} alt="Logo somos mas"></img>
             </div>
             <div className='footer-nav_column'>
-                <span>Testimonios</span>
-                <span>Nosotros</span>
-                <span>Contacto</span>
+                <Nav.Item>
+                  <Nav.Link href={`/`}>Testimonios</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link href={`/`}>Nosotros</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link href={`/`}>Contacto</Nav.Link>
+                </Nav.Item>
             </div>
         </div>
-        <hr></hr>
         <div className='footer-social'>
             <div className='footer-social_icons'>
             {
-                socialMedia.map((socialMediaItem) => {
+                links.map((link) => {
                   return (
-                    <a src={socialMediaItem.link} className='icon'>
-                        <i className={`fab fa-${socialMediaItem.linkName}`}></i>
+                    <a src={link} className='icon'>
+                        <i className={`fab fa-${link}`}></i>
                     </a>
                   )
                 })
