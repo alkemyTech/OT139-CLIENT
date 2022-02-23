@@ -1,14 +1,6 @@
 import React from 'react';
-
-//Mock header
-const Header = () => {
-  return <>header</>;
-};
-
-//Mock footer
-const Footer = () => {
-  return <>footer</>;
-};
+import Header from './Header'; //Change path to real component
+import Footer from './Footer'; //Change path to real component
 
 const BackOffice = ({ children }) => {
   return (
