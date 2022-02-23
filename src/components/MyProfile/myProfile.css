@@ -1,0 +1,25 @@
+.max_width_wrapper_medium {
+  max-width: 45rem;
+}
+  
+.title_large {
+  font-size: 3rem;
+  font-weight: 700;
+}
+  
+.subtitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+  
+.text_disabled {
+  color: gray;
+}
+  
+.text_strong {
+  font-weight: 600;
+}
+  
+.color_danger {
+  color: #dc3545;
+}
