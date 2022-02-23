@@ -1,5 +1,5 @@
 import axios from "axios";
-import getToken from "./getToken";
+import {getToken} from './tokenService';
 
 const getAuthorizationHeader = () => {
   const token = getToken();
