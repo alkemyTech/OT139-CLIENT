@@ -1,21 +1,17 @@
-.container-view {
-  width: 75%;
-}
-.container_img {
-  background-color: #adabab86;
-  flex-direction: column;
+.container_view {
+  width: 60%;
 }
 
-.height_max_textarea {
-  height: 38px;
+.container_form_title {
+  background-color: #db5752;
 }
 
-.width_textarea {
-  width: 98% !important;
+.container_form_img {
+  background-color: #fafa88;
 }
 
-.width_50 {
-  width: 50%;
+.background_blue {
+  background-color: #9AC9FB;
 }
 
 .button_style {
@@ -36,18 +32,26 @@
   background-color: #adabab86;
 }
 
+.color_red {
+  color: red;
+}
+
+.field {
+  border: 1px solid #18a0fb;
+  border-radius: 6px;
+  box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075) inset,
+    0 0 5px rgba(0, 132, 255, 0.6);
+}
+
+.color_card {
+  background-color: #fafa88;
+}
+
 @media only screen and (max-width: 896px) {
-  .container-view {
+  .container_view {
     width: 100% !important;
   }
 
-  .flex_column {
-    flex-direction: column;
-  }
-
-  .width_100 {
-    width: 100% !important;
-  }
   .button_style {
     width: 75% !important;
   }

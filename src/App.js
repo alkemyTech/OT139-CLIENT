@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import FormEditHome from './components/EditHome/FormEditHome';
 import Slider from './components/Slider';
 
 function App() {
@@ -23,9 +24,9 @@ function App() {
     <div className="App">
       <header className="App-header">
 
-        <Slider data={dataSlide}/>
+        {/* <Slider data={dataSlide}/> */}
 
-        <Counter />
+        {/* <Counter />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
@@ -66,7 +67,8 @@ function App() {
           >
             React Redux
           </a>
-        </span>
+        </span> */}
+        <FormEditHome/>
       </header>
     </div>
   );
