@@ -8,7 +8,7 @@ export default function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/*" element={<About />} />
+      <Route path="/about" element={<About />} />
     </Routes>
   )
 }

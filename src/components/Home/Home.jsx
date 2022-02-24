@@ -22,7 +22,7 @@ function Home() {
   ];
 
   return (
-    <div className='home'>
+    <div id='home'>
       <Slider data={dataSlide} />
     </div>
   );
