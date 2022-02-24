@@ -30,15 +30,14 @@ export function ConfirmAlert(title, message) {
         icon: "success",
         confirmButtonColor: "#78D052",
       });
-      return { confirmacion: true };
-    } else if (result.isDenied) {
+    } else {
       Swal.fire({
         title: "Cancelado",
         text: "",
         icon: "info",
         confirmButtonColor: "#78D052",
       });
-      return { confirmacion: false };
     }
+    return result;
   });
 }
