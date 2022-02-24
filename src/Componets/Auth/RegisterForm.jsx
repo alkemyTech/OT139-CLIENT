@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import "../css/registerForm.css";
 
 export default function RegisterForm() {
-  const [sendForm, setSendForm] = useState(false);
 
   const initialValuesForm = {
     firstName: "",
@@ -13,13 +12,15 @@ export default function RegisterForm() {
     passwordConfirm: "",
   };
 
-  const funcionValidate = (values) => {
+  const functionValidate = (values) => {
     let errorsObject = {};
+
     validateFirtName(values, errorsObject);
     validateLastName(values, errorsObject);
     validateEmail(values, errorsObject);
     validatePassword(values, errorsObject);
     validateConfirmPassword(values, errorsObject);
+
     return errorsObject;
   };
 
@@ -72,10 +73,6 @@ export default function RegisterForm() {
 
   const handleSubmit = (values, resetForm) => {
     resetForm();
-    setSendForm(true);
-    setTimeout(() => {
-      setSendForm(false);
-    }, 5000);
   };
 
   return (
@@ -85,12 +82,11 @@ export default function RegisterForm() {
       </div>
       <Formik
         initialValues={initialValuesForm}
-        validate={funcionValidate}
+        validate={functionValidate}
         onSubmit={(values, { resetForm }) => handleSubmit(values, resetForm)}
       >
         {() => (
           <Form>
-            {sendForm && <p className="success">Formulario envio con exito!</p>}
             <div className="container_field">
               <label htmlFor="firstName">Nombre</label>
               <Field

@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import Counter from './features/counter'
 import Slider from './components/Slider';
 
 function App() {
