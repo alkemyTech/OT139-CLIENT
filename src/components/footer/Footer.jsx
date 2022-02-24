@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { Nav } from "react-bootstrap";
+import {Twitter} from "react-bootstrap-icons";
+import {Facebook} from "react-bootstrap-icons";
+import {Envelope} from "react-bootstrap-icons";
+import {Telephone} from "react-bootstrap-icons";
 import './footer.css'
 
 export const Footer = () => {
@@ -9,7 +13,7 @@ export const Footer = () => {
   useEffect(() => {
     async function getFooterData() {
       try {
-        const response = await fetch("/1/public");
+        const response = await fetch("/organizations/1/public");
         const data = await response.json();
         
         setLogo(data.logo);
@@ -22,12 +26,19 @@ export const Footer = () => {
     getFooterData();
   });
 
+  const tempSocials = [
+    { url: 'mailto:mail@mail.com', icon: Envelope },
+    { url: 'http://facebook.com', icon: Facebook },
+    { url: 'http://twitter.com', icon: Twitter },
+    { url: 'tel:+5491161141500', icon: Telephone },
+  ];
+
   return (
     <footer className='footer'>
         <div className='footer-nav'>
             <div className='footer-nav_column'>
                 <Nav.Item>
-                  <Nav.Link href={`/`}>Noticias</Nav.Link>
+                  <Nav.Link href={`/noticias`}>Noticias</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
                   <Nav.Link href={`/`}>Actividades</Nav.Link>
@@ -53,16 +64,15 @@ export const Footer = () => {
         </div>
         <div className='footer-social'>
             <div className='footer-social_icons'>
-            {
-                links.map((link) => {
-                  return (
-                    <a src={link} className='icon'>
-                        <i className={`fab fa-${link}`}></i>
+              {tempSocials.map((social) => {
+                const SocialIcons = social.icon
+                return (
+                    <a href={social.url}>
+                      <SocialIcons className="icon"></SocialIcons>
                     </a>
-                  )
-                })
-            }
-            <p>2021 by Alkemy. All Rights Reserved</p>
+                );
+              })}
+              <p>2021 by Alkemy. All Rights Reserved</p>
             </div>
         </div>
     </footer>

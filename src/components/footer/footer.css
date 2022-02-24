@@ -48,11 +48,10 @@
 }
 
 .footer-social_icons .icon {
-     background:#ccc;
      width: 44px;
      height: 44px;
-     border-radius: 25px;
      margin: 20px;
+     color: #000;
 }
 
 @media screen and (max-width: 621px){
