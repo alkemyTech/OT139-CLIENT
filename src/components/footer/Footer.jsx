@@ -26,11 +26,12 @@ export const Footer = () => {
     getFooterData();
   });
 
+  //Eliminar cuando tengamos el entry point
   const tempSocials = [
     { url: 'mailto:mail@mail.com', icon: Envelope },
     { url: 'http://facebook.com', icon: Facebook },
     { url: 'http://twitter.com', icon: Twitter },
-    { url: 'tel:+5491161141500', icon: Telephone },
+    { url: 'tel:+5491161141500', icon: Telephone }
   ];
 
   return (
