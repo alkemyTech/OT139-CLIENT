@@ -1,26 +1,37 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button } from 'react-bootstrap';
-import { Formik,Form,  Field, ErrorMessage } from 'formik';
+import {Button} from 'react-bootstrap';
+import {Formik, Form, Field, ErrorMessage} from 'formik';
 import styles from './loginForm.module.css';
 
 const LoginForm = () => {
-    const validate = values => {
-        let regExEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
-        let errors = {};
-
+    const validateEmail = (values, errors) => {
+        const regExEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+        
         if (!values.email) {
             errors.email = "El email es requerido";
         } else if (!regExEmail.test(values.email)) {
             errors.email = "Debes introducir un email valido";
         }
+    }
+
+    const validatePassword = (values, errors) => {
         if (!values.password) {
             errors.password = "La contraseña es requerida";
         } else if (values.password.length < 6) {
             errors.password = "La contraseña debe tener más de 6 caracteres";
         }
+    }
+
+    const validate = values => {
+        const errors = {};
+
+        validateEmail(values, errors);
+        validatePassword(values, errors);
+
         return errors
     }
+    
     const onSubmit = values => {
         let usuario = {
             email: values.email,
