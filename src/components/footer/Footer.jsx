@@ -9,6 +9,7 @@ import './footer.css'
 export const Footer = () => {
   const [logo, setLogo] = useState("");
   const [links, setLinks] = useState([]);
+  const [errors, setErrors] = useState([])
 
   useEffect(() => {
     async function getFooterData() {
@@ -19,7 +20,7 @@ export const Footer = () => {
         setLogo(data.logo);
         setLinks(data.link);
       } catch(error) {
-        console.log(error)
+        setErrors(error)
       }
     }
 
@@ -68,11 +69,12 @@ export const Footer = () => {
               {tempSocials.map((social) => {
                 const SocialIcons = social.icon
                 return (
-                    <a href={social.url}>
+                    <a href={social.url} key={social.url}>
                       <SocialIcons className="icon"></SocialIcons>
                     </a>
                 );
               })}
+              {errors.length ? <span className="bg-red text-white">{errors}</span> : <></>}
               <p>2021 by Alkemy. All Rights Reserved</p>
             </div>
         </div>
