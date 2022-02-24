@@ -1,12 +1,12 @@
 import axios from "axios";
-import {autorizationHeader} from './autorizationHeader';
+import {getToken} from './tokenService';
 axios.defaults.baseURL = process.env.BASE_URL;
-
-const header = autorizationHeader();
+const token = getToken()
+axios.defaults.headers = { "Authorization": token };
 
 export const post = async (endPoint, body) => {
   try {
-    const { data } = await axios.post(endPoint, body , header);
+    const { data } = await axios.post(endPoint, body);
     return data;
   } catch (error) {
     return error;
@@ -15,7 +15,7 @@ export const post = async (endPoint, body) => {
 
 export const get = async (endPoint) => {
   try {
-    const { data } = await axios.get(endPoint , header);
+    const { data } = await axios.get(endPoint);
     return data;
   } catch (error) {
     return error;
