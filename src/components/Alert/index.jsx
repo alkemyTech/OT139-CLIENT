@@ -1,46 +1,44 @@
 import Swal from 'sweetalert2';
-
-const errorIcon = 'error';
-const infoIcon = 'info';
-const successIcon = 'success';
-const warningIcon = 'warning';
+import { textAlert, colorAlert, iconsAlert } from '../../enums/alerts';
 
 export function InfoAlert(title, message) {
-  return Swal.fire(title, message, infoIcon);
+  return Swal.fire(title, message, iconsAlert.info);
 }
 
 export function ErrorAlert(title, message) {
-  return Swal.fire(title, message, errorIcon);
+  return Swal.fire(title, message, iconsAlert.error);
 }
 
 export function SuccessAlert(title, message) {
-  return Swal.fire(title, message, successIcon);
+  return Swal.fire(title, message, iconsAlert.success);
 }
 
 export function ConfirmAlert(title, message) {
   return Swal.fire({
     title: title,
     text: message,
-    icon: warningIcon,
+    icon: iconsAlert.warning,
     showDenyButton: true,
-    confirmButtonText: 'Confirmar',
-    denyButtonText: 'Cancelar',
-    confirmButtonColor: '#78D052',
-    cancelButtonColor: '#d33',
+    confirmButtonText: textAlert.confirmar,
+    denyButtonText: textAlert.cancelar,
+    confirmButtonColor: colorAlert.success,
+    cancelButtonColor: colorAlert.error,
   }).then((result) => {
     if (result.isConfirmed) {
       Swal.fire({
-        title: 'Confirmado',
+        title: textAlert.aceptado,
         text: '',
-        icon: successIcon,
-        confirmButtonColor: '#78D052',
+        icon: iconsAlert.success,
+        showConfirmButton: false,
+        timer: 1200,
       });
     } else {
       Swal.fire({
-        title: 'Cancelado',
+        title: textAlert.cancelado,
         text: '',
-        icon: infoIcon,
-        confirmButtonColor: '#78D052',
+        icon: iconsAlert.error,
+        showConfirmButton: false,
+        timer: 1200,
       });
     }
     return result;
