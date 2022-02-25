@@ -1,35 +1,49 @@
-import React from "react";
+import React, {useState} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Button} from 'react-bootstrap';
 import {Formik, Form, Field, ErrorMessage} from 'formik';
 import styles from './loginForm.module.css';
 
 const LoginForm = () => {
-    const validateEmail = (values, errors) => {
+    const [email, setEmail] = useState({email: ""});
+    const [password, setPassword] = useState({password: ""})
+
+    const validateEmail = (values, error) => {
         const regExEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
         
         if (!values.email) {
-            errors.email = "El email es requerido";
+            setEmail({
+                email: "El email es requerido"
+            });
         } else if (!regExEmail.test(values.email)) {
-            errors.email = "Debes introducir un email valido";
+            setEmail({
+                email: "Debes introducir un email valido"
+            });
         }
     }
 
-    const validatePassword = (values, errors) => {
+     const validatePassword = (values, error) => {
         if (!values.password) {
-            errors.password = "La contraseña es requerida";
+            setPassword({
+                password: "La contraseña es requerida"
+            });
         } else if (values.password.length < 6) {
-            errors.password = "La contraseña debe tener más de 6 caracteres";
+            setPassword({
+                password: "La contraseña debe tener más de 6 caracteres"
+            });
         }
     }
 
     const validate = values => {
         const errors = {};
 
-        validateEmail(values, errors);
-        validatePassword(values, errors);
+        validateEmail(values, email);
+        validatePassword(values, password); 
 
-        return errors
+        errors.email = email.email;
+        errors.password = password.password;
+
+       return errors;
     }
     
     const onSubmit = values => {
@@ -55,19 +69,22 @@ const LoginForm = () => {
                         type="email"
                         name="email" 
                         placeholder="Introduzca su Email" />
-                       {<ErrorMessage name="email"/> && <ErrorMessage name="email">
+                        {email.email ? <ErrorMessage name="email">
                            {message => <small className={styles.error}>{message}</small>}
-                       </ErrorMessage>}
-                   
+                       </ErrorMessage> : null}
+
+                       
                         <label className={styles.margin_top}>Contraseña</label>
                         <Field 
                         className={styles.input}
                         type="password"
                         name="password"
                         placeholder="Introduzca su contraseña" />
-                        {<ErrorMessage name="password"/> && <ErrorMessage name="password">
+                        {password.password ? <ErrorMessage name="password">
                            {message => <small className={styles.error}>{message}</small>}
-                       </ErrorMessage>}
+                       </ErrorMessage> : null}
+
+                        
 
                     <Button
                         variant="primary"
