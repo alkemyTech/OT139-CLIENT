@@ -27,7 +27,6 @@ export function ConfirmAlert(title, message) {
     if (result.isConfirmed) {
       Swal.fire({
         title: textAlert.aceptado,
-        text: '',
         icon: iconsAlert.success,
         showConfirmButton: false,
         timer: 1200,
@@ -35,7 +34,6 @@ export function ConfirmAlert(title, message) {
     } else {
       Swal.fire({
         title: textAlert.cancelado,
-        text: '',
         icon: iconsAlert.error,
         showConfirmButton: false,
         timer: 1200,
