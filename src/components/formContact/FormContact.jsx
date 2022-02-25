@@ -5,24 +5,34 @@ import './formContact.css'
 import 'animate.css';
 import Logo from './Logo.png';
 import { useForm } from "react-hook-form";
+import Swal from 'sweetalert2';
 
 export default function FormContact(){
     
     const { register, handleSubmit } = useForm();
     const onSubmit = data => console.log(data);
-
+    const Swal = require('sweetalert2')
+  const alertSend=()=>{
+    Swal.fire({
+        icon: 'success',
+        title: 'mensaje enviado',
+        showConfirmButton: false,
+        timer: 1500
+      })
+  }
     return (
         <div className="main">
             <div className="flex-child animate__animated animate__fadeInLeft ">
                 <img src={Logo} className="Logo" />
                 <p className="text-center">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                Si estas interesado en ser voluntario de nuestra comunidad
+                o deseas colaborar con lo que puedas o dar apoyo economicamente,
+                No dudes en contactarte con nosotros😊. 
                 </p>
             </div>
             <div className="Form-Contact flex-child animate__animated animate__fadeInRight">
                 <Form onSubmit={handleSubmit(onSubmit)}>
-                    <h2 className="text-center">Contactate con nosotros</h2>
+                    <h2 className="text-center">¡Envianos Un Mensaje!</h2>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1" >
                         <Form.Label>Nombre</Form.Label>
                         <Form.Control type="text" placeholder="example Marie Curie" required {...register("firstName")} />
@@ -35,7 +45,7 @@ export default function FormContact(){
                         <Form.Label>Mensaje</Form.Label>
                         <Form.Control as="textarea" rows={6} required {...register("message")} />
                     </Form.Group>
-                    <Button variant="primary" type="submit">
+                    <Button variant="primary" type="submit" onClick={alertSend}>
                         Enviar
                     </Button>
                 </Form>
