@@ -1,26 +1,16 @@
 import React from 'react';
+<<<<<<< HEAD
 import './App.css';
 import { Counter } from './features/counter/Counter';
 import Slider from './components/Slider';
+=======
+import { BrowserRouter } from 'react-router-dom';
+import AppRoutes from './routes/AppRoutes';
+>>>>>>> main
 
 function App() {
-
-  const dataSlide = [
-    {
-      imageUrl: 'https://images.unsplash.com/photo-1605457867610-e990b192418e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1126&q=80',
-      text: 'Slide uno',
-    },
-    {
-      imageUrl: 'https://images.unsplash.com/photo-1561424412-6c2125ecb1cc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
-      text: 'Slide 2',
-    },
-    {
-      imageUrl: 'https://images.unsplash.com/photo-1513972400628-4ae6371f9124?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
-      text: '',
-    },
-  ];
-
   return (
+<<<<<<< HEAD
     <div className="App">
       <header className="App-header">
 
@@ -70,6 +60,11 @@ function App() {
         </span> 
       </header>
     </div>
+=======
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
+>>>>>>> main
   );
 }
 
