@@ -24,11 +24,12 @@
 
 .a {
     display: flex;
-    margin: 50px 0;
+    margin: 40px 0;
+    width: 100%;
 }
 
 .div_info {
-    margin-left: 40px;
+    margin-left: 30px;
     align-self: flex-start;
 }
 
@@ -38,7 +39,7 @@
 }
 
 .ver_todas {
-    margin: 0 410px;
+    margin: 0 350px;
     text-decoration: none;
     border: 1px solid;
     padding: 5px 25px;

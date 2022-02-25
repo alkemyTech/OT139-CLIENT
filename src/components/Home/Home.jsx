@@ -1,7 +1,11 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Slider from '../Slider';
+import Slider from '../Slider/Slider';
 import style from './home.module.css';
+import './home.css';
+
+
+
 
 const Home = () => {
     const titulo  = "Bienvenidos";
@@ -21,7 +25,7 @@ const Home = () => {
       ];
 
     return(
-        <>
+      <div id='home'>
            <Slider data={dataSlide}/>
             <h1 className={style.titulo}>{titulo}</h1>
 
@@ -40,7 +44,7 @@ const Home = () => {
               
               <a href='#' className={style.ver_todas}>Ver todas</a>
             </div>
-        </>
+        </div>
     );
 }
 
