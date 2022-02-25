@@ -7,3 +7,40 @@
     text-align: center;
     margin-top: 70px;
 }
+
+.novedades_container{
+    width: 100%;
+    display: flex;
+}
+
+.novedades {
+    width: 25%;
+    height: 250px;
+    margin: 20px 20px;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: gray;
+}
+
+.a {
+    display: flex;
+    margin: 50px 0;
+}
+
+.div_info {
+    margin-left: 40px;
+    align-self: flex-start;
+}
+
+.testimonios {
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+.ver_todas {
+    margin: 0 410px;
+    text-decoration: none;
+    border: 1px solid;
+    padding: 5px 25px;
+    border-radius: 4px;
+}

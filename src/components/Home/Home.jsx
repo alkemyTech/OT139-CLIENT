@@ -1,4 +1,5 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Slider from '../Slider';
 import style from './home.module.css';
 
@@ -25,6 +26,20 @@ const Home = () => {
             <h1 className={style.titulo}>{titulo}</h1>
 
             <h2 className={style.subtitulo}>Ultimas novedades</h2>
+            <div className={style.novedades_container}>
+              <article className={style.novedades}></article>
+              <article className={style.novedades}></article>
+              <article className={style.novedades}></article>
+              <article className={style.novedades}></article>
+            </div>
+            <div className={style.a}>
+              <div className={style.div_info}>
+              <a href='#' className={style.testimonios}>Testimonios</a>
+              <a href='#'>Contacto</a>
+              </div>
+              
+              <a href='#' className={style.ver_todas}>Ver todas</a>
+            </div>
         </>
     );
 }
