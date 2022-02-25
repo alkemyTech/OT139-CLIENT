@@ -1,27 +1,29 @@
 import React from 'react';
+import style from './activities.module.css';
+import { FiEdit, FiTrash } from 'react-icons/fi';
 
-export default function Activities() {
+export default function Activities(props) {
   const activitiesMock = [
     {
-      name: 'image 1',
+      name: 'Lorem ipsum dolor sit amet',
       imageUrl: 'http://www.google.com',
       content: 'Lorem ipsum dolor sit amet',
       deletedAd: new Date(),
     },
     {
-      name: 'image 2',
+      name: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
       imageUrl: 'http://www.google.com',
       content: 'Lorem ipsum dolor sit amet',
       deletedAd: new Date(),
     },
     {
-      name: 'image 3',
+      name: 'Activities 3',
       imageUrl: 'http://www.google.com',
       content: 'Lorem ipsum dolor sit amet',
       deletedAd: new Date(),
     },
     {
-      name: 'image 4',
+      name: 'Activities 4',
       imageUrl: 'http://www.google.com',
       content: 'Lorem ipsum dolor sit amet',
       deletedAd: new Date(),
@@ -29,23 +31,33 @@ export default function Activities() {
   ];
 
   return (
-    <div>
-      <h1>Activities</h1>
-      <h3>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore
-      </h3>
-      {activitiesMock.map((activity, index) => {
-        return (
-          <div key={index}>
-            <h4>{activity.name}</h4>
-            <img src={activity.imageUrl} alt={activity.name} />
-            <p>{activity.content}</p>
-            <button>Editar</button>
-            <button>Eliminar</button>
-          </div>
-        );
-      })}
+    <div className={style.container}>
+      <div className={style.title}>
+        <h1>Actividades</h1>
+      </div>
+      <div className={style.description}>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore
+        </p>
+      </div>
+      <div className={style.activities_table}>
+        {activitiesMock.map((activity, index) => {
+          return (
+            <div key={index} className={style.activity_item}>
+              <div className={style.activity_name_cont}>{activity.name}</div>
+              <div className={style.cont_buttons}>
+                <button className={style.button_edit} onClick={() => {}}>
+                  <FiEdit />
+                </button>
+                <button className={style.button_delete} onClick={() => {}}>
+                  <FiTrash />
+                </button>
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

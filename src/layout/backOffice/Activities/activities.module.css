@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+
+.container {
+    /* background-color: red; */
+    padding: 20px;
+    height: fit-content;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.title {
+    margin-top: 120px;
+}
+
+.title h1 {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 72px;
+    text-align: center;
+    letter-spacing: -0.015em;
+    /* color: #000000; */
+    color: #db5752;
+
+}
+
+.description {
+    margin: 0 auto 80px;
+    width: 70%px;
+}
+
+.description p {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 50px;
+    text-align: center;
+    letter-spacing: -0.015em;
+    /* color: rgba(0, 0, 0, 0.8); */
+    color: #9ac9fb;
+}
+
+.activities_table {
+    margin: auto;
+    width: 90%;
+    background-color: #dbdbd765;
+    /* border: 1px solid black; */
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.activities_table .activity_item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #9db1c741;
+    max-lines: 1;
+
+}
+
+
+.activities_table .activity_item:last-child {
+    border-bottom: none;
+}
+
+.activity_name_cont {
+    max-height: 30px;
+    max-lines: 1;
+    height: auto;
+    width: 70%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 26px;
+    text-align: left;
+    letter-spacing: -0.015em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.activity_name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 26px;
+    text-align: left;
+    letter-spacing: -0.015em;
+
+
+}
+
+.cont_buttons {
+    width: 15%;
+    display: flex;
+    /* background-color: red; */
+    justify-content: space-around;
+}
+
+.cont_buttons button {
+    width: fit-content;
+    height: fit-content;
+    border-radius: 8px;
+    border: none;
+    color: black;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 50px;
+    text-align: center;
+    letter-spacing: -0.015em;
+}
+
+.button_edit {
+    background-color: #ecec81;
+}
+
+.button_delete,
+.button_edit:first-child {
+    padding: 0 10px;
+}
+
+.cont_buttons .button_delete {
+    background-color: #ec6262;
+    color: #fff;
+}
+
+@media (max-width: 400px) {
+    .container {
+        width: 100%;
+        padding: 5px;
+    }
+
+    .activities_table {
+        width: 100%;
+    }
+
+    .activities_table .activity_item {
+        padding: 3px;
+    }
+}
