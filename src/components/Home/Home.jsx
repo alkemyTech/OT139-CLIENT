@@ -2,6 +2,8 @@ import React from 'react';
 import Slider from '../Slider/Slider';
 import './home.css';
 
+import { ConfirmAlert } from '../Alert/index';
+
 function Home() {
   const dataSlide = [
     {
@@ -24,6 +26,7 @@ function Home() {
   return (
     <div id='home'>
       <Slider data={dataSlide} />
+      <button onClick={() => ConfirmAlert('hola', 'cuerpo')}>Click</button>
     </div>
   );
 }

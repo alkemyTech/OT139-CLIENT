@@ -1,0 +1,11 @@
+export const aceptar = 'Aceptar';
+export const confirmar = 'Confirmar';
+export const aceptado = 'Aceptado';
+export const cancelado = 'Cancelado';
+export const cancelar = 'Cancelar';
+export const confirmacion = 'Confirmación';
+export const informacion = 'Información';
+export const error = 'Error';
+export const success = 'Éxito';
+export const warning = 'Advertencia';
+export const question = 'Pregunta';
