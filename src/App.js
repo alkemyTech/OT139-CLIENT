@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';
 import './App.css';
 import Slider from './components/Slider';
+import FormEditUser from './components/FormEditUser';
 
 function App() {
 
@@ -25,9 +26,9 @@ function App() {
     <div className="App">
       <header className="App-header">
 
-        <Slider data={dataSlide}/>
-
-        <Counter />
+        {/* <Slider data={dataSlide}/> */}
+        <FormEditUser/>
+        {/* <Counter /> */}
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
