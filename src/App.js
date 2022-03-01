@@ -1,12 +1,10 @@
 import React from 'react';
-import './App.css';
-import FormContact from './components/formContact/FormContact'
-function App() {
+import { BrowserRouter } from 'react-router-dom';
 
- return(
-   <div className="App">
-     <FormContact/>
-   </div>
+function App() {
+  return (
+    <BrowserRouter>
+    </BrowserRouter>
   );
 }
 
