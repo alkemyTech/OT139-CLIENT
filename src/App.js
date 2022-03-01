@@ -29,7 +29,7 @@ function App() {
         {/* <Slider data={dataSlide}/> */}
         <FormEditUser/>
         {/* <Counter /> */}
-        <p>
+        {/* <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
         <span>
@@ -69,7 +69,7 @@ function App() {
           >
             React Redux
           </a>
-        </span>
+        </span> */}
       </header>
     </div>
   );
