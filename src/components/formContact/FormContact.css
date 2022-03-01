@@ -5,11 +5,21 @@
   margin-left: 10vw;
   margin-right: 10vw;
   position: absolute;
-  top:25%
+  top: 25%;
+}
+
+.flex-child p {
+  font-size: 1.5em;
+}
+
+.flex-child img {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 
 .flex-child {
-  flex:1;
+  flex: 1;
 }
 
 .flex-child:first-child {
@@ -23,21 +33,19 @@
 }
 
 @media screen and (min-width: 359px) and (max-width: 700px) {
-
-.main{
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  top:0;
-}
+  .main {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+  }
   .flex-child:first-child {
     border-right: none;
-    margin-bottom:2em;
+    margin-bottom: 2em;
     border-bottom: solid 1px black;
   }
 
-  .Form-Contact{
-   margin-bottom:100%;
+  .Form-Contact {
+    margin-bottom: 100%;
   }
- 
 }
