@@ -1,15 +1,15 @@
-import React from "react";
-import { Formik, Field, Form, ErrorMessage } from "formik";
-import "../css/registerForm.css";
+import React from 'react';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
+import { Button } from 'react-bootstrap';
+import './registerForm.css';
 
 export default function RegisterForm() {
-
   const initialValuesForm = {
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    passwordConfirm: "",
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    passwordConfirm: '',
   };
 
   const functionValidate = (values) => {
@@ -26,47 +26,47 @@ export default function RegisterForm() {
 
   const validateFirtName = (values, errorsObject) => {
     if (!values.firstName) {
-      errorsObject.firstName = "Por Favor Ingresa Un Nombre!";
+      errorsObject.firstName = 'Por Favor Ingresa Un Nombre!';
     } else if (!/^[a-zA-Z\s]{3,40}$/.test(values.firstName)) {
       errorsObject.firstName =
-        "El nombre solo puede contener letras y minimo 3 caracteres";
+        'El nombre solo puede contener letras y minimo 3 caracteres';
     }
     return errorsObject;
   };
 
   const validateLastName = (values, errorsObject) => {
     if (!values.lastName) {
-      errorsObject.lastName = "Por favor ingresa un apellido!";
+      errorsObject.lastName = 'Por favor ingresa un apellido!';
     } else if (!/^[a-zA-Z\s]{3,40}$/.test(values.lastName)) {
       errorsObject.lastName =
-        "El apellido solo puede contener letras y minimo 3 caracteres";
+        'El apellido solo puede contener letras y minimo 3 caracteres';
     }
     return errorsObject;
   };
 
   const validateEmail = (values, errorsObject) => {
     if (!values.email) {
-      errorsObject.email = "Por favor ingresa un email!";
+      errorsObject.email = 'Por favor ingresa un email!';
     } else if (
       !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
     ) {
-      errorsObject.email = "El email tiene que tener formato correo@correo.com";
+      errorsObject.email = 'El email tiene que tener formato correo@correo.com';
     }
     return errorsObject;
   };
 
   const validatePassword = (values, errorsObject) => {
     if (!values.password) {
-      errorsObject.password = "Por favor ingresa un contrasena!";
+      errorsObject.password = 'Por favor ingresa un contrasena!';
     } else if (!/^[a-zA-Z0-9\s]{6,40}$/i.test(values.password)) {
-      errorsObject.password = "La contrasena debe tener minimo 6 caracteres";
+      errorsObject.password = 'La contrasena debe tener minimo 6 caracteres';
     }
     return errorsObject;
   };
 
   const validateConfirmPassword = (values, errorsObject) => {
     if (values.password !== values.passwordConfirm) {
-      errorsObject.passwordConfirm = "Las contrasenas no coinciden";
+      errorsObject.passwordConfirm = 'Las contrasenas no coinciden';
     }
     return errorsObject;
   };
@@ -76,9 +76,9 @@ export default function RegisterForm() {
   };
 
   return (
-    <div className="container_register">
-      <div>
-        <h1>Registrate para ser Voluntario!</h1>
+    <div className='container_register mt-5 pt-2 pb-3'>
+      <div className='text-center pt-3 pb-3'>
+        <h1 className='color_red_ong'>Registrate para ser Voluntario!</h1>
       </div>
       <Formik
         initialValues={initialValuesForm}
@@ -86,98 +86,98 @@ export default function RegisterForm() {
         onSubmit={(values, { resetForm }) => handleSubmit(values, resetForm)}
       >
         {() => (
-          <Form>
-            <div className="container_field">
-              <label htmlFor="firstName">Nombre</label>
+          <Form noValidate>
+            <div className='container_field'>
+              <label htmlFor='firstName'>Nombre</label>
               <Field
-                id="firstName"
-                name="firstName"
-                type="text"
-                placeholder="Pablo"
-                className="field"
+                id='firstName'
+                name='firstName'
+                type='text'
+                placeholder='Pablo'
+                className='field'
                 required
               />
               <ErrorMessage
-                name="firstName"
-                component="h6"
-                className="color_red without-margin"
+                name='firstName'
+                component='h6'
+                className='color_red without-margin'
               />
             </div>
-            <div className="container_field">
-              <label htmlFor="lastName">Apellido</label>
+            <div className='container_field'>
+              <label htmlFor='lastName'>Apellido</label>
               <Field
-                id="lastName"
-                name="lastName"
-                type="text"
-                placeholder="Perez"
-                className="field"
+                id='lastName'
+                name='lastName'
+                type='text'
+                placeholder='Perez'
+                className='field'
                 required
               />
               <ErrorMessage
-                name="lastName"
-                component="h6"
-                className="color_red without-margin"
+                name='lastName'
+                component='h6'
+                className='color_red without-margin'
               />
             </div>
-            <div className="container_field">
-              <label htmlFor="email">Email</label>
+            <div className='container_field'>
+              <label htmlFor='email'>Email</label>
               <Field
-                id="email"
-                name="email"
-                type="email"
-                placeholder="Correo@Correo.com"
-                className="field"
+                id='email'
+                name='email'
+                type='email'
+                placeholder='Correo@Correo.com'
+                className='field'
                 required
               />
               <ErrorMessage
-                name="email"
-                component="h6"
-                className="color_red without-margin"
+                name='email'
+                component='h6'
+                className='color_red without-margin'
               />
             </div>
-            <div className="container_field">
-              <label htmlFor="password">Contraseña</label>
+            <div className='container_field'>
+              <label htmlFor='password'>Contraseña</label>
               <Field
-                id="password"
-                name="password"
-                type="password"
-                placeholder="******"
-                className="field"
+                id='password'
+                name='password'
+                type='password'
+                placeholder='******'
+                className='field'
                 required
               />
               <ErrorMessage
-                name="password"
-                className="color_red without-margin"
-                component="h6"
+                name='password'
+                className='color_red without-margin'
+                component='h6'
               />
             </div>
-            <div className="container_field">
+            <div className='container_field'>
               <label
-                htmlFor="passwordConfirm"
-                className="label_confirmpass without-margin"
+                htmlFor='passwordConfirm'
+                className='label_confirmpass without-margin'
               >
                 Confirmar Contraseña
               </label>
               <Field
-                id="passwordConfirm"
-                name="passwordConfirm"
-                type="password"
-                placeholder="******"
-                className="field"
+                id='passwordConfirm'
+                name='passwordConfirm'
+                type='password'
+                placeholder='******'
+                className='field'
                 required
               />
               <ErrorMessage
-                name="passwordConfirm"
-                className="color_red without-margin"
-                component="h6"
+                name='passwordConfirm'
+                className='color_red without-margin'
+                component='h6'
               />
             </div>
-            <div className="container_button">
-              <button type="submit" className="button">
+            <div className='container_button mt-3 text-center'>
+              <Button type='submit' className='button_style mt-1 w-50'>
                 Registrarse
-              </button>
-              <h6 className="without-margin">
-                <a href="/login">Si ya estas registrado , Haz Click Aqui</a>
+              </Button>
+              <h6 className='without-margin'>
+                <a href='/login'>Si ya estas registrado , Haz Click Aqui</a>
               </h6>
             </div>
           </Form>
