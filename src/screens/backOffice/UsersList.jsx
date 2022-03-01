@@ -10,8 +10,10 @@ const UsersList = () => {
   ];
 
   const deleteHandler = (id) => {
-    console.log('delete');
+    //TODO
+    return;
   };
+
   return (
     <BackOffice>
       <Table striped bordered hover responsive className='table-sm'>
