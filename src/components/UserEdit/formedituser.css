@@ -1,3 +1,10 @@
+.container_form{
+  border-radius: 6px;
+  border: 1px solid #18a0fb;
+  margin-right: auto !important;
+  margin-left: auto !important;
+}
+
 .color_red {
   color: red;
 }

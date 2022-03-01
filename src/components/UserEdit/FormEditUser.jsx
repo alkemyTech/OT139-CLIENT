@@ -41,8 +41,8 @@ export default function FormEditUser() {
   };
   
   return (
-    <div className='border p-4 width_30 width_95'>
-      <h1 className='color_red_ong'>Editar Mi Perfil</h1>
+    <div className='p-4 mt-5 width_30 width_95 container_form'>
+      <h1 className='color_red_ong text-center'>Editar Mi Perfil</h1>
       {islogged ? (
         <Formik
           initialValues={initialValuesForm}
@@ -111,7 +111,7 @@ export default function FormEditUser() {
                     />
                   </div>
                 ) : null}
-                <div className='mb-3'>
+                <div className='mb-3 text-center'>
                   <Button type='submit' className='button_style mt-3 w-50'>
                     Modificar Datos
                   </Button>
