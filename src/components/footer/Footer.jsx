@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import { Nav } from "react-bootstrap";
-import {Twitter} from "react-bootstrap-icons";
-import {Facebook} from "react-bootstrap-icons";
-import {Envelope} from "react-bootstrap-icons";
-import {Telephone} from "react-bootstrap-icons";
+import {
+  Twitter,
+  Facebook,
+  Envelope,
+  Telephone
+} from "react-bootstrap-icons";
 import './footer.css'
 
 export const Footer = () => {
   const [logo, setLogo] = useState("");
   const [links, setLinks] = useState([]);
-  const [errors, setErrors] = useState([])
+  const [errors, setErrors] = useState([]);
+  const today = new Date();
+  const year = today.getFullYear();
 
   useEffect(() => {
     async function getFooterData() {
@@ -74,8 +78,8 @@ export const Footer = () => {
                     </a>
                 );
               })}
-              {errors.length ? <span className="bg-red text-white">{errors}</span> : <></>}
-              <p>2021 by Alkemy. All Rights Reserved</p>
+              { errors.length && <span className="bg-red text-white">{errors}</span> }
+              <p>{ year } by Alkemy. All Rights Reserved</p>
             </div>
         </div>
     </footer>
