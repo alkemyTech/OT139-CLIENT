@@ -26,7 +26,6 @@ function Home() {
   return (
     <div id='home'>
       <Slider data={dataSlide} />
-      <button onClick={() => ConfirmAlert('hola', 'cuerpo')}>Click</button>
     </div>
   );
 }
