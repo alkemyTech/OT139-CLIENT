@@ -1,6 +1,11 @@
 import React from 'react';
 import style from './activities.module.css';
-import { FiEdit, FiTrash } from 'react-icons/fi';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faCoffee,
+  faPenToSquare,
+  faTrashCan,
+} from '@fortawesome/free-solid-svg-icons';
 
 export default function Activities(props) {
   const activitiesMock = [
@@ -48,10 +53,10 @@ export default function Activities(props) {
               <div className={style.activity_name_cont}>{activity.name}</div>
               <div className={style.cont_buttons}>
                 <button className={style.button_edit} onClick={() => {}}>
-                  <FiEdit />
+                  <FontAwesomeIcon icon={faPenToSquare} />
                 </button>
                 <button className={style.button_delete} onClick={() => {}}>
-                  <FiTrash />
+                  <FontAwesomeIcon icon={faTrashCan} />
                 </button>
               </div>
             </div>
