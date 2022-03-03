@@ -1,4 +1,9 @@
+import axios from "axios";
+import getToken from './tokenService';
+
 const autorizationHeader = () => {
-    token = getToken();
+    const token = getToken();
     return axios.defaults.headers = { "Authorization": token };
 }
+
+export default autorizationHeader;
