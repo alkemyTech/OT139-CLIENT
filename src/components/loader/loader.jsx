@@ -6,7 +6,7 @@ import "./loader.css";
 export default function Loader(){
   return(
    <div>
-    <div className="center-loader">
+    <div className=" center-loader ">
        <Hearts 
           height="200" 
           width="200" 
