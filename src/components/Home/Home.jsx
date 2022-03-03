@@ -8,7 +8,7 @@ import './home.css';
 
 
 const Home = () => {
-    const titulo  = "Bienvenidos";
+    const welcomeText  = "Bienvenidos";
     const dataSlide = [
         {
           imageUrl: 'https://images.unsplash.com/photo-1605457867610-e990b192418e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1126&q=80',
@@ -27,22 +27,22 @@ const Home = () => {
     return(
       <div id='home'>
            <Slider data={dataSlide}/>
-            <h1 className={style.titulo}>{titulo}</h1>
+            <h1 className={style.title}>{welcomeText}</h1>
 
-            <h2 className={style.subtitulo}>Ultimas novedades</h2>
-            <div className={style.novedades_container}>
-              <article className={style.novedades}></article>
-              <article className={style.novedades}></article>
-              <article className={style.novedades}></article>
-              <article className={style.novedades}></article>
+            <h2 className={style.subtitle}>Ultimas novedades</h2>
+            <div className={style.news_container}>
+              <article className={style.news}></article>
+              <article className={style.news}></article>
+              <article className={style.news}></article>
+              <article className={style.news}></article>
             </div>
             <div className={style.a}>
               <div className={style.div_info}>
-              <a href='#' className={style.testimonios}>Testimonios</a>
+              <a href='#' className={style.testimonials}>Testimonios</a>
               <a href='#'>Contacto</a>
               </div>
               
-              <a href='#' className={style.ver_todas}>Ver todas</a>
+              <a href='#' className={style.see_more}>Ver todas</a>
             </div>
         </div>
     );

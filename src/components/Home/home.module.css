@@ -1,19 +1,19 @@
-.titulo {
+.title {
     text-align: center;
     margin-top: 10px;
 }
 
-.subtitulo {
+.subtitle {
     text-align: center;
     margin-top: 70px;
 }
 
-.novedades_container{
+.news_container{
     width: 100%;
     display: flex;
 }
 
-.novedades {
+.news {
     width: 25%;
     height: 250px;
     margin: 20px 20px;
@@ -33,12 +33,12 @@
     align-self: flex-start;
 }
 
-.testimonios {
+.testimonials {
     text-decoration: none;
     margin-right: 20px;
 }
 
-.ver_todas {
+.see_more {
     margin: 0 350px;
     text-decoration: none;
     border: 1px solid;
