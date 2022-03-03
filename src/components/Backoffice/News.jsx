@@ -16,9 +16,16 @@ function News() {
         setError(error);
       }
     };
-
     getBackOfficeNews();
   });
+
+  editRecord = () => {
+    //TODO @implementar la funcionalidad de editar 
+  }
+
+  deleteRecord = () => {
+    //TODO @implementar la funcionalidad de borrar
+  }
 
   return (
     <table class="table table-hover">
@@ -27,7 +34,7 @@ function News() {
           <th scope="col">Nombre</th>
           <th scope="col">imagen</th>
           <th scope="col">Día de creación</th>
-          <th scope="col">editar</th>
+          <th scope="col">Acciones</th>
         </tr>
       </thead>
       <tbody>
@@ -38,7 +45,7 @@ function News() {
             <th scope="row">{entriesItem.name}</th>
             <td>{entriesItem.imageUrl}</td>
             <td>{entriesItem.createdAt}</td>
-            <td>editar/borrar</td> {//TODO @implementar la funcionalidad de editar y borrar }
+            <td><p class="text-primary" onClick={editRecord}>Editar</p>/ <p class="text-danger" onClick={deleteRecord}>Borrar</p></td>
           </tr>
           )
         })
