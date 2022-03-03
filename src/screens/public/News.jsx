@@ -41,7 +41,7 @@ export const News = () => {
     <Container>
         <Row>
             { news.map((item)=>{
-                return <Col>
+                return <Col className="mt-5">
                     <Card style={{ width: '18rem' }}>
                         <Card.Img variant="top" src={ item.image } />
                         <Card.Body>
