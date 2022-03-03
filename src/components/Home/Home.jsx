@@ -2,8 +2,6 @@ import React from 'react';
 import Slider from '../Slider/Slider';
 import './home.css';
 
-import { ConfirmAlert } from '../Alert/index';
-
 function Home() {
   const dataSlide = [
     {
