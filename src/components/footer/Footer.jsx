@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Nav } from "react-bootstrap";
 import {
   Twitter,
@@ -6,7 +7,7 @@ import {
   Envelope,
   Telephone
 } from "react-bootstrap-icons";
-import './footer.css'
+import './footer.css';
 
 export const Footer = () => {
   const [logo, setLogo] = useState("");
@@ -44,13 +45,13 @@ export const Footer = () => {
         <div className='footer-nav'>
             <div className='footer-nav_column'>
                 <Nav.Item>
-                  <Nav.Link href={`/noticias`}>Noticias</Nav.Link>
+                  <Link to={`/noticias`}>Noticias</Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link href={`/actividades`}>Actividades</Nav.Link>
+                  <Link to={`/actividades`}>Actividades</Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link href={`/novedades`}>Novedades</Nav.Link>
+                  <Link to={`/novedades`}>Novedades</Link>
                 </Nav.Item>
             </div>
             <div className='footer-nav_column'>
@@ -58,13 +59,13 @@ export const Footer = () => {
             </div>
             <div className='footer-nav_column'>
                 <Nav.Item>
-                  <Nav.Link href={`/testimonios`}>Testimonios</Nav.Link>
+                  <Link to={`/testimonios`}>Testimonios</Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link href={`/nosotros`}>Nosotros</Nav.Link>
+                  <Link to={`/nosotros`}>Nosotros</Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link href={`/contacto`}>Contacto</Nav.Link>
+                  <Link to={`/contacto`}>Contacto</Link>
                 </Nav.Item>
             </div>
         </div>
