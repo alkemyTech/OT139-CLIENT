@@ -47,10 +47,10 @@ export const Footer = () => {
                   <Nav.Link href={`/noticias`}>Noticias</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link href={`/`}>Actividades</Nav.Link>
+                  <Nav.Link href={`/actividades`}>Actividades</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link href={`/`}>Novedades</Nav.Link>
+                  <Nav.Link href={`/novedades`}>Novedades</Nav.Link>
                 </Nav.Item>
             </div>
             <div className='footer-nav_column'>
@@ -58,13 +58,13 @@ export const Footer = () => {
             </div>
             <div className='footer-nav_column'>
                 <Nav.Item>
-                  <Nav.Link href={`/`}>Testimonios</Nav.Link>
+                  <Nav.Link href={`/testimonios`}>Testimonios</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link href={`/`}>Nosotros</Nav.Link>
+                  <Nav.Link href={`/nosotros`}>Nosotros</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link href={`/`}>Contacto</Nav.Link>
+                  <Nav.Link href={`/contacto`}>Contacto</Nav.Link>
                 </Nav.Item>
             </div>
         </div>
