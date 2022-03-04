@@ -2,8 +2,11 @@ import React from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { Button } from 'react-bootstrap';
 import './registerForm.css';
+import { useNavigate } from 'react-router-dom';
 
 export default function RegisterForm() {
+  const navigate = useNavigate();
+
   const initialValuesForm = {
     firstName: '',
     lastName: '',
@@ -71,7 +74,25 @@ export default function RegisterForm() {
     return errorsObject;
   };
 
-  const handleSubmit = (values, resetForm) => {
+  const handleSubmit = async (values, resetForm) => {
+    const url = '';
+    try {
+      let response = await fetch(url, {
+        method: 'POST',
+        body: JSON.stringify({firstName: values.firstName, lastName: values.lastName ,email: values.email, password: values.password}),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      });
+      let result = await response.json();
+      alert(result)
+      navigate('/');
+
+      return result;
+
+    } catch (error) {
+      alert(error);
+    }
     resetForm();
   };
 
