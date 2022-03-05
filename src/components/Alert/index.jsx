@@ -1,10 +1,10 @@
 import Swal from 'sweetalert2';
 import {
-  confirmar,
-  cancelar,
-  aceptado,
-  cancelado,
-} from '../../enums/constantes';
+  Confirm,
+  Cancel,
+  Acepted,
+  Canceled,
+} from './../../helpers/translations';
 import { iconsAlert } from './alertConfig';
 import { colorAlert } from '../../helpers/colors';
 
@@ -26,21 +26,21 @@ export function ConfirmAlert(title, message) {
     text: message,
     icon: iconsAlert.warning,
     showDenyButton: true,
-    confirmButtonText: confirmar,
-    denyButtonText: cancelar,
+    confirmButtonText: Confirm,
+    denyButtonText: Cancel,
     confirmButtonColor: colorAlert.success,
     cancelButtonColor: colorAlert.error,
   }).then((result) => {
     if (result.isConfirmed) {
       Swal.fire({
-        title: aceptado,
+        title: Acepted,
         icon: iconsAlert.success,
         showConfirmButton: false,
         timer: 1200,
       });
     } else {
       Swal.fire({
-        title: cancelado,
+        title: Canceled,
         icon: iconsAlert.error,
         showConfirmButton: false,
         timer: 1200,
