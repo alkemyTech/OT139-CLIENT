@@ -1,39 +1,17 @@
 import React from 'react';
 import style from './activities.module.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faCoffee,
-  faPenToSquare,
-  faTrashCan,
-} from '@fortawesome/free-solid-svg-icons';
+import { Table, Button, Container } from 'react-bootstrap';
 
 export default function Activities(props) {
-  const activitiesMock = [
-    {
-      name: 'Lorem ipsum dolor sit amet',
-      imageUrl: 'http://www.google.com',
-      content: 'Lorem ipsum dolor sit amet',
-      deletedAd: new Date(),
-    },
-    {
-      name: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      imageUrl: 'http://www.google.com',
-      content: 'Lorem ipsum dolor sit amet',
-      deletedAd: new Date(),
-    },
-    {
-      name: 'Activities 3',
-      imageUrl: 'http://www.google.com',
-      content: 'Lorem ipsum dolor sit amet',
-      deletedAd: new Date(),
-    },
-    {
-      name: 'Activities 4',
-      imageUrl: 'http://www.google.com',
-      content: 'Lorem ipsum dolor sit amet',
-      deletedAd: new Date(),
-    },
-  ];
+  const editHandler = (id) => {
+    //TODO
+    return;
+  };
+
+  const deleteHandler = (id) => {
+    //TODO
+    return;
+  };
 
   return (
     <div className={style.container}>
@@ -46,23 +24,44 @@ export default function Activities(props) {
           eiusmod tempor incididunt ut labore
         </p>
       </div>
-      <div className={style.activities_table}>
-        {activitiesMock.map((activity, index) => {
-          return (
-            <div key={index} className={style.activity_item}>
-              <div className={style.activity_name_cont}>{activity.name}</div>
-              <div className={style.cont_buttons}>
-                <button className={style.button_edit} onClick={() => {}}>
-                  <FontAwesomeIcon icon={faPenToSquare} />
-                </button>
-                <button className={style.button_delete} onClick={() => {}}>
-                  <FontAwesomeIcon icon={faTrashCan} />
-                </button>
-              </div>
-            </div>
-          );
-        })}
-      </div>
+      <Container>
+        <Table striped bordered hover responsive className='table-sm'>
+          <thead>
+            <tr className='table-warning'>
+              <th>Actividades</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {props?.activities ? (
+              props.activities.map((item, id) => (
+                <tr key={id}>
+                  <td width='80%'>{item.name}</td>
+                  <td className='text-center align-middle'>
+                    <Button
+                      variant='light'
+                      className='btn mx-2'
+                      onClick={() => editHandler(item._id)}
+                    >
+                      <i className='fas fa-edit'></i>
+                    </Button>
+
+                    <Button
+                      variant='danger'
+                      className='btn  mx-2'
+                      onClick={() => deleteHandler(item._id)}
+                    >
+                      <i className='fas fa-trash'></i>
+                    </Button>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr className='text-center'>No se encontraron Actividades</tr>
+            )}
+          </tbody>
+        </Table>
+      </Container>
     </div>
   );
 }
