@@ -1,6 +1,6 @@
-export const ACEPT = 'Aceptar';
+export const ACCEPT = 'Aceptar';
 export const CONFIRM = 'Confirmar';
-export const ACEPTED = 'Aceptado';
+export const ACCEPTED = 'Aceptado';
 export const CANCELED = 'Cancelado';
 export const CANCEL = 'Cancelar';
 export const CONFIRMATION = 'Confirmación';
