@@ -1,9 +1,9 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import Home from '../components/View/Home/Home';
-import About from '../components/View/About/About.jsx';
-import Activity from '../components/View/Activities/Activity';
+import Home from '../View/Home/Home';
+import About from '../View/About/About.jsx';
+import Activity from '../View/Activities/Activity';
 
 export default function AppRoutes() {
   return (
