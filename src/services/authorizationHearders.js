@@ -1,8 +1,8 @@
-import getToken from './tokenService';
+import getToken from './tokenService'
 
 const autorizationHeader = () => {
   const token = getToken();
-  return { headers: { Authorization: token }}
+  return { headers: { Authorization: token }};
 };
 
 export default autorizationHeader;
