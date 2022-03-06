@@ -1,0 +1,20 @@
+.container_view {
+  width: 60%;
+}
+
+.field {
+  border: 1px solid #18a0fb;
+  border-radius: 6px;
+  box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075) inset,
+    0 0 5px rgba(0, 132, 255, 0.6);
+}
+
+@media only screen and (max-width: 896px) {
+  .container_view {
+    width: 100% !important;
+  }
+
+  .button_style {
+    width: 75% !important;
+  }
+}

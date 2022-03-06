@@ -1,21 +1,23 @@
 import React from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { Button } from "react-bootstrap";
-import "./formEditHome.css";
+import "./homeFormEdit.css";
 
-export default function TitleEditForm() {
+export default function HomeTitleFormEdit() {
   const initialValuesForm = {
     title: "",
   };
 
-  const ValidateTitle = (values) => {
-    let errorsObject = {};
+  const validateTitle = (values) => {
+    const errors = {};
+
     if (!values.title) {
-      errorsObject.title = "Por Favor Ingresa Un Titulo!";
+      errors.title = "Por Favor Ingresa Un Titulo!";
     } else if (!/^[\s\S]{20,70}$/.test(values.title)) {
-      errorsObject.title = "El titulo tiene que tener minimo 20 caracteres!";
+      errors.title = "El titulo tiene que tener minimo 20 caracteres!";
     }
-    return errorsObject;
+    
+    return errors;
   };
 
   const handleSubmit = (values, resetForm) => {
@@ -24,9 +26,10 @@ export default function TitleEditForm() {
 
   return (
     <div className="ms-2">
+      <h3>Edicion de Titulo de Bienvenida</h3>
       <Formik
         initialValues={initialValuesForm}
-        validate={ValidateTitle}
+        validate={validateTitle}
         onSubmit={(values, { resetForm }) => handleSubmit(values, resetForm)}
       >
         {() => (
@@ -42,7 +45,6 @@ export default function TitleEditForm() {
               <ErrorMessage
                 name="title"
                 component="h6"
-                className="color_red"
               />
               <div>
                 <Button type="submit" className="button_style mt-2 w-50">

@@ -1,0 +1,34 @@
+.background_red {
+  background-color: #db5752;
+}
+
+.background_yellow {
+  background-color: #fafa88;
+}
+
+.background_blue {
+  background-color: #9ac9fb;
+}
+
+.background_gray {
+  background-color: #adabab86;
+}
+
+.color_red {
+  color: red;
+}
+
+.button_style {
+  background-color: white !important;
+  color: #18a0fb !important;
+  box-sizing: border-box !important;
+  border-radius: 6px !important;
+  border: 1px solid #18a0fb !important;
+  width: 25%;
+}
+
+.button_style:hover {
+  color: white !important;
+  background-color: #18a0fb !important;
+}
+

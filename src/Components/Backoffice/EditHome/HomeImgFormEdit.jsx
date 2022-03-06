@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { Button, Card, Alert } from "react-bootstrap";
-import "./formEditHome.css";
+import "./homeFormEdit.css";
 
-export default function ImgEditForm() {
+export default function HomeImgFormEdit() {
   const [arrayImgState, setArrayImgState] = useState([]);
 
   const initialValuesForm = {
@@ -11,36 +11,42 @@ export default function ImgEditForm() {
     textImg: "",
   };
 
-  const validateImg = (values, errorsObject) => {
+  const validateImg = (values, errors) => {
     if (!values.img) {
-      errorsObject.img = "La imagen es Obligatoria!";
+      errors.img = "La imagen es Obligatoria!";
     }
-    return errorsObject;
+
+    return errors;
   };
 
-  const validateText = (values, errorsObject) => {
+  const validateText = (values, errors) => {
     if (!values.textImg) {
-      errorsObject.textImg = "Por Favor Ingresa Un Texto para la Imagen!";
+      errors.textImg = "Por Favor Ingresa Un Texto para la Imagen!";
     }
-    return errorsObject;
+    
+    return errors;
   };
 
   const validateField = (values) => {
-    let errorsObject = {};
-    validateImg(values, errorsObject);
-    validateText(values, errorsObject);
-    return errorsObject;
+    const errors = {};
+
+    validateImg(values, errors);
+    validateText(values, errors);
+
+    return errors;
   };
 
   const addImg = (values, resetForm) => {
     const arrayImg = [];
+
     arrayImg.push(values);
     const newArrayImg = arrayImg.concat(arrayImgState);
     resetForm();
+
     return setArrayImgState(newArrayImg);
   };
 
-  const ImgDelete = (index) => {
+  const imgDelete = (index) => {
     const newArray = arrayImgState.filter((value, pos) => pos !== index);
     return setArrayImgState(newArray);
   };
@@ -49,6 +55,7 @@ export default function ImgEditForm() {
 
   return (
     <div>
+      <h3 className="mt-2">Edicion de Imagenes</h3>
       {arrayImgState.length === 3 && (
         <Alert variant="danger">
           Ya Hay Tres Imagenes, Borre Alguna para Continuar Agregando
@@ -104,14 +111,14 @@ export default function ImgEditForm() {
           {arrayImgState.map((image, index) => (
             <Card className="m-2" key={index}>
               <Card.Img variant="top" src={image.img} />
-              <Card.Body className='color_card'>
+              <Card.Body className='background_yellow'>
                 <Card.Title className="text-start">{image.textImg}</Card.Title>
               </Card.Body>
-              <div className="text-center color_card">
+              <div className="text-center">
                 <Button
                   className="m-2 w-75"
                   variant="danger"
-                  onClick={() => ImgDelete(index)}
+                  onClick={() => imgDelete(index)}
                 >
                   Eliminar
                 </Button>
