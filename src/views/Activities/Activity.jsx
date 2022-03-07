@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './activity.css';
+import "../../shared/style/baseStyle.css";
+import "../../shared/style/colorOng.css";
 
 export default function ActivityView() {
   const [data, setData] = useState();
@@ -9,7 +11,7 @@ export default function ActivityView() {
   return (
     <div className='text-center m-5'>
       {!data ? (
-      <div className='container-error color_red_ong'><h1>Error No Hay Datos Para Esa Actividad!</h1></div>
+      <div className='container_error color_red_ong'><h1>error no hay datos para esa actividad!</h1></div>
       ) : (
         <div>
           <div className='mb-4'>
