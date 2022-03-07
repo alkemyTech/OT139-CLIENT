@@ -1,29 +1,35 @@
 import React, { useState, useEffect } from "react";
 
-function News() {
+const entriesNews = [
+ { id: 0, name: "Show", imageUrl: "google.com", createdAt: "20/02/2022" },
+ { id: 1, name: "Snow", imageUrl: "google.com", createdAt: "28/02/2022" },
+ { id: 2, name: "Slow", imageUrl: "google.com", createdAt: "25/02/2022" }
+];
 
-  const [entries, setEntries] = useState([]);
+function BackofficeNews() {
+
+  const [entries, setEntries] = useState(entriesNews);
   const [errors, setError] = useState([]);
 
-  useEffect(() => {
-    async function getBackOfficeNews() {
+  // useEffect(() => {
+  //   async function getBackOfficeNews() {
 
-      try {
-        const response = await fetch("");
-        const data = await response.json();
-        setEntries(data.entries);
-      } catch (error) {
-        setError(error);
-      }
-    };
-    getBackOfficeNews();
-  });
+  //     try {
+  //       const response = await fetch("");
+  //       const data = await response.json();
+  //       setEntries(data.entries);
+  //     } catch (error) {
+  //       setError(error);
+  //     }
+  //   };
+  //   getBackOfficeNews();
+  // });
 
-  editRecord = () => {
+  const handleEditRecord = () => {
     //TODO @implementar la funcionalidad de editar 
   }
 
-  deleteRecord = () => {
+  const handleDeleteRecord = () => {
     //TODO @implementar la funcionalidad de borrar
   }
 
@@ -39,20 +45,20 @@ function News() {
       </thead>
       <tbody>
         {
-        entries.map((entriesItem) => {
-          return (
-            <tr>
-            <th scope="row">{entriesItem.name}</th>
-            <td>{entriesItem.imageUrl}</td>
-            <td>{entriesItem.createdAt}</td>
-            <td><p class="text-primary" onClick={editRecord}>Editar</p>/ <p class="text-danger" onClick={deleteRecord}>Borrar</p></td>
-          </tr>
-          )
-        })
+          entries.map((entriesItem) => {
+            return (
+              <tr>
+                <th scope="row">{entriesItem.name}</th>
+                <td>{entriesItem.imageUrl}</td>
+                <td>{entriesItem.createdAt}</td>
+                <td><button type="button" onClick={handleEditRecord} class="btn btn-outline-primary">Editar</button><button type="button" onClick={handleDeleteRecord} class="btn btn-outline-danger">Borrar</button></td>
+              </tr>
+            )
+          })
         }
       </tbody>
     </table>
   );
 }
 
-export default News;
+export default BackofficeNews;
