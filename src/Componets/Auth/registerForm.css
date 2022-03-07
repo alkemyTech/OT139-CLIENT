@@ -1,0 +1,82 @@
+.container_register {
+  border-radius: 6px;
+  border: 1px solid #18a0fb;
+  margin: 10px;
+  width: 50% !important;
+  margin-right: auto !important;
+  margin-left: auto !important;
+}
+
+.color_red_ong {
+  color: #db5752;
+}
+
+form {
+  width: 50%;
+  margin-right: auto !important;
+  margin-left: auto !important;
+}
+
+label {
+  display: inline-flex;
+  font-weight: 600;
+  width: 80px;
+  margin-bottom: 5px;
+}
+
+.field {
+  border: 1px solid #18a0fb;
+  border-radius: 6px;
+  box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075) inset,
+    0 0 5px rgba(0, 132, 255, 0.6);
+}
+
+.button_style {
+  background-color: white !important;
+  color: #18a0fb !important;
+  box-sizing: border-box !important;
+  border-radius: 6px !important;
+  border: 1px solid #18a0fb !important;
+}
+
+.button_style:hover {
+  color: white !important;
+  background-color: #18a0fb !important;
+}
+
+.container_field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8px;
+}
+
+.label_confirmpass {
+  width: max-content;
+}
+
+.container_button {
+  margin-top: 10px;
+}
+
+.container_button > h6 {
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+.color_red {
+  color: red;
+}
+
+.without-margin {
+  margin: 0px;
+}
+
+@media only screen and (max-width: 896px) {
+  .container_register {
+    width: 95%;
+  }
+
+  form {
+    width: 95%;
+  }
+}
