@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { autorizationHeader } from './authorizationHearders';
+import { autorizationHeader } from './authorizationHeaders';
 axios.defaults.baseURL = process.env.BASE_URL;
 
 export const post = async (endPoint, body) => {
