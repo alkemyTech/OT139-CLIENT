@@ -1,17 +1,19 @@
 import React from "react";
+import { useState } from "react";
 import { Form, Button } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css'
-import './formContact.css'
-import 'animate.css';
-import Logo from './Logo.png';
 import { useForm } from "react-hook-form";
+import Logo from './Logo.png';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'animate.css';
+import './FormContact.css';
 
-export default function FormContact() {
-
+export default function FormContact(){
     const { register, handleSubmit } = useForm();
-    const onSubmit = data => console.log(data);
+    const [Data,setData]=useState([]);
+    const onSubmit = data => setData(data);
+    console.log(Data)
     const Swal = require('sweetalert2')
-    const alertSend = () => {
+    /*const alertSend = () => {
         Swal.fire({
             icon: 'success',
             title: 'mensaje enviado',
@@ -19,6 +21,7 @@ export default function FormContact() {
             timer: 1500
         })
     }
+    */
     return (
         <div className="main">
             <div className="flex-child animate__animated animate__fadeInLeft ">
@@ -44,11 +47,11 @@ export default function FormContact() {
                         <Form.Label>Mensaje</Form.Label>
                         <Form.Control as="textarea" rows={6} required {...register("message")} />
                     </Form.Group>
-                    <Button variant="primary" type="submit" onClick={alertSend}>
+                    <Button variant="primary" type="submit">
                         Enviar
                     </Button>
                 </Form>
             </div>
         </div>
     )
-}
+};
