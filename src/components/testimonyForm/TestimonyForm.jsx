@@ -1,12 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import style from './testimonyForm.module.css';
 
 export default function TestimonyForm(props) {
   const [testimony, setTestimony] = React.useState(props.testimony || {});
-
-  // const state = testimony;
+  const [isNew, setIsNew] = React.useState(props.testimony ? false : true);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -21,7 +20,7 @@ export default function TestimonyForm(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     // TO DO: Save Testimony
-    console.log('submit => ', testimony);
+    // isNew ? props.onCreate(testimony) : props.onUpdate(testimony);
   };
 
   return (
