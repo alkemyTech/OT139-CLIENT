@@ -4,22 +4,84 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import style from './testimonyForm.module.css';
 
 export default function TestimonyForm(props) {
-  const [testimony, setTestimony] = React.useState('');
+  const [testimony, setTestimony] = React.useState(props.testimony || {});
+
+  // const state = testimony;
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setTestimony({ ...testimony, [name]: value });
+  };
+
+  const handleChangeCKEditor = (event, editor) => {
+    const data = editor.getData();
+    setTestimony({ ...testimony, content: data });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // TO DO: Save Testimony
+    console.log('submit => ', testimony);
+  };
 
   return (
     <div className={style.container}>
-      <h2>Testimonios</h2>
-      <label htmlFor='testimony'>Nombre</label>
-      <input type='text' id='testimony' name='testimony' placeholder='Nombre' />
+      <form
+        className='border border-primary rounded mt-3 p-5 pt-3'
+        onSubmit={handleSubmit}
+      >
+        <div className='form-group'>
+          <label>Nombre</label>
+          <input
+            type='text'
+            className='form-control'
+            name='name'
+            value={testimony.name}
+            onChange={(e) => {
+              handleChange(e);
+            }}
+          />
+        </div>
+        <div className='form-group py-3'>
+          <label>Imagen</label>
+          <input
+            type='text'
+            className='form-control'
+            name='imageUrl'
+            value={testimony.imageUrl}
+            onChange={(e) => {
+              handleChange(e);
+            }}
+          />
+          <div className={style.cont_Img}>
+            <img
+              src={
+                props.testimony.imageUrl
+                  ? testimony.imageUrl
+                  : 'https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640'
+              }
+              alt='...'
+              className='rounded'
+            ></img>
+          </div>
+        </div>
 
-      <CKEditor
-        editor={ClassicEditor}
-        data='<p>Hello from CKEditor 5!</p>'
-        onChange={(event, editor) => {
-          const data = editor.getData();
-          console.log({ event, editor, data });
-        }}
-      />
+        <div className='form-group py-3'>
+          <label>Descripcion</label>
+          <CKEditor
+            className={style.ckeditor}
+            editor={ClassicEditor}
+            data={testimony.content}
+            name='content'
+            onChange={(e, editor) => handleChangeCKEditor(e, editor)}
+          />
+        </div>
+        <div className='d-flex justify-content-center'>
+          <button type='submit' className='btn btn-outline-primary m-auto'>
+            <span className={style.btn_submit}>Guardar</span>
+          </button>
+        </div>
+      </form>
     </div>
   );
 }
@@ -27,7 +89,7 @@ export default function TestimonyForm(props) {
 // import React from 'react';
 // import Slider from '../Slider/Slider';
 // import './home.css';
-// import TestimonyForm from '../testimonyForm/TestimonyForm';
+// import TestimonyForm from '../TestimonyForm/TestimonyForm';
 // import RegisterForm from './../../Componets/Auth/RegisterForm';
 // function Home() {
 //   const dataSlide = [
@@ -48,9 +110,17 @@ export default function TestimonyForm(props) {
 //     },
 //   ];
 
+//   // testimoni object test
+//   const testimony = {
+//     name: 'nameTest',
+//     imageUrl: 'https://i.blogs.es/ddcf9a/critica-chicos-buenos/1366_2000.jpeg',
+//     content:
+//       "'Chicos buenos', la preadolescencia transformada en una de las comedias más divertidas del año",
+//   };
+
 //   return (
 //     <div id='home'>
-//       <TestimonyForm />
+//       <TestimonyForm testimony={testimony} />
 //       <RegisterForm />
 //       <Slider data={dataSlide} />
 //     </div>
