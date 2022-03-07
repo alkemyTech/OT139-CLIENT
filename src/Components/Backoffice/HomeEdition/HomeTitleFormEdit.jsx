@@ -1,7 +1,6 @@
 import React from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { Button } from "react-bootstrap";
-import "./homeFormEdit.css";
 
 export default function HomeTitleFormEdit() {
   const initialValuesForm = {
@@ -39,7 +38,7 @@ export default function HomeTitleFormEdit() {
                 id="title"
                 name="title"
                 type="textarea"
-                placeholder="  Titulo de bienvenida"
+                placeholder="Titulo de bienvenida"
                 className="field me-2 mb-2 mt-2"
               />
               <ErrorMessage
