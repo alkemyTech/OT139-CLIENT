@@ -1,12 +1,5 @@
 .error_card_svg {
   display: block;
-  margin: 0 auto;
   max-width: 100%;
-  width: 80px;
-}
-
-@media only screen and (min-width: 30em) {
-  .error_card_svg {
-    width: 120px;
-  }
+  width: clamp(70px, 2.5rem + 10vw, 100px);
 }
