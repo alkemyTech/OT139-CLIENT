@@ -2,7 +2,7 @@ import Swal from 'sweetalert2';
 import {
   CONFIRM,
   CANCEL,
-  ACEPTED,
+  ACCEPTED,
   CANCELED,
 } from './../../helpers/translations';
 import { ICONS, COLORS } from './alertConfig';
@@ -32,7 +32,7 @@ export function ConfirmAlert(title, message) {
   }).then((result) => {
     if (result.isConfirmed) {
       Swal.fire({
-        title: ACEPTED,
+        title: ACCEPTED,
         icon: ICONS.SUCCESS,
         showConfirmButton: false,
         timer: 1200,
