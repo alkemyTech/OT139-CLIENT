@@ -61,17 +61,13 @@ export default function MyProfile() {
       {!isLoading && error && <ErrorCard {...errorCardProps} />}
       {!isLoading && profileData && (
         <Container as={Card} fluid='md'>
-          <Card.Body className='px-md-5'>
-            <Row className='mb-3'>
-              <Col>
-                <div className='title_large'>Mi Perfil</div>
-              </Col>
-            </Row>
-            <Row className='mb-4'>
-              <Col>
-                <div className='subtitle'>Datos de Cuenta</div>
-              </Col>
-            </Row>
+          <Card.Body className='px-md-4'>
+            <Card.Title className='mb-4'>
+              <div className='title_large'>Mi Perfil</div>
+            </Card.Title>
+            <Card.Subtitle className='mb-4'>
+              <div className='subtitle'>Datos de Cuenta</div>
+            </Card.Subtitle>
             <Row className='mb-4'>
               <Col className='text_disabled' sm='6'>
                 Nombre
@@ -96,41 +92,27 @@ export default function MyProfile() {
                 {profileData?.email}
               </Col>
             </Row>
-            <Row className='mb-5'>
-              <Col>
-                <Button
-                  disabled={!profileData}
-                  size='lg'
-                  onClick={handleEditProfile}
-                >
-                  Editar Cuenta
-                </Button>
-              </Col>
-            </Row>
-            <Row className='mb-3'>
-              <Col>
-                <div className='subtitle color_danger'>Eliminar Cuenta</div>
-              </Col>
-            </Row>
-            <Row className='mb-2'>
-              <Col>
-                <p>
-                  Una vez que haya eliminado su cuenta, no hay vuelta atrás. Por
-                  favor esté seguro.
-                </p>
-              </Col>
-            </Row>
-            <Row className='mb-4'>
-              <Col>
-                <Button
-                  size='lg'
-                  variant='danger'
-                  onClick={handleDeleteAccount}
-                >
-                  Eliminar su Cuenta
-                </Button>
-              </Col>
-            </Row>
+            <Button
+              className='mb-5'
+              disabled={!profileData}
+              onClick={handleEditProfile}
+            >
+              Editar Cuenta
+            </Button>
+            <Card.Subtitle className='mb-3'>
+              <div className='subtitle color_danger'>Eliminar Cuenta</div>
+            </Card.Subtitle>
+            <Card.Text className='mb-4'>
+              Una vez que haya eliminado su cuenta, no hay vuelta atrás. Por
+              favor esté seguro.
+            </Card.Text>
+            <Button
+              className='mb-4'
+              variant='danger'
+              onClick={handleDeleteAccount}
+            >
+              Eliminar su Cuenta
+            </Button>
           </Card.Body>
         </Container>
       )}
