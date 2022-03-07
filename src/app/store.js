@@ -1,5 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
 import { userLoginReducer } from '../reducers/userReducers';
 
 const userInfoFromStorage = localStorage.getItem('userInfo')
@@ -12,7 +11,6 @@ const initialState = {
 
 export default configureStore({
   reducer: {
-    counter: counterReducer,
     userLogin: userLoginReducer,
   },
   initialState,
