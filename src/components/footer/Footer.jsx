@@ -19,18 +19,21 @@ export const Footer = () => {
   useEffect(() => {
     async function getFooterData() {
       try {
-        const response = await fetch("/organizations/1/public");
-        const data = await response.json();
+        await fetch("http://localhost:3000/organizations/1/public")
+        .then(data => {
+          return data.json()
+        })
+        .then(data => {
+          setLinks(data)
+        })
         
-        setLogo(data.logo);
-        setLinks(data.link);
       } catch(error) {
         setErrors(error)
       }
     }
 
     getFooterData();
-  });
+  }, []);
 
   //Eliminar cuando tengamos el entry point
   const tempSocials = [
@@ -71,12 +74,9 @@ export const Footer = () => {
         </div>
         <div className='footer-social'>
             <div className='footer-social_icons'>
-              {tempSocials.map((social) => {
-                const SocialIcons = social.icon
+              {!links ? "Cargando" : links.map((social) => {
                 return (
-                    <a href={social.url} key={social.url}>
-                      <SocialIcons className="icon"></SocialIcons>
-                    </a>
+                  console.log(social)
                 );
               })}
               { errors.length && <span className="bg-red text-white">{errors}</span> }
