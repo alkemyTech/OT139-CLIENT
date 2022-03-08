@@ -26,7 +26,7 @@ export default function ActivityView() {
           <div></div>
         </div>
       )}
-      <Link to='/Actividades'>
+      <Link to='/activity'>
         <Button className='button_style mt-5'>Volver a las Actividades</Button>
       </Link>
     </div>
