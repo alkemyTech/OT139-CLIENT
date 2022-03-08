@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import Home from '../components/Home/Home.jsx';
 import About from '../components/About/About.jsx';
-import FormContact from '../components/formContact/FormContact.jsx';
+import FormContact from '../components/FormContact/FormContact.jsx';
 export default function AppRoutes() {
   return (
     <Routes>
