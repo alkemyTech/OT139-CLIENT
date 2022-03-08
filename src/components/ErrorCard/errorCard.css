@@ -1,0 +1,5 @@
+.error_card_svg {
+  display: block;
+  max-width: 100%;
+  width: clamp(70px, 2.5rem + 10vw, 100px);
+}
