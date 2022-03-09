@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { Button, Card, Alert } from 'react-bootstrap';
 
-export default function HomeImgFormEdit() {
+export default function HomeSlidesFormEdit() {
   const [arrayImgState, setArrayImgState] = useState([]);
-  const maxImage = 3;
+  const SLIDES_MAX = 3;
 
   const initialValuesForm = {
     img: '',
@@ -89,7 +89,7 @@ export default function HomeImgFormEdit() {
                 />
               </div>
               <div className='mb-3'>
-                {arrayImgState.length === maxImage ? (
+                {arrayImgState.length === SLIDES_MAX ? (
                   <Alert variant='danger'>
                     Ya Hay Tres Imagenes, Borre Alguna para Continuar Agregando
                   </Alert>

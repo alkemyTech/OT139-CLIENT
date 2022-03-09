@@ -1,5 +1,7 @@
-.container_view {
-  width: 60%;
+@media only screen and (min-width: 896px) {
+  .container_view {
+    width: 70% !important;
+  }
 }
 
 .field {
@@ -9,14 +11,10 @@
     0 0 5px rgba(0, 132, 255, 0.6);
 }
 
-@media only screen and (max-width: 896px) {
-  .container_view {
-    width: 100% !important;
-  }
-
-  .button_style {
-    width: 75% !important;
-  }
+.container_view {
+  width: 100%;
 }
 
-
+.button_style {
+  width: 75%;
+}
