@@ -1,47 +1,46 @@
 import Swal from 'sweetalert2';
 import {
-  confirmar,
-  cancelar,
-  aceptado,
-  cancelado,
-} from '../../enums/constantes';
-import { iconsAlert } from './alertConfig';
-import { colorAlert } from '../../helpers/colors';
+  CONFIRM,
+  CANCEL,
+  ACCEPTED,
+  CANCELED,
+} from './../../helpers/translations';
+import { ICONS, COLORS } from './alertConfig';
 
 export function InfoAlert(title, message) {
-  return Swal.fire(title, message, iconsAlert.info);
+  return Swal.fire(title, message, ICONS.INFO);
 }
 
 export function ErrorAlert(title, message) {
-  return Swal.fire(title, message, iconsAlert.error);
+  return Swal.fire(title, message, ICONS.ERROR);
 }
 
 export function SuccessAlert(title, message) {
-  return Swal.fire(title, message, iconsAlert.success);
+  return Swal.fire(title, message, ICONS.SUCCESS);
 }
 
 export function ConfirmAlert(title, message) {
   return Swal.fire({
     title: title,
     text: message,
-    icon: iconsAlert.warning,
+    icon: ICONS.WARNING,
     showDenyButton: true,
-    confirmButtonText: confirmar,
-    denyButtonText: cancelar,
-    confirmButtonColor: colorAlert.success,
-    cancelButtonColor: colorAlert.error,
+    confirmButtonText: CONFIRM,
+    denyButtonText: CANCEL,
+    confirmButtonColor: COLORS.CONFIRM,
+    cancelButtonColor: COLORS.ERROR,
   }).then((result) => {
     if (result.isConfirmed) {
       Swal.fire({
-        title: aceptado,
-        icon: iconsAlert.success,
+        title: ACCEPTED,
+        icon: ICONS.SUCCESS,
         showConfirmButton: false,
         timer: 1200,
       });
     } else {
       Swal.fire({
-        title: cancelado,
-        icon: iconsAlert.error,
+        title: CANCELED,
+        icon: ICONS.ERROR,
         showConfirmButton: false,
         timer: 1200,
       });
