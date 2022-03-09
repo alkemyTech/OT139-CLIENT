@@ -1,12 +1,13 @@
 import axios from 'axios';
-import { autorizationHeader } from './authorizationHeaders';
+import { getPrivateHeaders } from './authorizationHeaders';
 axios.defaults.baseURL = process.env.BASE_URL;
 
 export const post = async (endPoint, body) => {
-  const  headers = autorizationHeader();
-
+  const  headers = getPrivateHeaders();
+  
   try {
-    const { data } = await axios.post(endPoint, body, headers);
+    const data = await axios.post(endPoint, body, headers);
+    console.log(data)
     return data;
   } catch (error) {
     return error;
