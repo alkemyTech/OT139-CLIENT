@@ -11,6 +11,7 @@ import RegisterForm from '../components/RegisterForm/RegisterForm.jsx';
 import OrganizationEdit from '../views/OrganizationEdit/OrganizationEdit.jsx';
 import Categories from '../views/backOffice/Categories/Categories.jsx';
 import BackofficeNews from '../views/Backoffice/News.jsx';
+import ContactList from '../components/ContactList/ContactList.jsx';
 
 export default function AppRoutes() {
   return (
@@ -28,6 +29,7 @@ export default function AppRoutes() {
         <Route path="categories" element={<Categories />} />
         <Route path="news" element={<BackofficeNews />} />
       </Route>
+      <Route path="/backoffice/contacts" element={<ContactList/>}/>
     </Routes>
   );
 }
