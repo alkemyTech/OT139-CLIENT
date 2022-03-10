@@ -5,15 +5,14 @@ import { useForm } from "react-hook-form";
 import Logo from './Logo.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'animate.css';
-import './FormContact.css';
+import './ContactForm.css';
 
 export default function FormContact(){
     const { register, handleSubmit } = useForm();
-    const [Data,setData]=useState([]);
+    const [data,setData]=useState([]);
     const onSubmit = data => setData(data);
-    console.log(Data)
-    const Swal = require('sweetalert2')
-    /*const alertSend = () => {
+    /*const Swal = require('sweetalert2')
+    const alertSend = () => {
         Swal.fire({
             icon: 'success',
             title: 'mensaje enviado',
@@ -28,7 +27,7 @@ export default function FormContact(){
                 <img src={Logo} className="Logo" />
                 <p className="text-center">
                     Si estas interesado en ser voluntario de nuestra comunidad
-                    o deseas colaborar con lo que puedas o dar apoyo economicamente,
+                    o simplemente dar apoyo economicamente,
                     No dudes en contactarte con nosotros😊.
                 </p>
             </div>
