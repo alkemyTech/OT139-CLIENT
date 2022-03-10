@@ -19,7 +19,7 @@ export const Footer = () => {
   useEffect(() => {
     async function getFooterData() {
       try {
-        await fetch("http://localhost:3000/organizations/1/public")
+        fetch("http://localhost:3000/organizations/1/public")
         .then(data => {
           return data.json()
         })
