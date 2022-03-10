@@ -1,9 +1,3 @@
-@media only screen and (min-width: 896px) {
-  .container_view {
-    width: 70% !important;
-  }
-}
-
 .field {
   border: 1px solid #18a0fb;
   border-radius: 6px;
@@ -17,4 +11,10 @@
 
 .button_style {
   width: 75%;
+}
+
+@media only screen and (min-width: 896px) {
+  .container_view {
+    width: 70% !important;
+  }
 }

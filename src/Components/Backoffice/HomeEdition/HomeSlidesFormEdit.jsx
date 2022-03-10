@@ -22,7 +22,7 @@ export default function HomeSlidesFormEdit() {
 
   const validateText = (values, errors) => {
     if (!values.textSlide) {
-      errors.textSlide = 'Por Favor Ingresa Un Texto para la Imagen!';
+      errors.textSlide = 'Por Favor Ingresa Un Texto para el slide!';
     }
 
     return errors;
@@ -39,8 +39,8 @@ export default function HomeSlidesFormEdit() {
 
   const addSlide = (values, resetForm) => {
     const arraySlide = [];
-    const errorTitle = 'Ya hay 3 imagenes cargadas!';
-    const errorText = 'Alcanzo el limites de imagenes, Borre una para continuar';
+    const errorTitle = 'Ya hay 3 sliders cargados!';
+    const errorText = 'Alcanzo el limites de slider, Borre uno para continuar';
 
     if (arraySlideState.length === SLIDES_MAX) {
        return ErrorAlert(errorTitle, errorText);
@@ -60,7 +60,7 @@ export default function HomeSlidesFormEdit() {
 
   return (
     <div>
-      <h3 className='mt-2'>Edicion de Imagenes</h3>
+      <h3 className='mt-2'>Edicion Slides</h3>
       <Formik
         initialValues={initialValuesForm}
         validate={validateField}
@@ -88,7 +88,7 @@ export default function HomeSlidesFormEdit() {
                   id='textSlide'
                   name='textSlide'
                   type='text'
-                  placeholder='Texto de la Imagen'
+                  placeholder='Texto del slide'
                   className='field mb-2 mt-2 w-100'
                 />
                 <ErrorMessage
@@ -99,7 +99,7 @@ export default function HomeSlidesFormEdit() {
               </div>
               <div className='mb-3'>
                 <Button type='submit' className='button_style mt-2 w-50'>
-                  Agregar Imagen
+                  Agregar Slider
                 </Button>
               </div>
             </div>
@@ -107,15 +107,15 @@ export default function HomeSlidesFormEdit() {
         )}
       </Formik>
       <div className='mt-3 border background_gray'>
-        <h3 className='mt-2'>Imagenes Cargadas</h3>
+        <h3 className='mt-2'>sliders Cargados</h3>
         {!arraySlideState.length && (
-          <Alert variant='danger'>NO HAY IMAGENES CARGADAS</Alert>
+          <Alert variant='danger'>NO HAY SLIDER CARGADOS</Alert>
         )}
         <div className='d-flex justify-content-center'>
           {arraySlideState.map((image, index) => (
             <Card className='m-2' key={index}>
               <Card.Img variant='top' src={image.slide} />
-              <Card.Body className='background_yellow'>
+              <Card.Body className='background_yellow_ong'>
                 <Card.Title className='text-start'>
                   {image.textSlide}
                 </Card.Title>
@@ -133,9 +133,9 @@ export default function HomeSlidesFormEdit() {
           ))}
         </div>
       </div>
-      <div className='mt-2 background_blue'>
+      <div className='mt-2 background_blue_ong'>
         <Button type='button' className='mt-4 w-75 button_style mb-5'>
-          Terminar Edicion de Imagenes
+          Terminar Edicion de Sliders
         </Button>
       </div>
     </div>
