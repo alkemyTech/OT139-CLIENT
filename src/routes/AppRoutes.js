@@ -3,7 +3,6 @@ import { Routes, Route } from 'react-router-dom';
 
 import Home from '../components/Home/Home.jsx';
 import About from '../components/About/About.jsx';
-import HomeFormEdit from '../components/Backoffice/HomeEdition/HomeFormEdit';
 
 
 export default function AppRoutes() {
@@ -11,7 +10,6 @@ export default function AppRoutes() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
-      <Route path="/edicionhome" element={<HomeFormEdit />} />
     </Routes>
   )
 }
