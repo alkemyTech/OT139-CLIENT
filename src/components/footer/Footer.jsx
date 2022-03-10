@@ -4,8 +4,9 @@ import { Nav } from "react-bootstrap";
 import {
   Twitter,
   Facebook,
-  Envelope,
-  Telephone
+  Vimeo,
+  Linkedin,
+  Youtube
 } from "react-bootstrap-icons";
 import './footer.css';
 
@@ -24,24 +25,15 @@ export const Footer = () => {
           return data.json()
         })
         .then(data => {
-          setLinks(data)
+          setLogo(data.image)
         })
         
       } catch(error) {
         setErrors(error)
       }
     }
-
     getFooterData();
   }, []);
-
-  //Eliminar cuando tengamos el entry point
-  const tempSocials = [
-    { url: 'mailto:mail@mail.com', icon: Envelope },
-    { url: 'http://facebook.com', icon: Facebook },
-    { url: 'http://twitter.com', icon: Twitter },
-    { url: 'tel:+5491161141500', icon: Telephone }
-  ];
 
   return (
     <footer className='footer'>
@@ -58,7 +50,8 @@ export const Footer = () => {
                 </Nav.Item>
             </div>
             <div className='footer-nav_column'>
-                <img src={logo} alt="Logo somos mas"></img>
+              {!logo ? "Logo somos mas" : <img src={logo} alt="Logo somos mas"></img>
+              }
             </div>
             <div className='footer-nav_column'>
                 <Nav.Item>
@@ -74,12 +67,22 @@ export const Footer = () => {
         </div>
         <div className='footer-social'>
             <div className='footer-social_icons'>
-              {!links ? "Cargando" : links.map((social) => {
-                return (
-                  console.log(social)
-                );
-              })}
-              { errors.length && <span className="bg-red text-white">{errors}</span> }
+              <a href={``}>
+                <Facebook className="icon"></Facebook>
+              </a>
+              <a href={``}>
+                <Twitter className="icon"></Twitter>
+              </a>
+              <a href={``}>
+                <Vimeo className="icon"></Vimeo>
+              </a>
+              <a href={``}>
+                <Linkedin className="icon"></Linkedin>
+              </a>
+              <a href={``}>
+                <Youtube className="icon"></Youtube>
+              </a>
+
               <p>{ year } by Alkemy. All Rights Reserved</p>
             </div>
         </div>
