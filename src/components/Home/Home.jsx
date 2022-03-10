@@ -45,7 +45,7 @@ useEffect(() => {
               <article className={style.news}></article>
               <article className={style.news}></article>
             </div>
-            <div className={style.a}>
+            <div className={style.divBotons}>
               <div className={style.div_info}>
               <a href='/' className={style.testimonials}>Testimonios</a>
               <a href='/'>Contacto</a>
