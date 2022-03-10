@@ -7,7 +7,6 @@ export const post = async (endPoint, body) => {
   
   try {
     const data = await axios.post(endPoint, body, headers);
-    console.log(data)
     return data;
   } catch (error) {
     return error;
