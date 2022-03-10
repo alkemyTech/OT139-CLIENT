@@ -1,27 +1,28 @@
 import React, { useState } from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { Button, Card, Alert } from 'react-bootstrap';
+import { ErrorAlert } from '../../Alert/index';
 
 export default function HomeSlidesFormEdit() {
-  const [arrayImgState, setArrayImgState] = useState([]);
+  const [arraySlideState, setArraySlideState] = useState([]);
   const SLIDES_MAX = 3;
 
   const initialValuesForm = {
-    img: '',
-    textImg: '',
+    slide: '',
+    textSlide: '',
   };
 
-  const validateImg = (values, errors) => {
-    if (!values.img) {
-      errors.img = 'La imagen es Obligatoria!';
+  const validateSlide = (values, errors) => {
+    if (!values.slide) {
+      errors.slide = 'La imagen es Obligatoria!';
     }
 
     return errors;
   };
 
   const validateText = (values, errors) => {
-    if (!values.textImg) {
-      errors.textImg = 'Por Favor Ingresa Un Texto para la Imagen!';
+    if (!values.textSlide) {
+      errors.textSlide = 'Por Favor Ingresa Un Texto para la Imagen!';
     }
 
     return errors;
@@ -30,28 +31,32 @@ export default function HomeSlidesFormEdit() {
   const validateField = (values) => {
     const errors = {};
 
-    validateImg(values, errors);
+    validateSlide(values, errors);
     validateText(values, errors);
 
     return errors;
   };
 
-  const addImg = (values, resetForm) => {
-    const arrayImg = [];
+  const addSlide = (values, resetForm) => {
+    const arraySlide = [];
+    const errorTitle = 'Ya hay 3 imagenes cargadas!';
+    const errorText = 'Alcanzo el limites de imagenes, Borre una para continuar';
 
-    arrayImg.push(values);
-    const newArrayImg = arrayImg.concat(arrayImgState);
+    if (arraySlideState.length === SLIDES_MAX) {
+       return ErrorAlert(errorTitle, errorText);
+    }
+    
+    arraySlide.push(values);
+    const newArraySlide = arraySlide.concat(arraySlideState);
     resetForm();
 
-    return setArrayImgState(newArrayImg);
+    return setArraySlideState(newArraySlide);
   };
 
-  const imgDelete = (index) => {
-    const newArray = arrayImgState.filter((value, pos) => pos !== index);
-    return setArrayImgState(newArray);
+  const deleteSlide = (index) => {
+    const newArray = arraySlideState.filter((value, pos) => pos !== index);
+    return setArraySlideState(newArray);
   };
-
-  const handleSubmitImg = () => {};
 
   return (
     <div>
@@ -59,45 +64,43 @@ export default function HomeSlidesFormEdit() {
       <Formik
         initialValues={initialValuesForm}
         validate={validateField}
-        onSubmit={(values, { resetForm }) => addImg(values, resetForm)}
+        onSubmit={(values, { resetForm }) => addSlide(values, resetForm)}
       >
         {() => (
           <Form>
             <div className='container_field d-flex flex-column ms-2'>
               <div>
                 <Field
-                  id='img'
-                  name='img'
+                  id='slide'
+                  name='slide'
                   type='text'
                   placeholder='http:// de la imagen'
                   className='field me-2 mb-2 mt-2 w-100'
                 />
-                <ErrorMessage name='img' component='h6' className='color_red' />
+                <ErrorMessage
+                  name='slide'
+                  component='h6'
+                  className='color_red'
+                />
               </div>
               <div>
                 <Field
-                  id='textImg'
-                  name='textImg'
+                  id='textSlide'
+                  name='textSlide'
                   type='text'
                   placeholder='Texto de la Imagen'
                   className='field mb-2 mt-2 w-100'
                 />
                 <ErrorMessage
-                  name='textImg'
+                  name='textSlide'
                   component='h6'
                   className='color_red'
                 />
               </div>
               <div className='mb-3'>
-                {arrayImgState.length === SLIDES_MAX ? (
-                  <Alert variant='danger'>
-                    Ya Hay Tres Imagenes, Borre Alguna para Continuar Agregando
-                  </Alert>
-                ) : (
-                  <Button type='submit' className='button_style mt-2 w-50'>
-                    Agregar Imagen
-                  </Button>
-                )}
+                <Button type='submit' className='button_style mt-2 w-50'>
+                  Agregar Imagen
+                </Button>
               </div>
             </div>
           </Form>
@@ -105,21 +108,23 @@ export default function HomeSlidesFormEdit() {
       </Formik>
       <div className='mt-3 border background_gray'>
         <h3 className='mt-2'>Imagenes Cargadas</h3>
-        {!arrayImgState.length && (
+        {!arraySlideState.length && (
           <Alert variant='danger'>NO HAY IMAGENES CARGADAS</Alert>
         )}
         <div className='d-flex justify-content-center'>
-          {arrayImgState.map((image, index) => (
+          {arraySlideState.map((image, index) => (
             <Card className='m-2' key={index}>
-              <Card.Img variant='top' src={image.img} />
+              <Card.Img variant='top' src={image.slide} />
               <Card.Body className='background_yellow'>
-                <Card.Title className='text-start'>{image.textImg}</Card.Title>
+                <Card.Title className='text-start'>
+                  {image.textSlide}
+                </Card.Title>
               </Card.Body>
               <div className='text-center'>
                 <Button
                   className='m-2 w-75'
                   variant='danger'
-                  onClick={() => imgDelete(index)}
+                  onClick={() => deleteSlide(index)}
                 >
                   Eliminar
                 </Button>
@@ -129,11 +134,7 @@ export default function HomeSlidesFormEdit() {
         </div>
       </div>
       <div className='mt-2 background_blue'>
-        <Button
-          type='button'
-          onClick={() => handleSubmitImg()}
-          className='mt-4 w-75 button_style mb-5'
-        >
+        <Button type='button' className='mt-4 w-75 button_style mb-5'>
           Terminar Edicion de Imagenes
         </Button>
       </div>
