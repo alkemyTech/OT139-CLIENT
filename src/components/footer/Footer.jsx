@@ -12,7 +12,6 @@ import './footer.css';
 
 export const Footer = () => {
   const [logo, setLogo] = useState("");
-  const [links, setLinks] = useState([]);
   const [errors, setErrors] = useState([]);
   const today = new Date();
   const year = today.getFullYear();
@@ -40,13 +39,10 @@ export const Footer = () => {
         <div className='footer-nav'>
             <div className='footer-nav_column'>
                 <Nav.Item>
-                  <Link to={`/noticias`}>Noticias</Link>
+                  <Link to={`/activities`}>Actividades</Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Link to={`/actividades`}>Actividades</Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Link to={`/novedades`}>Novedades</Link>
+                  <Link to={`/news`}>Novedades</Link>
                 </Nav.Item>
             </div>
             <div className='footer-nav_column'>
@@ -55,13 +51,13 @@ export const Footer = () => {
             </div>
             <div className='footer-nav_column'>
                 <Nav.Item>
-                  <Link to={`/testimonios`}>Testimonios</Link>
+                  <Link to={`/testimonials`}>Testimonios</Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Link to={`/nosotros`}>Nosotros</Link>
+                  <Link to={`/about`}>Nosotros</Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Link to={`/contacto`}>Contacto</Link>
+                  <Link to={`/contacts`}>Contacto</Link>
                 </Nav.Item>
             </div>
         </div>
