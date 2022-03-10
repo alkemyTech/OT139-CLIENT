@@ -26,11 +26,14 @@ function BackofficeNews() {
     //TODO @implementar la funcionalidad de editar 
   }
 
-  const handleDelete = (name) => {
+  const handleDeleteNew = (id, name) => {
     const title = "Borrar novedad";
-    const message = `¿Seguro de borrar la novedad ${name}?`
+    const message = `¿Seguro de borrar la novedad ${name}?`;
     const confirmationDelete = ConfirmAlert(title, message);
-  }
+    if (confirmationDelete === true) {
+      
+    }
+  };
 
   return (
     <div className=".container-lg">
