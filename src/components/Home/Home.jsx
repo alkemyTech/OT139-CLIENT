@@ -55,18 +55,6 @@ const Home = () => {
         );
       })}
       </div>
-      <div className={style.divBotons}>
-        <div className={style.div_info}>
-          <a href='/' className={style.testimonials}>
-            Testimonios
-          </a>
-          <a href='/'>Contacto</a>
-        </div>
-
-        <a href='/' className={style.see_more}>
-          Ver todas
-        </a>
-      </div>
     </div>
   );
 };
