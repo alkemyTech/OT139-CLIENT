@@ -1,6 +1,6 @@
 import {
   USERS_LIST_REQUEST,
-  USERS_LIST_SUCESS,
+  USERS_LIST_SUCCESS,
   USERS_LIST_FAIL,
 } from '../constants/userConstants';
 import { getUsers } from '../api/users';
@@ -11,7 +11,7 @@ const usersList = () => async (dispatch) => {
 
     const data = await getUsers();
 
-    dispatch({ type: USERS_LIST_SUCESS, payload: data });
+    dispatch({ type: USERS_LIST_SUCCESS, payload: data });
   } catch (error) {
     dispatch({
       type: USERS_LIST_FAIL,

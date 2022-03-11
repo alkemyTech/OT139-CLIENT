@@ -1,11 +1,9 @@
-import BackOffice from '../../layout/backOffice/BackOffice';
-import { Table, Button, Container } from 'react-bootstrap';
+import { Table, Button, Container, Alert } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import React from 'react';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { usersList } from '../../actions/userActions';
 import Loader from '../../components/Loader/Loader';
-import { Alert } from 'react-bootstrap';
+import BackOffice from '../../layout/backOffice/BackOffice';
 
 const UsersListScreen = () => {
   const dispatch = useDispatch();
@@ -33,7 +31,7 @@ const UsersListScreen = () => {
         ) : error ? (
           <Alert variant='danger'>{error}</Alert>
         ) : (
-          <Table striped bordered hover responsive className='table-sm'>
+          <Table striped bordered responsive className='table-sm'>
             <thead>
               <tr>
                 <th>Nombre</th>
@@ -49,20 +47,22 @@ const UsersListScreen = () => {
                   <td>{user.surname}</td>
                   <td>{user.email}</td>
                   <td>
-                    <Button
-                      variant='light'
-                      className='btn-sm'
-                      onClick={() => editHandler(user._id)}
-                    >
-                      <i className='fas fa-edit'></i>
-                    </Button>
-                    <Button
-                      variant='danger'
-                      className='btn-sm'
-                      onClick={() => deleteHandler(user._id)}
-                    >
-                      <i className='fas fa-trash'></i>
-                    </Button>
+                    <div className='text-center'>
+                      <Button
+                        variant='light'
+                        className='btn-sm w-25'
+                        onClick={() => editHandler(user._id)}
+                      >
+                        <i className='fas fa-edit'></i>
+                      </Button>
+                      <Button
+                        variant='danger'
+                        className='btn-sm w-25'
+                        onClick={() => deleteHandler(user._id)}
+                      >
+                        <i className='fas fa-trash'></i>
+                      </Button>
+                    </div>
                   </td>
                 </tr>
               ))}
