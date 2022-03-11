@@ -1,9 +1,10 @@
-import { Table, Button, Container, Alert } from 'react-bootstrap';
+import { Table, Button, Container } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useEffect } from 'react';
 import { usersList } from '../../actions/userActions';
-import Loader from '../../components/Loader/Loader';
+import Loader from '../../components/loader/Loader';
 import BackOffice from '../../layout/backOffice/BackOffice';
+import { ErrorAlert } from '../../components/Alert';
 
 const UsersListScreen = () => {
   const dispatch = useDispatch();
@@ -29,7 +30,7 @@ const UsersListScreen = () => {
         {loading ? (
           <Loader />
         ) : error ? (
-          <Alert variant='danger'>{error}</Alert>
+          ErrorAlert('error loading users', error)
         ) : (
           <Table striped bordered responsive className='table-sm'>
             <thead>
