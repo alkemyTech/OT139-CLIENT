@@ -5,8 +5,8 @@ import style from './home.module.css';
 import './home.css';
 
 const Home = () => {
-  const [data, setData] = useState({welcome: "", slide: []});
-  const welcomeText = "Bienvenidos";
+  const [data, setData] = useState({ welcome: '', slide: [], news: []});
+  const welcomeText = 'Bienvenidos';
   const dataSlide = [
     {
       imageUrl:
@@ -24,37 +24,51 @@ const Home = () => {
       text: '',
     },
   ];
+  const news = [
+    {
+      imageUrl: '',
+      text: ''
+    }
+  ]
 
-useEffect(() => {
+  useEffect(() => {
     setData({
       ...data,
       welcome: welcomeText,
-      slide: dataSlide})
-  }, [welcomeText, dataSlide]);
+      slide: dataSlide,
+      news: news
+    });
+  }, [welcomeText, dataSlide, news]);
 
-  
-
-    return(
-      <div id='home'>
-            <Slider data={data.slide}/> 
-            <h1 className={style.title}>{data.welcome}</h1> 
-            <h2 className={style.subtitle}>Ultimas novedades</h2>
-            <div className={style.news_container}>
-              <article className={style.news}></article>
-              <article className={style.news}></article>
-              <article className={style.news}></article>
-              <article className={style.news}></article>
-            </div>
-            <div className={style.divBotons}>
-              <div className={style.div_info}>
-              <a href='/' className={style.testimonials}>Testimonios</a>
-              <a href='/'>Contacto</a>
-              </div>
-              
-              <a href='/' className={style.see_more}>Ver todas</a>
-            </div>
+  return (
+    <div id='home'>
+      <Slider data={data.slide} />
+      <h1 className={style.title}>{data.welcome}</h1>
+      <h2 className={style.subtitle}>Ultimas novedades</h2>
+      <div className={style.news_container}>
+      {data.news.map((item, index) => {
+        return (
+          <article className={style.news} key={index}>
+            <img src={item.imageUrl} alt="" />
+            <p>{item.text}</p>
+          </article>
+        );
+      })}
+      </div>
+      <div className={style.divBotons}>
+        <div className={style.div_info}>
+          <a href='/' className={style.testimonials}>
+            Testimonios
+          </a>
+          <a href='/'>Contacto</a>
         </div>
-    );
-}
+
+        <a href='/' className={style.see_more}>
+          Ver todas
+        </a>
+      </div>
+    </div>
+  );
+};
 
 export default Home;
