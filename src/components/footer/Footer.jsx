@@ -19,16 +19,11 @@ export const Footer = () => {
   useEffect(() => {
     async function getFooterData() {
       try {
-        fetch("http://localhost:3000/organizations/1/public")
-        .then(data => {
-          return data.json()
-        })
-        .then(data => {
-          setLogo(data.image)
-        })
-        
+        const response = await fetch("http://localhost:3000/organizations/1/public");
+        const data = await response.json();
+        setLogo(data.image);
       } catch(error) {
-        setErrors(error)
+        setErrors(error);
       }
     }
     getFooterData();
