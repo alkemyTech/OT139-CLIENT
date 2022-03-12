@@ -23,7 +23,6 @@ const Home = () => {
 
   return (
     <div id='home'>
-      <Slider data={data.slide} />
       <h1 className={style.title}>{data.welcome}</h1>
       <h2 className={style.subtitle}>Ultimas novedades</h2>
       <div className={style.news_container}>
