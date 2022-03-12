@@ -9,7 +9,7 @@ import './Contact.css';
 
 export default function Contact(){
     const { register, handleSubmit } = useForm();
-    const [data,setData]=useState([]);
+    const [data,setData] = useState([]);
     const onSubmit = data => setData(data);
   
     return (
