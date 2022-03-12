@@ -5,22 +5,13 @@ import { useForm } from "react-hook-form";
 import Logo from './Logo.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'animate.css';
-import './ContactForm.css';
+import './Contact.css';
 
-export default function FormContact(){
+export default function Contact(){
     const { register, handleSubmit } = useForm();
     const [data,setData]=useState([]);
     const onSubmit = data => setData(data);
-    /*const Swal = require('sweetalert2')
-    const alertSend = () => {
-        Swal.fire({
-            icon: 'success',
-            title: 'mensaje enviado',
-            showConfirmButton: false,
-            timer: 1500
-        })
-    }
-    */
+  
     return (
         <div className="main">
             <div className="flex-child animate__animated animate__fadeInLeft ">

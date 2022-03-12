@@ -2,7 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Home from '../components/Home/Home.jsx';
 import About from '../components/About/About.jsx';
-import ContactForm from '../components/ContactForm/ContactForm.jsx';
+import ContactForm from '../views/Contact/Contact.jsx';
 
 export default function AppRoutes() {
   return (
