@@ -1,7 +1,7 @@
 import getToken from './tokenService';
 
 export const getPrivateHeaders = () => {
-  var headers = {};
+  const headers = {};
 
   setAuthorizationHeader(headers);
   
@@ -9,9 +9,9 @@ export const getPrivateHeaders = () => {
 };
 
 const setAuthorizationHeader = (headers) => {
-  const token = getToken()
+  const token = getToken();
 
-  return headers.Authorization = token
+  return headers.Authorization = token;
 };
 
 
