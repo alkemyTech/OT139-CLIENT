@@ -1,12 +1,9 @@
 .container {
-    width: 100%;
+    width: 70%;
     margin: 50px;
-    /* padding: 30px; */
 }
 
 h1 {
-    /* margin-left: 20px; */
-    /* align-items: center; */
     text-align: center;
     color: #db5752;
 }
@@ -20,7 +17,6 @@ form {
     height: auto;
     margin: 0 auto;
     display: block;
-    /* margin-bottom: 20px; */
 }
 
 .cont_Img img {
