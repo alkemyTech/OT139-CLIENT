@@ -3,6 +3,7 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { Button } from 'react-bootstrap';
 import './registerForm.css';
 import { useNavigate } from 'react-router-dom';
+import { post } from '../../services/apiService';
 
 export default function RegisterForm() {
   const navigate = useNavigate();
@@ -75,24 +76,8 @@ export default function RegisterForm() {
   };
 
   const handleSubmit = async (values, resetForm) => {
-    const url = '';
-    try {
-      let response = await fetch(url, {
-        method: 'POST',
-        body: JSON.stringify({firstName: values.firstName, lastName: values.lastName ,email: values.email, password: values.password}),
-        headers: {
-          'Content-type': 'application/json; charset=UTF-8',
-        },
-      });
-      let result = await response.json();
-      alert(result)
-      navigate('/');
-
-      return result;
-
-    } catch (error) {
-      alert(error);
-    }
+    const url = 'http://localhost:3000/users/auth/register';
+    post(url);
     resetForm();
   };
 

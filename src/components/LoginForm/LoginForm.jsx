@@ -4,6 +4,7 @@ import { Button } from 'react-bootstrap';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import styles from './loginForm.module.css';
 import { useNavigate } from 'react-router-dom';
+import { post } from '../../services/apiService';
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -40,25 +41,9 @@ const LoginForm = () => {
   };
 
   const onSubmit = async (values) => {
-    const url = '';
-    try {
-      let response = await fetch(url, {
-        method: 'POST',
-        body: JSON.stringify({email: values.email, password: values.password}),
-        headers: {
-          'Content-type': 'application/json; charset=UTF-8',
-        },
-      });
-      let result = await response.json();
-      alert(result)
-      navigate('/');
-
-      return result;
-
-    } catch (error) {
-      alert(error);
-    }
-   
+    const url = 'http://localhost:3000/users/auth/login';
+    post(url);
+    navigate('/');
   };
 
   return (
