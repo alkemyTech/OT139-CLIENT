@@ -25,16 +25,13 @@ export const Footer = () => {
     <footer className='footer'>
       <Container>
         <Row>
-          <Col className='footer-links'>
-            <Link to={`/activities`}>Actividades</Link>
-            <Link to={`/news`}>Novedades</Link>
-            <Link to={`/testimonials`}>Testimonios</Link>
-            <Link to={`/testimonials`}>Testimonios</Link>
-            <Link to={`/testimonials`}>Testimonios</Link>
-          </Col>
           <Col>
             {!logo ? "Logo somos mas" : <img src={logo} alt="Logo somos mas"></img>
               }
+          </Col>
+          <Col className='footer-links'>
+            <Link to={`/about`}>Nosotros</Link>
+            <Link to={`/contact`}>Novedades</Link>
           </Col>
           <Col className="footer-links">
             <a href={``}>Facebook</a>
