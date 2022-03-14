@@ -8,21 +8,32 @@ export default function EditOrganization() {
     logo: '',
   };
 
-  const validate = (values) => {
-    const errors = {};
-  
+  const validateName = (values, errors) => {
     if (!values.name) {
       errors.name = 'Este campo es obligatorio';
     } else if (values.name.length < 3) {
       errors.name = 'Este campo debe tener 3 caracteres o más'
     }
-  
+
+    return errors;
+  }
+
+  const validateLogo = (values, errors) => {
     if (!values.logo) {
       errors.logo = 'Este campo es obligatorio';
     } else if (values.logo.length < 3) {
       errors.logo = 'Este campo debe tener 3 caracteres o más'
     }
+
+    return errors;
+  }
+
+  const validate = (values) => {
+    const errors = {};
   
+    validateName(values, errors);
+    validateLogo(values, errors);
+
     return errors;
   };
 
