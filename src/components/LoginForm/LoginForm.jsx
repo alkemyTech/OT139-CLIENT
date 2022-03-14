@@ -42,7 +42,7 @@ const LoginForm = () => {
 
   const onSubmit = async (values) => {
     const url = 'http://localhost:3000/users/auth/login';
-    post(url);
+    await post(url);
     navigate('/');
   };
 

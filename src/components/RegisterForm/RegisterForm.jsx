@@ -77,7 +77,7 @@ export default function RegisterForm() {
 
   const handleSubmit = async (values, resetForm) => {
     const url = 'http://localhost:3000/users/auth/register';
-    post(url);
+    await post(url);
     resetForm();
   };
 
