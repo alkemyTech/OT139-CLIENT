@@ -30,8 +30,8 @@ export const Footer = () => {
               }
           </Col>
           <Col className='footer-links'>
-            <Link to={`/about`}>Nosotros</Link>
-            <Link to={`/contact`}>Contacto</Link>
+            <Link to={`/about`}>Acerca</Link>
+            <Link to={`/contact`}>Nosotros</Link>
           </Col>
           <Col className="footer-links">
             <a href={``}>Facebook</a>
