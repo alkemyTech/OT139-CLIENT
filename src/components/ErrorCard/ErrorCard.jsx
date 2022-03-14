@@ -9,7 +9,7 @@ export default function ErrorCard({ title, text }) {
       <Card.Body>
         <img
           className='error_card_svg mx-auto mb-4'
-          src='images/assets/page-not-found.svg'
+          src={`${process.env.PUBLIC_URL}/images/assets/page-not-found.svg`}
           alt='error resource not found'
         />
         <h4 className='color_danger text-center'>{title}</h4>
