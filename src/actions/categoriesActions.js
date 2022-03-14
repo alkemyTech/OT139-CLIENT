@@ -1,0 +1,3 @@
+const getCategoryDetails = () => {};
+
+export { getCategoryDetails };
