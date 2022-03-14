@@ -1,57 +1,67 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useFormik } from 'formik';
+import { get } from '../../services/apiService';
 import './editOrganization.css';
 
 export default function EditOrganization() {
-  const initialValues = {
-    name: '',
-    logo: '',
-  };
+  const initialValues = { name: '', logo: '' };
 
   const validateName = (values, errors) => {
     if (!values.name) {
       errors.name = 'Este campo es obligatorio';
     } else if (values.name.length < 3) {
-      errors.name = 'Este campo debe tener 3 caracteres o más'
+      errors.name = 'Este campo debe tener 3 caracteres o más';
     }
-
-    return errors;
-  }
+  };
 
   const validateLogo = (values, errors) => {
     if (!values.logo) {
       errors.logo = 'Este campo es obligatorio';
     } else if (values.logo.length < 3) {
-      errors.logo = 'Este campo debe tener 3 caracteres o más'
+      errors.logo = 'Este campo debe tener 3 caracteres o más';
     }
-
-    return errors;
-  }
+  };
 
   const validate = (values) => {
     const errors = {};
-  
+
     validateName(values, errors);
     validateLogo(values, errors);
 
     return errors;
   };
 
-  const formik = useFormik({
-    initialValues,
-    validate,
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-    },
-  })
+  const onSubmit = (values) => {
+    alert(JSON.stringify(values, null, 2));
+  }
 
-  const inputNameStyles = formik.touched.name && formik.errors.name
-    ? 'edit-form_input edit-form_invalid-input'
-    : 'edit-form_input';
+  const formik = useFormik({ initialValues, validate, onSubmit });
 
-  const inputLogoStyles = formik.touched.logo && formik.errors.logo
-    ? 'edit-form_input edit-form_invalid-input'
-    : 'edit-form_input';
+  useEffect(() => {
+    async function getOrganizationData() {
+      const data = await get('/organizations/1/public');
+
+      const filteredData = {
+        name: data.name,
+        logo: data.image,
+      };
+
+      formik.setValues(filteredData);
+    }
+
+    getOrganizationData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const inputNameStyles =
+    formik.touched.name && formik.errors.name
+      ? 'edit-form_input edit-form_invalid-input'
+      : 'edit-form_input';
+
+  const inputLogoStyles =
+    formik.touched.logo && formik.errors.logo
+      ? 'edit-form_input edit-form_invalid-input'
+      : 'edit-form_input';
 
   return (
     <div className='edit-form mx-auto mt-4'>
@@ -75,9 +85,7 @@ export default function EditOrganization() {
             {...formik.getFieldProps('name')}
           />
           {formik.touched.name && formik.errors.name && (
-            <p className='edit-form_error-msg'>
-              {formik.errors.name}
-            </p>
+            <p className='edit-form_error-msg'>{formik.errors.name}</p>
           )}
         </div>
         <div className='edit-form_input-group'>
@@ -96,15 +104,13 @@ export default function EditOrganization() {
             {...formik.getFieldProps('logo')}
           />
           {formik.touched.logo && formik.errors.logo && (
-            <p className='edit-form_error-msg'>
-              {formik.errors.logo}
-            </p>
+            <p className='edit-form_error-msg'>{formik.errors.logo}</p>
           )}
         </div>
         <button type='submit' className='edit-form_btn edit-form_btn-primary'>
           Guardar Cambios
         </button>
-        <button className='edit-form_btn edit-form_btn-secondary'>
+        <button type='button' className='edit-form_btn edit-form_btn-secondary'>
           Cancelar
         </button>
       </form>
