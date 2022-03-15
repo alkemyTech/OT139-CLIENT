@@ -1,11 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { get } from '../../services/apiService';
+
+import ErrorCard from '../../components/ErrorCard/ErrorCard';
+import LoadingCard from '../../components/LoadingCard/LoadingCard';
+
 import './editOrganization.css';
 
 export default function EditOrganization() {
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const initialValues = { name: '', logo: '' };
 
@@ -46,14 +52,23 @@ export default function EditOrganization() {
 
   useEffect(() => {
     async function getOrganizationData() {
-      const data = await get('/organizations/1/public');
+      setIsLoading(true);
 
-      const filteredData = {
-        name: data.name,
-        logo: data.image,
-      };
+      const response = await get('/organizations/1/public');
+      const isValidResponse = response && !(response instanceof Error);
 
-      formik.setValues(filteredData);
+      if (isValidResponse) {
+        const data = {
+          name: response.name,
+          logo: response.image,
+        };
+
+        formik.setValues(data);
+      } else {
+        setError(true);
+      }
+
+      setIsLoading(false);
     }
 
     getOrganizationData();
@@ -70,64 +85,75 @@ export default function EditOrganization() {
       ? 'edit-form_input edit-form_invalid-input'
       : 'edit-form_input';
 
+  const errorCardProps = {
+    title: 'Algo salio mal procesando su solicitud.',
+    text: 'Por favor vuelva a intentarlo en unos instantes.',
+  };
+
   return (
-    <div className='edit-form mx-auto mt-4'>
-      <h3 className='edit-form_heading'>
-        Administra los datos de la organización
-      </h3>
-      <form onSubmit={formik.handleSubmit}>
-        <div className='edit-form_input-group'>
-          <label
-            className='edit-form_label required-field'
-            htmlFor='edit-form_name'
-          >
-            Nombre
-          </label>
-          <input
-            className={inputNameStyles}
-            type='text'
-            id='edit-form_name'
-            name='name'
-            placeholder='Somos Más'
-            {...formik.getFieldProps('name')}
-          />
-          {formik.touched.name && formik.errors.name && (
-            <p className='edit-form_error-msg'>{formik.errors.name}</p>
-          )}
+    <div className='max-width-wrapper-small mx-auto mt-4'>
+      {isLoading && <LoadingCard />}
+      {!isLoading && error && <ErrorCard {...errorCardProps} />}
+      {!isLoading && !error && (
+        <div className='edit-form'>
+          <h3 className='edit-form_heading'>
+            Administra los datos de la organización
+          </h3>
+          <form onSubmit={formik.handleSubmit}>
+            <div className='edit-form_input-group'>
+              <label
+                className='edit-form_label required-field'
+                htmlFor='edit-form_name'
+              >
+                Nombre
+              </label>
+              <input
+                className={inputNameStyles}
+                type='text'
+                id='edit-form_name'
+                name='name'
+                placeholder='Somos Más'
+                {...formik.getFieldProps('name')}
+              />
+              {formik.touched.name && formik.errors.name && (
+                <p className='edit-form_error-msg'>{formik.errors.name}</p>
+              )}
+            </div>
+            <div className='edit-form_input-group'>
+              <label
+                className='edit-form_label required-field'
+                htmlFor='edit-form_logo'
+              >
+                Logo
+              </label>
+              <input
+                className={inputLogoStyles}
+                type='text'
+                id='edit-form_logo'
+                name='logo'
+                placeholder='URL del Logo'
+                {...formik.getFieldProps('logo')}
+              />
+              {formik.touched.logo && formik.errors.logo && (
+                <p className='edit-form_error-msg'>{formik.errors.logo}</p>
+              )}
+            </div>
+            <button
+              type='submit'
+              className='edit-form_btn edit-form_btn-primary'
+            >
+              Guardar Cambios
+            </button>
+            <button
+              type='button'
+              onClick={onCancel}
+              className='edit-form_btn edit-form_btn-secondary'
+            >
+              Cancelar
+            </button>
+          </form>
         </div>
-        <div className='edit-form_input-group'>
-          <label
-            className='edit-form_label required-field'
-            htmlFor='edit-form_logo'
-          >
-            Logo
-          </label>
-          <input
-            className={inputLogoStyles}
-            type='text'
-            id='edit-form_logo'
-            name='logo'
-            placeholder='URL del Logo'
-            {...formik.getFieldProps('logo')}
-          />
-          {formik.touched.logo && formik.errors.logo && (
-            <p className='edit-form_error-msg'>{formik.errors.logo}</p>
-          )}
-        </div>
-        <button
-          type='submit'
-          className='edit-form_btn edit-form_btn-primary'
-        >
-          Guardar Cambios
-        </button>
-        <button
-          type='button'
-          onClick={onCancel}
-          className='edit-form_btn edit-form_btn-secondary'
-        >
-          Cancelar
-        </button>
-      </form>
+      )}
     </div>
   );
 }
