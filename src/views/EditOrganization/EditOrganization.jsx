@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
-import { get } from '../../services/apiService';
+import { get, put } from '../../services/apiService';
+import { SuccessAlert, ErrorAlert } from '../../components/Alert';
 
 import ErrorCard from '../../components/ErrorCard/ErrorCard';
 import LoadingCard from '../../components/LoadingCard/LoadingCard';
@@ -40,8 +41,20 @@ export default function EditOrganization() {
     return errors;
   };
 
-  const onSubmit = (values) => {
-    alert(JSON.stringify(values, null, 2));
+  const onSubmit = async (values) => {
+    const correctValues = {
+      name: values.name,
+      image: values.logo,
+    };
+
+    const response = await put('/organizations/1', correctValues);
+    const isValidResponse = response && !(response instanceof Error) && response.data?.ok;
+
+    if (isValidResponse) {
+      SuccessAlert('Felicidades', 'Se guardaron los cambios satisfactoriamente.');
+    } else {
+      ErrorAlert('Oops...', 'Hubo un error al guardar los cambios.');
+    }
   };
 
   const onCancel = () => {
