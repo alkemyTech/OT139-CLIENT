@@ -1,3 +1,7 @@
+.color_danger {
+  color: #dc3545;
+}
+
 .error_card_svg {
   display: block;
   max-width: 100%;
