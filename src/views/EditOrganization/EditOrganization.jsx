@@ -1,9 +1,12 @@
 import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { get } from '../../services/apiService';
 import './editOrganization.css';
 
 export default function EditOrganization() {
+  const navigate = useNavigate();
+
   const initialValues = { name: '', logo: '' };
 
   const validateName = (values, errors) => {
@@ -33,7 +36,11 @@ export default function EditOrganization() {
 
   const onSubmit = (values) => {
     alert(JSON.stringify(values, null, 2));
-  }
+  };
+
+  const onCancel = () => {
+    navigate(-1);
+  };
 
   const formik = useFormik({ initialValues, validate, onSubmit });
 
@@ -107,10 +114,17 @@ export default function EditOrganization() {
             <p className='edit-form_error-msg'>{formik.errors.logo}</p>
           )}
         </div>
-        <button type='submit' className='edit-form_btn edit-form_btn-primary'>
+        <button
+          type='submit'
+          className='edit-form_btn edit-form_btn-primary'
+        >
           Guardar Cambios
         </button>
-        <button type='button' className='edit-form_btn edit-form_btn-secondary'>
+        <button
+          type='button'
+          onClick={onCancel}
+          className='edit-form_btn edit-form_btn-secondary'
+        >
           Cancelar
         </button>
       </form>
