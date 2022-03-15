@@ -15,7 +15,7 @@ const categoriesDetailsReducer = (state = {}, action) => {
     case CATEGORIES_DETAILS_REQUEST:
       return { loading: true };
     case CATEGORIES_DETAILS_SUCCESS:
-      return { loading: false, data: action.payload };
+      return { loading: false, category: action.payload };
     case CATEGORIES_DETAILS_ERROR:
       return { loading: false, error: action.payload };
     default:

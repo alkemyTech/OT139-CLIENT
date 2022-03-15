@@ -6,6 +6,7 @@ import Loader from '../loader/Loader';
 import { ErrorAlert } from '../Alert';
 import BackOffice from '../../layout/backOffice/BackOffice';
 import { getCategoryDetails } from '../../actions/categoriesActions';
+import { Footer } from '../footer/Footer';
 
 const CategoriesForm = ({ categoryObject }) => {
   const [name, setName] = useState('');
@@ -42,7 +43,7 @@ const CategoriesForm = ({ categoryObject }) => {
   return (
     <BackOffice>
       <Container>
-        <Row className='justify-content-md-center'>
+        <Row className='justify-content-md-center m-5 bg-light py-5 px-1 min-vh-70'>
           <Col xs={12} md={6}>
             <h1>Edit/Create Category</h1>
             <Form>
@@ -54,7 +55,9 @@ const CategoriesForm = ({ categoryObject }) => {
                 <Form.Label>Description</Form.Label>
                 <Form.Control as='textarea' rows={3}></Form.Control>
               </Form.Group>
-              <Button onSubmit={handleSubmit}>submit contact</Button>
+              <Button className='my-3 w-100 p-2' onSubmit={handleSubmit}>
+                submit contact
+              </Button>
             </Form>
           </Col>
         </Row>
