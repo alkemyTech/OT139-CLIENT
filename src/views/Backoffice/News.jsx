@@ -31,7 +31,7 @@ function BackofficeNews() {
     const message = `¿Seguro de borrar la novedad ${name}?`;
     const confirmationDelete = ConfirmAlert(title, message);
     if (confirmationDelete === true) {
-      const filtredData = entries.filter(item => item.id !== itemId);
+      const filtredData = entries.filter(item => item.id !== id);
       setEntries(filtredData);
   };
 
@@ -68,5 +68,5 @@ function BackofficeNews() {
   );
 
 };
-
+}
 export default BackofficeNews;
