@@ -2,8 +2,13 @@ import React from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { Button } from 'react-bootstrap';
 import './registerForm.css';
+import { useNavigate } from 'react-router-dom';
+import { post } from '../../services/apiService';
+import { ErrorAlert } from '../Alert';
 
 export default function RegisterForm() {
+  const navigate = useNavigate();
+
   const initialValuesForm = {
     firstName: '',
     lastName: '',
@@ -71,7 +76,14 @@ export default function RegisterForm() {
     return errorsObject;
   };
 
-  const handleSubmit = (values, resetForm) => {
+  const handleSubmit = async (values, resetForm) => {
+    const url = 'http://localhost:3000/users/auth/register';
+    const {error, data} = await post(url);
+    if(error){
+      ErrorAlert('Error!', 'Ocurrio un error');
+    }else{
+      navigate('/');
+    }
     resetForm();
   };
 
