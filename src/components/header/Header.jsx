@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Navbar, Nav, Container } from "react-bootstrap";
+import { Link } from 'react-router-dom';
+import './header.css';
+
+
+const headerData = {
+  logo: "https://images.squarespace-cdn.com/content/v1/5f62b687cae73d2408a06539/1602807735303-4W086W30YX6B3D23N04L/image-asset.png",
+  menu: [{ "name": "Home", url: "/" }, { "name": "Nosotros", url: "/us" }]
+};
 
 export function Header() {
   const [logo, setLogo] = useState("");
@@ -7,49 +14,27 @@ export function Header() {
   const [errors, setError] = useState([]);
 
   useEffect(() => {
-    async function getDataOfHeader() {
-
-      try {
-        const response = await fetch("/1/public");
-        const data = await response.json();
-        setLogo(data.image);
-        setMenu(data.menu);
-      } catch (error) {
-        setError(error);
-      }
-    };
-
-    getDataOfHeader();
+    //TODO @Implementar obtencion de datos desde endpoint
+    setLogo(headerData.logo)
+    setMenu(headerData.menu);
   });
 
   return (
     <>
-      <Navbar bg="white">
-        <Container>
-          <Navbar.Brand href="#home">
-            <img
-              src={logo}
-              width="auto"
-              height="40"
-              className="d-inline-block align-top"
-              alt="Logo somos más"
-            />
-          </Navbar.Brand>
-          <Container>
-            <Nav>
-              {
-                menu.map((menuItem) => {
-                  return (
-                    <Nav.Item>
-                      <Nav.Link href={`/${menuItem.menuLink}`}>{menuItem.menuName}</Nav.Link>
-                    </Nav.Item>
-                  )
-                })
-              }
-            </Nav>
-          </Container>
-        </Container>
-      </Navbar>
+      <ul>
+      <img
+        src={logo}
+        width="auto"
+        height="40"
+        className="d-inline-block align-top"
+        alt="Logo somos más"
+      />
+        {menu.map(menuItem => {
+          return <li>
+            <Link to={menuItem.url}>{menuItem.name}</Link>
+          </li>
+        })}
+      </ul>
     </>
   );
 }
