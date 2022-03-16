@@ -9,13 +9,11 @@ export const post = async (endPoint, body) => {
   try {
     const data = await axios.post(endPoint, body, headers);
     response.data = data;
-
-    return response;
   } catch (error) {
     response.error = error;
-
-    return response;
   }
+
+  return response;
 };
 
 export const get = async (endPoint) => {
@@ -24,11 +22,9 @@ export const get = async (endPoint) => {
   try {
     const data = await axios.get(endPoint);
     response.data = data;
-    
-    return response;
   } catch (error) {
     response.error = error;
-
-    return response;
   }
+
+  return response;
 };
