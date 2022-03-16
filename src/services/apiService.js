@@ -4,12 +4,17 @@ axios.defaults.baseURL = process.env.BASE_URL;
 
 export const post = async (endPoint, body) => {
   const  headers = getPrivateHeaders();
+  const response = {};
   
   try {
     const data = await axios.post(endPoint, body, headers);
-    return data;
+    response.data = data;
+
+    return response;
   } catch (error) {
-    return error;
+    response.error = error;
+
+    return response;
   }
 };
 
