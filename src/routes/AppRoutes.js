@@ -4,7 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 import Home from '../views/Home/Home';
 import About from '../views/About/About';
 import Activity from '../views/Activities/Activity';
-import Contact from '../views/Contact/Contact.jsx';
+import Contact from '../views/Contact/Contact';
 
 export default function AppRoutes() {
   return (
