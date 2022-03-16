@@ -4,6 +4,7 @@ import { Card } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import { get } from '../../services/apiService';
 import './newDetail.css';
+import { ErrorAlert } from '../Alert';
 
 const NewDetail = () => {
   const [data, setData] = useState({});
@@ -11,11 +12,16 @@ const NewDetail = () => {
   const url = `http://localhost3000/news/${id}`;
 
   useEffect(async () => {
-    const info = await get(url);
-    setData({
-      ...data,
-      info
-    })
+    const {data, error} = await get(url);
+    if(error){
+      ErrorAlert('Error!', 'Ocurrio un error');
+    }else{
+      setData({
+        ...data,
+        data
+      })
+    }
+    
   }, [url]);
 
   return (

@@ -19,10 +19,16 @@ export const post = async (endPoint, body) => {
 };
 
 export const get = async (endPoint) => {
+  const response = {};
+
   try {
-    const { data } = await axios.get(endPoint);
-    return data;
+    const data = await axios.get(endPoint);
+    response.data = data;
+    
+    return response;
   } catch (error) {
-    return error;
+    response.error = error;
+
+    return response;
   }
 };
