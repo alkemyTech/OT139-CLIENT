@@ -1,16 +1,14 @@
 import React from 'react';
-import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button } from 'react-bootstrap';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import styles from './loginForm.module.css';
 import { useNavigate } from 'react-router-dom';
 import { post } from '../../services/apiService';
+import { ErrorAlert } from '../Alert';
 
 const LoginForm = () => {
   const navigate = useNavigate();
-  const MySwal = withReactContent(Swal);
 
   const validateEmail = (values, errors) => {
     const regExEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
@@ -47,15 +45,7 @@ const LoginForm = () => {
     const url = 'http://localhost:3000/users/auth/login';
     const {error, data} = await post(url);
     if(error){
-      MySwal.fire({
-        icon: 'error',
-        title: <p>Ocurrio un error</p>,
-        didOpen: () => {
-          MySwal.clickConfirm()
-        }
-      }).then(() => {
-        return MySwal.fire(<p>Vuelve a intentarlo</p>)
-      })
+      ErrorAlert('Error!', 'Ocurrio un error');
     }else{
       navigate('/');
     }

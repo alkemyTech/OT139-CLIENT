@@ -1,15 +1,13 @@
 import React from 'react';
-import Swal from 'sweetalert2';
-import withReactContent from 'sweetalert2-react-content';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { Button } from 'react-bootstrap';
 import './registerForm.css';
 import { useNavigate } from 'react-router-dom';
 import { post } from '../../services/apiService';
+import { ErrorAlert } from '../Alert';
 
 export default function RegisterForm() {
   const navigate = useNavigate();
-  const MySwal = withReactContent(Swal)
 
   const initialValuesForm = {
     firstName: '',
@@ -82,15 +80,7 @@ export default function RegisterForm() {
     const url = 'http://localhost:3000/users/auth/register';
     const {error, data} = await post(url);
     if(error){
-      MySwal.fire({
-        icon: 'error',
-        title: <p>Ocurrio un error</p>,
-        didOpen: () => {
-          MySwal.clickConfirm()
-        }
-      }).then(() => {
-        return MySwal.fire(<p>Vuelve a intentarlo</p>)
-      })
+      ErrorAlert('Error!', 'Ocurrio un error');
     }else{
       navigate('/');
     }
