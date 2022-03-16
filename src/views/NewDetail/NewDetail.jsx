@@ -2,26 +2,21 @@ import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Card } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
+import { get } from '../../services/apiService';
 import './newDetail.css';
 
 const NewDetail = () => {
-  const [data, setData] = useState({ info: '' });
+  const [data, setData] = useState({});
   const { id } = useParams();
   const url = `http://localhost3000/news/${id}`;
 
-  useEffect(() => {
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        setData(
-          {
-            ...data,
-            info: data,
-          },
-          [url]
-        );
-      });
-  });
+  useEffect(async () => {
+    const info = await get(url);
+    setData({
+      ...data,
+      info
+    })
+  }, [url]);
 
   return (
     <Card className='card'>
