@@ -1,0 +1,12 @@
+.inactive {
+  color: black;
+}
+
+.inactive:hover {
+  color: #db5752;
+}
+
+.active, .active:hover {
+  color: #db5752;
+  font-weight: 600;
+}
