@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const loginRequest = async (email, password) => {
   const config = {
     headers: {
@@ -5,7 +7,7 @@ const loginRequest = async (email, password) => {
     },
   };
   const { data } = await axios.post(
-    'users/auth/login',
+    'http://localhost:3000/users/auth/login',
     { email, password },
     config
   );

@@ -2,6 +2,7 @@ import {
   USER_LOGIN_FAIL,
   USER_LOGIN_REQUEST,
   USER_LOGIN_SUCCESS,
+  USER_LOGOUT_SUCCESS,
 } from '../constants/userConstants';
 
 import { setUserInfo, deleteUserInfo } from '../localStorage/storage';
@@ -26,5 +27,5 @@ export const login = (email, password) => async (dispatch) => {
 
 export const logout = () => (dispatch) => {
   deleteUserInfo();
-  dispatch({ type: USER_LOGOUT });
+  dispatch({ type: USER_LOGOUT_SUCCESS });
 };
