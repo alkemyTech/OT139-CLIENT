@@ -21,9 +21,7 @@ export const Footer = () => {
     if (!organization) {
       dispatch(getOrganizationDetails());
     } else {
-      setLogo(
-        'https://lh3.googleusercontent.com/7c0d-U6DP6jaWg8Y_KkG7g3FAYPqkRYAXVweUDL6h0oNQ2R08TeEuJrnJJK6zMuf73r6-Oh0OzIUiy_mslhp8TH2R1rRBs97TRCU=s0'
-      );
+      setLogo('/images/LOGO-SOMOS-MAS.png');
     }
   }, [dispatch, organization]);
 

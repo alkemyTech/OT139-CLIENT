@@ -2,7 +2,11 @@
 
 .footer {
   border-top: 1.5px solid #000;
+  background-color: grey;
   height: auto;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
 }
 
 .footer-links {
