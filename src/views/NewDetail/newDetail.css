@@ -1,0 +1,52 @@
+.card {
+    width: 85%;
+    margin: 15px auto;
+}
+
+@media (min-width: 450px) {
+    .card {
+        width: 80%;
+    }
+}
+
+@media (min-width: 500px) {
+    .card {
+        width: 75%;
+    }
+}
+
+@media (min-width: 560px) {
+    .card {
+        width: 70%;
+    }
+}
+
+@media (min-width: 600px) {
+    .card {
+        width: 65%;
+    }
+}
+
+@media (min-width: 750px) {
+    .card {
+        width: 60%;
+    }
+}
+
+@media (min-width: 850px) {
+    .card {
+        width: 55%;
+    }
+}
+
+@media (min-width: 950px) {
+    .card {
+        width: 50%;
+    }
+}
+
+@media (min-width: 1050px) {
+    .card {
+        width: 45%;
+    }
+}
