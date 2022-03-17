@@ -47,11 +47,9 @@ export default function OrganizationEdit() {
       image: values.logo,
     };
 
-    const response = await put('/organizations/1', correctValues);
-    const isValidResponse =
-      response && !(response instanceof Error) && response.data?.ok;
+    const { data, error } = await put('/organizations/1', correctValues);
 
-    if (isValidResponse) {
+    if (!error && data?.ok) {
       SuccessAlert(
         'Felicidades',
         'Se guardaron los cambios satisfactoriamente.'
@@ -74,16 +72,15 @@ export default function OrganizationEdit() {
     async function getOrganizationData() {
       setIsLoading(true);
 
-      const response = await get('/organizations/1/public');
-      const isValidResponse = response && !(response instanceof Error);
+      const { data, error } = await get('/organizations/1/public');
 
-      if (isValidResponse) {
-        const data = {
-          name: response.name,
-          logo: response.image,
+      if (!error) {
+        const formValues = {
+          name: data.name,
+          logo: data.image,
         };
 
-        formik.setValues(data);
+        formik.setValues(formValues);
       } else {
         setError(true);
       }

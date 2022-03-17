@@ -5,7 +5,7 @@ axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
 export const post = async (endPoint, body) => {
   const headers = getPrivateHeaders();
   const response = {};
-  
+
   try {
     const data = await axios.post(endPoint, body, headers);
     response.data = data;
@@ -31,11 +31,14 @@ export const get = async (endPoint) => {
 
 export const put = async (endPoint, body) => {
   const headers = getPrivateHeaders();
+  const response = {};
 
   try {
     const data = await axios.put(endPoint, body, headers);
-    return data;
+    response.data = data;
   } catch (error) {
-    return error;
+    response.error = error;
   }
+
+  return response;
 };
