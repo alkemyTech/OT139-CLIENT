@@ -7,13 +7,13 @@ export const AdminMenu = () => {
   return (
     <NavDropdown title='Backoffice' id='basic-nav-dropdown'>
       <NavDropdown.Item className='links'>
-        <Link to='/news'>Novedades</Link>
+        <Link to='/backoffice/news'>Novedades</Link>
       </NavDropdown.Item>
       <NavDropdown.Item className='links'>
-        <Link to='/categories'>Categorias</Link>
+        <Link to='/backoffice/categories'>Categorias</Link>
       </NavDropdown.Item>
       <NavDropdown.Item className='links'>
-        <Link to='/testimonials'>Testimonios</Link>
+        <Link to='/backoffice/testimonials'>Testimonios</Link>
       </NavDropdown.Item>
     </NavDropdown>
   );
