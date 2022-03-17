@@ -38,7 +38,7 @@ const Home = () => {
       slide: dataSlide,
       news: news
     });
-  }, [welcomeText, dataSlide, news]);
+  }, []);
 
   return (
     <div id='home'>
