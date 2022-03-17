@@ -3,16 +3,16 @@ import {
   USERS_LIST_SUCCESS,
   USERS_LIST_FAIL,
 } from '../constants/userConstants';
-import { getUsers } from '../api/users';
+import { getUsers } from '../services/usersService';
 
 const usersList = () => async (dispatch) => {
-  try {
-    dispatch({ type: USERS_LIST_REQUEST });
+  dispatch({ type: USERS_LIST_REQUEST });
 
-    const data = await getUsers();
+  const { error, data } = await getUsers();
 
+  if (data) {
     dispatch({ type: USERS_LIST_SUCCESS, payload: data });
-  } catch (error) {
+  } else {
     dispatch({
       type: USERS_LIST_FAIL,
       payload: error.response?.data?.message || error.message,
