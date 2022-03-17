@@ -7,9 +7,9 @@ import { SuccessAlert, ErrorAlert } from '../../components/Alert';
 import ErrorCard from '../../components/ErrorCard/ErrorCard';
 import LoadingCard from '../../components/LoadingCard/LoadingCard';
 
-import './editOrganization.css';
+import './organizationEdit.css';
 
-export default function EditOrganization() {
+export default function OrganizationEdit() {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
