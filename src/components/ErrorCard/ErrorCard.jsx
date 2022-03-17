@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
+import '../../shared/style/colorOng.css';
 import './errorCard.css';
 
 export default function ErrorCard({ title, text }) {
@@ -12,8 +13,8 @@ export default function ErrorCard({ title, text }) {
           src={`${process.env.PUBLIC_URL}/images/assets/page-not-found.svg`}
           alt='error resource not found'
         />
-        <h4 className='color_danger text-center'>{title}</h4>
-        <p className='color_danger text-center'>{text}</p>
+        <h4 className='color_red_ong text-center'>{title}</h4>
+        <p className='color_red_ong text-center'>{text}</p>
       </Card.Body>
     </Container>
   );
