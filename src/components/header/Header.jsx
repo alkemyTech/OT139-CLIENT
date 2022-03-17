@@ -24,11 +24,10 @@ export default function Header() {
 
   useEffect(() => {
     async function getOrganizationLogo() {
-      const response = await get('/organizations/1/public');
-      const isValidResponse = response && !(response instanceof Error);
+      const { data, error } = await get('/organizations/1/public');
 
-      if (isValidResponse) {
-        setLogo(response.logo);
+      if (!error) {
+        setLogo(data.image);
       } else {
         setError(true);
       }
