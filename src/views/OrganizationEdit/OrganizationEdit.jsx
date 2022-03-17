@@ -95,15 +95,10 @@ export default function OrganizationEdit() {
     : 'edit-form_input';
   }
 
-  const errorCardProps = {
-    title: 'Algo salio mal procesando su solicitud.',
-    text: 'Por favor vuelva a intentarlo en unos instantes.',
-  };
-
   return (
     <div className='max-width-wrapper-small mx-auto mt-4'>
       {isLoading && <LoadingCard />}
-      {!isLoading && error && <ErrorCard {...errorCardProps} />}
+      {!isLoading && error && <ErrorCard />}
       {!isLoading && !error && (
         <div className='edit-form'>
           <h3 className='edit-form_heading'>
