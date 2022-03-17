@@ -1,0 +1,44 @@
+.main {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+.Novedades_Form img {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.Novedades_Form {
+  width: 100%;
+  height: 100%;
+}
+.Novedades_Form button {
+  width: 100%;
+}
+
+@media screen and (min-width: 359px) and (max-width: 700px) {
+    .main {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top:20%;
+      width:80vw;
+      margin-left:10%;
+      margin-right:10%;
+    }
+  .Novedades_Form{
+    margin-bottom: 100%;
+  }
+  
+  }
+  
