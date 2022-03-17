@@ -48,12 +48,19 @@ export default function OrganizationEdit() {
     };
 
     const response = await put('/organizations/1', correctValues);
-    const isValidResponse = response && !(response instanceof Error) && response.data?.ok;
+    const isValidResponse =
+      response && !(response instanceof Error) && response.data?.ok;
 
     if (isValidResponse) {
-      SuccessAlert('Felicidades', 'Se guardaron los cambios satisfactoriamente.');
+      SuccessAlert(
+        'Felicidades',
+        'Se guardaron los cambios satisfactoriamente.'
+      );
     } else {
-      ErrorAlert('Oops...', 'Hubo un error al guardar los cambios.');
+      ErrorAlert(
+        'Oops...',
+        'Hubo un error al guardar los cambios.'
+      );
     }
   };
 
@@ -88,26 +95,25 @@ export default function OrganizationEdit() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  
   const getInputStyles = (inputName) => {
     return formik.touched[inputName] && formik.errors[inputName]
-    ? 'edit-form_input edit-form_invalid-input'
-    : 'edit-form_input';
-  }
+      ? 'edit_form__input edit_form__invalid_input'
+      : 'edit_form__input';
+  };
 
   return (
-    <div className='max-width-wrapper-small mx-auto mt-4'>
+    <div className='max_width_wrapper_small mx-auto mt-4'>
       {isLoading && <LoadingCard />}
       {!isLoading && error && <ErrorCard />}
       {!isLoading && !error && (
-        <div className='edit-form'>
-          <h3 className='edit-form_heading'>
+        <div className='edit_form'>
+          <h3 className='edit_form__heading'>
             Administra los datos de la organización
           </h3>
           <form onSubmit={formik.handleSubmit}>
-            <div className='edit-form_input-group'>
+            <div className='edit_form__input_group'>
               <label
-                className='edit-form_label required-field'
+                className='edit_form__label required_field'
                 htmlFor='edit-form_name'
               >
                 Nombre
@@ -121,12 +127,12 @@ export default function OrganizationEdit() {
                 {...formik.getFieldProps('name')}
               />
               {formik.touched.name && formik.errors.name && (
-                <p className='edit-form_error-msg'>{formik.errors.name}</p>
+                <p className='edit_form__error_msg'>{formik.errors.name}</p>
               )}
             </div>
-            <div className='edit-form_input-group'>
+            <div className='edit_form__input_group'>
               <label
-                className='edit-form_label required-field'
+                className='edit_form__label required_field'
                 htmlFor='edit-form_logo'
               >
                 Logo
@@ -140,19 +146,19 @@ export default function OrganizationEdit() {
                 {...formik.getFieldProps('logo')}
               />
               {formik.touched.logo && formik.errors.logo && (
-                <p className='edit-form_error-msg'>{formik.errors.logo}</p>
+                <p className='edit_form__error_msg'>{formik.errors.logo}</p>
               )}
             </div>
             <button
               type='submit'
-              className='edit-form_btn edit-form_btn-primary'
+              className='edit_form__btn edit_form__btn_primary'
             >
               Guardar Cambios
             </button>
             <button
               type='button'
               onClick={onCancel}
-              className='edit-form_btn edit-form_btn-secondary'
+              className='edit_form__btn edit_form__btn_secondary'
             >
               Cancelar
             </button>
