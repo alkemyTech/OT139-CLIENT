@@ -1,12 +1,13 @@
+.active, .active:hover {
+  color: #18a0fb;
+  font-weight: 600;
+}
+
 .inactive {
   color: black;
 }
 
 .inactive:hover {
-  color: #db5752;
+  color: #18a0fb;
 }
 
-.active, .active:hover {
-  color: #db5752;
-  font-weight: 600;
-}
