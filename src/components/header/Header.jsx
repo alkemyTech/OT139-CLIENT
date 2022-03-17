@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import CustomLink from '../CustomLink/CustomLink.jsx';
+import CustomLink from '../CustomLink/CustomLink';
 import { get } from '../../services/apiService';
 import './header.css';
 
