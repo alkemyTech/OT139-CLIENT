@@ -88,15 +88,12 @@ export default function OrganizationEdit() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const inputNameStyles =
-    formik.touched.name && formik.errors.name
-      ? 'edit-form_input edit-form_invalid-input'
-      : 'edit-form_input';
-
-  const inputLogoStyles =
-    formik.touched.logo && formik.errors.logo
-      ? 'edit-form_input edit-form_invalid-input'
-      : 'edit-form_input';
+  
+  const getInputStyles = (inputName) => {
+    return formik.touched[inputName] && formik.errors[inputName]
+    ? 'edit-form_input edit-form_invalid-input'
+    : 'edit-form_input';
+  }
 
   const errorCardProps = {
     title: 'Algo salio mal procesando su solicitud.',
@@ -121,7 +118,7 @@ export default function OrganizationEdit() {
                 Nombre
               </label>
               <input
-                className={inputNameStyles}
+                className={getInputStyles('name')}
                 type='text'
                 id='edit-form_name'
                 name='name'
@@ -140,7 +137,7 @@ export default function OrganizationEdit() {
                 Logo
               </label>
               <input
-                className={inputLogoStyles}
+                className={getInputStyles('logo')}
                 type='text'
                 id='edit-form_logo'
                 name='logo'
