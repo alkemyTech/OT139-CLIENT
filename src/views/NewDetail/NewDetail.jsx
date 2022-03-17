@@ -19,7 +19,7 @@ const NewDetail = () => {
       setData({
         ...data,
         data
-      })
+      })                                                                                                                                                                                                         
     }
     
   }, [url]);

@@ -6,7 +6,7 @@ import Loader from '../../components/loader/Loader';
 import BackOffice from '../../layout/backOffice/BackOffice';
 import { ErrorAlert } from '../../components/Alert';
 
-const UsersListScreen = () => {
+const UsersList = () => {
   const dispatch = useDispatch();
 
   const userList = useSelector((state) => state.usersList);
@@ -75,4 +75,4 @@ const UsersListScreen = () => {
   );
 };
 
-export default UsersListScreen;
+export default UsersList;
