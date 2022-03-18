@@ -38,7 +38,7 @@ export default function Header() {
 
   return (
     <ul>
-      {!errors && (
+      {logo && !errors && (
         <img
           src={logo}
           width='auto'
