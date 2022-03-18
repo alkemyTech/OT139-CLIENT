@@ -4,6 +4,7 @@ import {
   userLoginReducer,
   userLogoutReducer,
   userRegisterReducer,
+  usersListReducer,
 } from '../reducers/userReducers';
 
 const userInfoFromStorage = getUserInfo();
@@ -19,6 +20,7 @@ export default configureStore({
     userLogin: userLoginReducer,
     userLogout: userLogoutReducer,
     userRegister: userRegisterReducer,
+    usersList: usersListReducer,
   },
   initialState,
 });

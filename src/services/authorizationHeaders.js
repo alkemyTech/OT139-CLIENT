@@ -1,4 +1,4 @@
-import getToken from './tokenService';
+import { getToken } from './tokenService';
 
 export const getPrivateHeaders = () => {
   const headers = {};

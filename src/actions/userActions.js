@@ -6,21 +6,23 @@ import {
   USER_REGISTER_FAIL,
   USER_REGISTER_REQUEST,
   USER_REGISTER_SUCCESS,
+  USERS_LIST_REQUEST,
+  USERS_LIST_SUCCESS,
+  USERS_LIST_FAIL,
 } from '../constants/userConstants';
 
 import { setUserInfo, deleteUserInfo } from '../localStorage/storage';
-import { loginRequest, registerRequest } from '../api/users';
+import { loginUser, registerUser, getUsers } from '../services/usersService';
 
 export const login = (email, password) => async (dispatch) => {
-  try {
-    dispatch({ type: USER_LOGIN_REQUEST });
+  dispatch({ type: USER_LOGIN_REQUEST });
 
-    const data = await loginRequest(email, password);
+  const { data, error } = await loginUser(email, password);
 
+  if (data) {
     dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
-
     setUserInfo(data);
-  } catch (error) {
+  } else {
     dispatch({
       type: USER_LOGIN_FAIL,
       payload: error.response?.data?.message || error.message,
@@ -28,17 +30,31 @@ export const login = (email, password) => async (dispatch) => {
   }
 };
 
+const usersList = () => async (dispatch) => {
+  dispatch({ type: USERS_LIST_REQUEST });
+
+  const { error, data } = await getUsers();
+
+  if (data) {
+    dispatch({ type: USERS_LIST_SUCCESS, payload: data });
+  } else {
+    dispatch({
+      type: USERS_LIST_FAIL,
+      payload: error.response?.data?.message || error.message,
+    });
+  }
+};
+
 export const register =
   (email, password, name, lastName) => async (dispatch) => {
-    try {
-      dispatch({ type: USER_REGISTER_REQUEST });
+    dispatch({ type: USER_REGISTER_REQUEST });
 
-      const data = await registerRequest(email, password, name, lastName);
+    const { data, error } = await registerUser(email, password, name, lastName);
 
+    if (data) {
       dispatch({ type: USER_REGISTER_SUCCESS, payload: data });
-
       setUserInfo(data);
-    } catch (error) {
+    } else {
       dispatch({
         type: USER_REGISTER_FAIL,
         payload: error.response?.data?.message || error.message,
@@ -50,3 +66,4 @@ export const logout = () => (dispatch) => {
   deleteUserInfo();
   dispatch({ type: USER_LOGOUT_SUCCESS });
 };
+export { usersList };
