@@ -1,6 +1,6 @@
 import React from 'react';
-import style from './activities.module.css';
 import { Table, Button, Container } from 'react-bootstrap';
+import style from './activities.module.css';
 
 export default function Activities(props) {
   const editHandler = (id) => {
@@ -36,7 +36,7 @@ export default function Activities(props) {
             {props?.activities ? (
               props.activities.map((item, id) => (
                 <tr key={id}>
-                  <td width='80%'>{item.name}</td>
+                  <td width='80%' className={style.name}>{item.name}</td>
                   <td className='text-center align-middle'>
                     <Button
                       variant='light'

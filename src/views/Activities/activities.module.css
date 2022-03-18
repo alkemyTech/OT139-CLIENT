@@ -2,15 +2,14 @@
 
 
 .container {
-    /* background-color: red; */
     padding: 20px;
     height: fit-content;
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
 }
 
 .title {
-    margin-top: 120px;
+    margin-top: 50px;
 }
 
 .title h1 {
@@ -21,31 +20,45 @@
     line-height: 72px;
     text-align: center;
     letter-spacing: -0.015em;
-    /* color: #000000; */
     color: #db5752;
 
 }
 
 .description {
     margin: 0 auto 80px;
-    width: 70%px;
+    width: 70%;
 }
 
 .description p {
     font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: normal;
-    font-size: 36px;
-    line-height: 50px;
+    font-size: 26px;
+    line-height: 40px;
     text-align: center;
     letter-spacing: -0.015em;
-    /* color: rgba(0, 0, 0, 0.8); */
     color: #9ac9fb;
 }
 
-@media (max-width: 400px) {
+.name{
+    font-size: 22px;
+    padding-left: 10px;
+}
+
+@media (min-width: 450px) {
     .container {
-        width: 100%;
+        width: 80%;
         padding: 5px;
+        margin-bottom: 100px;
+    }
+    .title {
+        margin-top: 80px;
+    }
+    .description {
+        width: 90%;
+    }
+    .description p {
+        font-size: 36px;
+        line-height: 50px;
     }
 }
