@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Table, Container } from 'react-bootstrap';
+import { get } from '../../../services/apiService';
 import { ErrorAlert } from '../../components/Alert';
 
 export const Categories = () => {
