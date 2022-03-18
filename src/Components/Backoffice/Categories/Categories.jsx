@@ -1,23 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { Table, Container } from 'react-bootstrap';
+import { ErrorAlert } from '../../components/Alert';
 
 export const Categories = () => {
   const [categories, setCategories] = useState([]);
-  const [errors, setErrors] = useState([]);
+  const url = `http://localhost:3000/categories`;
 
-  useEffect(() => {
-    async function getCategoriesData() {
-      try {
-        const response = await fetch('http://localhost:3000/categories');
-        const data = await response.json();
-        setCategories(data.image);
-      } catch (error) {
-        setErrors(error);
-      }
+  useEffect(async () => {
+    const {data, error} = await get(url);
+    if(error){
+      ErrorAlert('Error!', 'Ocurrio un error');
+    }else{
+      setCategories(data)                                                                                                                                                                                                         
     }
-
-    getCategoriesData();
-  }, []);
+    
+  }, [url]);
 
   return (
     <Container>
