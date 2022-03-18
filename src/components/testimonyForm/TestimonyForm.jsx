@@ -20,7 +20,6 @@ export default function TestimonyForm(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     // TO DO: Save Testimony
-    // isNew ? props.onCreate(testimony) : props.onUpdate(testimony);
   };
 
   return (
