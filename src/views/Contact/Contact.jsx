@@ -23,7 +23,7 @@ export default function Contact() {
     }
   }, [success]);
   const onSubmit = (data) => {
-    dispatch(addContact(data.name, data.email, data.message));
+    dispatch(addContact(data.firstName, data.email, data.message));
   };
 
   return (
