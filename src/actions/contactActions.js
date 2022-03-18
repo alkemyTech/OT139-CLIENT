@@ -1,6 +1,7 @@
 import {
   CONTACT_ADD_FAIL,
   CONTACT_ADD_REQUEST,
+  CONTACT_ADD_SUCCESS,
 } from '../constants/contactConstants';
 import { post } from '../services/apiService';
 
