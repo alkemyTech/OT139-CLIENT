@@ -7,8 +7,8 @@ export const post = async (endPoint, body) => {
   const response = {};
 
   try {
-    const axiosResponse = await axios.post(endPoint, body, headers);
-    response.data = axiosResponse.data;
+    const { data } = await axios.post(endPoint, body, headers);
+    response.data = data;
   } catch (error) {
     response.error = error;
   }
@@ -20,8 +20,8 @@ export const get = async (endPoint) => {
   const response = {};
 
   try {
-    const axiosResponse = await axios.get(endPoint);
-    response.data = axiosResponse.data;
+    const { data } = await axios.get(endPoint);
+    response.data = data;
   } catch (error) {
     response.error = error;
   }
