@@ -1,27 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Card from 'react-bootstrap/Card';
+import { Container, Row, Col, Card } from 'react-bootstrap';
+import { get } from '../../services/apiService';
+import { ErrorAlert } from '../../components/Alert';
 
 export const News = () => {
   const [news, setNews] = useState([]);
-  const [errors, setErrors] = useState([]);
+  const url = `http://localhost:3000/news`;
 
-  useEffect(() => {
-    async function getNews() {
-      try {
-        const response = await fetch('http://localhost:3000/news');
-        const data = await response.json();
-
-        setNews(data);
-      } catch (error) {
-        setErrors(error);
-      }
+  useEffect(async () => {
+    const { data, error } = await get(url);
+    if (error) {
+      ErrorAlert('Error!', 'Ocurrio un error');
+    } else {
+      setNews(data);
     }
-    getNews();
-  }, []);
+  }, [url]);
 
   return (
     <Container>
