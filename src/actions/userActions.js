@@ -10,7 +10,6 @@ import {
   USERS_LIST_SUCCESS,
   USERS_LIST_FAIL,
 } from '../constants/userConstants';
-
 import { setUserInfo, deleteUserInfo } from '../localStorage/storage';
 import { loginUser, registerUser, getUsers } from '../services/usersService';
 
