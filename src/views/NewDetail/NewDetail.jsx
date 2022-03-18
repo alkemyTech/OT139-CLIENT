@@ -4,7 +4,7 @@ import { Card } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import { get } from '../../services/apiService';
 import './newDetail.css';
-import { ErrorAlert } from '../Alert';
+import { ErrorAlert } from '../../components/Alert';
 
 const NewDetail = () => {
   const [data, setData] = useState({});
