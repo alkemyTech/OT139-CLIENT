@@ -1,4 +1,4 @@
-import { USER_INFO } from '../constants/localStorageConstants';
+import { USER_INFO, TOKEN } from '../constants/localStorageConstants';
 
 const getUserInfo = () => {
   const userInfo = localStorage.getItem(USER_INFO);
@@ -13,4 +13,24 @@ const deleteUserInfo = () => {
   localStorage.removeItem(USER_INFO);
 };
 
-export { getUserInfo, setUserInfo, deleteUserInfo };
+const getToken = () => {
+  const Token = localStorage.getItem(TOKEN);
+  return Token && JSON.parse(Token);
+};
+
+const setToken = (token) => {
+  localStorage.setItem(TOKEN, JSON.stringify(token));
+};
+
+const deleteToken = () => {
+  localStorage.removeItem(TOKEN);
+};
+
+export {
+  getUserInfo,
+  setUserInfo,
+  deleteUserInfo,
+  getToken,
+  setToken,
+  deleteToken,
+};

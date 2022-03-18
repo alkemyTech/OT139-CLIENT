@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { getUserInfo } from '../localStorage/storage';
+import { getUserInfo, getToken } from '../localStorage/storage';
 import {
   userLoginReducer,
   userLogoutReducer,
@@ -8,10 +8,12 @@ import {
 } from '../reducers/userReducers';
 
 const userInfoFromStorage = getUserInfo();
+const tokenFromStorage = getToken();
 
 const initialState = {
   userLogin: {
     userInfo: userInfoFromStorage,
+    token: tokenFromStorage,
   },
 };
 

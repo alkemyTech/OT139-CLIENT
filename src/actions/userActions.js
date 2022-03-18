@@ -10,7 +10,12 @@ import {
   USERS_LIST_SUCCESS,
   USERS_LIST_FAIL,
 } from '../constants/userConstants';
-import { setUserInfo, deleteUserInfo } from '../localStorage/storage';
+import {
+  setUserInfo,
+  deleteUserInfo,
+  setToken,
+  deleteToken,
+} from '../localStorage/storage';
 import { loginUser, registerUser, getUsers } from '../services/usersService';
 
 export const login = (email, password) => async (dispatch) => {
@@ -21,6 +26,7 @@ export const login = (email, password) => async (dispatch) => {
   if (data) {
     dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
     setUserInfo(data);
+    setToken(data.password);
   } else {
     dispatch({
       type: USER_LOGIN_FAIL,
@@ -53,6 +59,7 @@ export const register =
     if (data) {
       dispatch({ type: USER_REGISTER_SUCCESS, payload: data });
       setUserInfo(data);
+      setToken(data.password);
     } else {
       dispatch({
         type: USER_REGISTER_FAIL,
@@ -63,6 +70,7 @@ export const register =
 
 export const logout = () => (dispatch) => {
   deleteUserInfo();
+  deleteToken();
   dispatch({ type: USER_LOGOUT_SUCCESS });
 };
 export { usersList };
