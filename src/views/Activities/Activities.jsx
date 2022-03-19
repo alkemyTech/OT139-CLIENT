@@ -1,8 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Table, Button, Container } from 'react-bootstrap';
+import { ErrorAlert } from '../../components/Alert';
 import style from './activities.module.css';
 
-export default function Activities(props) {
+export default function Activities() {
+  const [activities, setActivities] = useState();
+  const [loading, setLoading] = useState(true);
+
+  const urlActivities = '';
+
+  const getData = async (url) => {
+    fetch(url)
+      .then((res) => res.json())
+      .then((res) => {
+        setActivities(res);
+      })
+      .catch((error) => {
+        ErrorAlert('Ups!!', 'Actividades no encontradas: ' + error.message);
+      });
+  };
+
+  useEffect(() => {
+    getData(urlActivities);
+    setLoading(false);
+  }, []);
+
   const editHandler = (id) => {
     //TODO
     return;
@@ -33,10 +55,12 @@ export default function Activities(props) {
             </tr>
           </thead>
           <tbody>
-            {props?.activities ? (
-              props.activities.map((item, id) => (
+            {activities ? (
+              activities.map((item, id) => (
                 <tr key={id}>
-                  <td width='80%' className={style.name}>{item.name}</td>
+                  <td width='80%' className={style.name}>
+                    {item.name}
+                  </td>
                   <td className='text-center align-middle'>
                     <Button
                       variant='light'
@@ -56,8 +80,10 @@ export default function Activities(props) {
                   </td>
                 </tr>
               ))
+            ) : loading ? (
+              <tr className='text-center'>CARGANDO</tr>
             ) : (
-              <tr className='text-center'>No se encontraron Actividades</tr>
+              <tr className='text-center'>NO HAY ACTIVIDADES</tr>
             )}
           </tbody>
         </Table>
