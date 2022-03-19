@@ -7,7 +7,7 @@ export default function Activities() {
   const [activities, setActivities] = useState();
   const [loading, setLoading] = useState(true);
 
-  const urlActivities = '';
+  const urlActivities = 'http://localhost:3000/activities';
 
   const getData = async (url) => {
     fetch(url)
