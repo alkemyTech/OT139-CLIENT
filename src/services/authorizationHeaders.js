@@ -11,5 +11,5 @@ export const getPrivateHeaders = () => {
 const setAuthorizationHeader = (headers) => {
   const token = getToken();
 
-  return (headers.Authorization = token);
+  headers.Authorization = token;
 };
