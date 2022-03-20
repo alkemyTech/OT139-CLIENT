@@ -1,24 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import TestimonyListRow from '../../components/TestimonyListRow/TestimonyListRow';
 import TestimonyListEmptyRow from '../../components/TestimonyListEmptyRow/TestimonyListEmptyRow';
+import { get } from '../../services/apiService';
 import './testimonials.css';
 
-let names = [
-  'Anthony Jefferson Jr.',
-  'Jessica',
-  'Rodrigo',
-  'Steven',
-  'Gonzalo',
-];
-
 export default function Testimonials() {
+  const [testimonials, setTestimonials] = useState([]);
+  
+  useEffect(() => {
+    async function getTestimonials() {
+      const { data, error } = await get('/testimonials');
+
+      if (!error) {
+        setTestimonials(data);
+      }
+    }
+
+    getTestimonials();
+  }, []);
+
   return (
     <div className='testimonials__container'>
       <header className='testimonials__header'>
         <div>
           <h2 className='testimonials__title'>Testimonios</h2>
           <h3 className='testimonials__subtitle'>
-            Estos son los testimonios disponibles de nuestros clientes.
+            Estos son los testimonios disponibles de nuestros socios.
           </h3>
         </div>
         <button type='button' className='testimonials__button'>
@@ -26,9 +33,9 @@ export default function Testimonials() {
         </button>
       </header>
       <div class='testimony_list'>
-        {names.length === 0 && <TestimonyListEmptyRow />}
-        {names.map((name) => (
-          <TestimonyListRow name={name} />
+        {(testimonials?.length === 0 || !testimonials) && <TestimonyListEmptyRow />}
+        {testimonials && testimonials.map(testimony => (
+          <TestimonyListRow key={testimony.id} name={testimony.name} />
         ))}
       </div>
     </div>
