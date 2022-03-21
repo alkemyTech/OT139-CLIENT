@@ -2,10 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 10vw;
-  margin-right: 10vw;
-  position: absolute;
-  top: 25%;
+  margin: 100px;
 }
 
 .flex-child p {
@@ -19,6 +16,8 @@
 }
 
 .flex-child {
+  display: flex;
+  flex-direction: column;
   flex: 1;
 }
 
@@ -32,12 +31,11 @@
   width: 100%;
 }
 
-@media screen and (min-width: 359px) and (max-width: 700px) {
+@media screen and (min-width: 259px) and (max-width: 700px) {
   .main {
     display: flex;
     flex-direction: column;
-    position: absolute;
-    top: 0;
+    margin: 20px;
   }
   .flex-child:first-child {
     border-right: none;
@@ -46,6 +44,6 @@
   }
 
   .Form-Contact {
-    margin-bottom: 100%;
+    margin-bottom: 50px;
   }
 }
