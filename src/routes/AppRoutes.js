@@ -8,6 +8,7 @@ import NewDetail from '../views/NewDetail/NewDetail.jsx';
 import Contact from '../views/Contact/Contact.jsx';
 import LoginForm from '../components/LoginForm/LoginForm.jsx';
 import RegisterForm from '../components/RegisterForm/RegisterForm.jsx';
+import { Categories } from '../components/Backoffice/Categories/Categories.jsx';
 
 export default function AppRoutes() {
   return (
@@ -20,6 +21,7 @@ export default function AppRoutes() {
       <Route path='/news' element={<News />} />
       <Route path='/news/:id' element={<NewDetail />} />
       <Route path='/backoffice/users' element={<UsersList />} />
+      <Route path='/backoffice/categories' element={<Categories />} />
     </Routes>
   );
 }

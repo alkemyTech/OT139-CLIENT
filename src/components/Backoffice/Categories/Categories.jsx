@@ -8,7 +8,8 @@ export const Categories = () => {
   const url = `http://localhost:3000/categories`;
 
   useEffect(async () => {
-    const {data, error} = await get(url);
+    const { data, error } = await get(url);
+
     if(error){
       ErrorAlert('Error!', 'Ocurrio un error');
     }else{
