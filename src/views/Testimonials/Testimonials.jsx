@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import TestimonyListRow from '../../components/TestimonyListRow/TestimonyListRow';
 import TestimonyListEmptyRow from '../../components/TestimonyListEmptyRow/TestimonyListEmptyRow';
-import { get } from '../../services/apiService';
+import { ErrorAlert, ConfirmAlert } from '../../components/Alert';
+import { get, httpDelete } from '../../services/apiService';
 import './testimonials.css';
 
 export default function Testimonials() {
@@ -15,8 +16,27 @@ export default function Testimonials() {
     // @TODO: Integrar con el formulario de edición de testimonios
   };
 
-  const handleDeleteTestimony = (id) => () => {
-    // @TODO: Integrar con el endpoint DELETE /testimonials
+  const handleDeleteTestimony = (id) => async () => {
+    const { isConfirmed } = await ConfirmAlert(
+      '¿Eliminar este testimonio?',
+      'Esta acción no se puede deshacer.'
+    );
+
+    if (isConfirmed) {
+      const { error } = await httpDelete(`/testimonials/${id}`);
+
+      if (!error) {
+        const filteredTestimonials = testimonials.filter(
+          (testimony) => testimony.id !== id
+        );
+        setTestimonials(filteredTestimonials);
+      } else {
+        ErrorAlert(
+          'Testimonio no eliminado',
+          'Ocurrio un error procesando su solicitud. Vuelva a intentarlo en unos momentos.'
+        );
+      }
+    }
   };
 
   useEffect(() => {
