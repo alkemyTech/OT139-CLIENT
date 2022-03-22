@@ -8,7 +8,7 @@ const Home = () => {
   const dataSlide = [
     {
       imageUrl:
-        'https://www.esan.edu.pe/images/blog/2016/06/14/ongempresas-principal.jpg',
+        'https://somosmas.org/wp-content/uploads/2018/03/como-lo-hacemos.jpg',
       text: 'Slide uno',
     },
     {
