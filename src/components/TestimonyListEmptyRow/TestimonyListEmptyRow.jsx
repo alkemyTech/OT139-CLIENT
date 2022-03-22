@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import '../TestimonyListRow/testimonyListRow.css';
 import './testimonyListEmptyRow.css';
 
@@ -9,5 +9,5 @@ export default function TestimonyListEmptyRow() {
         No hay testimonios disponibles en este momento.
       </div>
     </div>
-  )
+  );
 }
