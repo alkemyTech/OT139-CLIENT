@@ -15,11 +15,6 @@ export default function MyProfile() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const errorCardProps = {
-    title: 'Algo salio mal procesando su solicitud.',
-    text: 'Por favor vuelva a intentarlo en unos instantes.',
-  };
-
   const handleEditProfile = () => {
     // @TODO Implementar la funcionalidad del botón Editar Cuenta
   };
@@ -58,7 +53,7 @@ export default function MyProfile() {
   return (
     <div className='max_width_wrapper_medium mx-auto my-4'>
       {isLoading && <LoadingCard />}
-      {!isLoading && error && <ErrorCard {...errorCardProps} />}
+      {!isLoading && error && <ErrorCard />}
       {!isLoading && profileData && (
         <Container as={Card} fluid='md'>
           <Card.Body className='px-md-4'>
