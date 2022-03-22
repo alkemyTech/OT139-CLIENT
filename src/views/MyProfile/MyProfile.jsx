@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
@@ -20,10 +21,6 @@ export default function MyProfile() {
     text: 'Por favor vuelva a intentarlo en unos instantes.',
   };
 
-  const handleEditProfile = () => {
-    // @TODO Implementar la funcionalidad del botón Editar Cuenta
-  };
-
   const handleDeleteAccount = () => {
     // @TODO Implementar la funcionalidad del botón Eliminar Cuenta
   };
@@ -40,6 +37,7 @@ export default function MyProfile() {
         }
 
         const data = {
+          id: 5 ,
           firstName: 'John',
           lastName: 'Smith',
           email: 'johnsmith@example.com',
@@ -92,13 +90,14 @@ export default function MyProfile() {
                 {profileData?.email}
               </Col>
             </Row>
+            <Link to={`/${profileData.id}/edituser/`}>
             <Button
               className='mb-5'
               disabled={!profileData}
-              onClick={handleEditProfile}
             >
               Editar Cuenta
             </Button>
+            </Link>
             <Card.Subtitle className='mb-3'>
               <div className='subtitle color_danger'>Eliminar Cuenta</div>
             </Card.Subtitle>

@@ -31,14 +31,14 @@ const Home = () => {
     }
   ]
 
-  useEffect(() => {
-    setData({
-      ...data,
-      welcome: welcomeText,
-      slide: dataSlide,
-      news: news
-    });
-  }, [welcomeText, dataSlide, news]);
+  // useEffect(() => {
+  //   setData({
+  //     ...data,
+  //     welcome: welcomeText,
+  //     slide: dataSlide,
+  //     news: news
+  //   });
+  // }, [welcomeText, dataSlide, news]);
 
   return (
     <div id='home'>

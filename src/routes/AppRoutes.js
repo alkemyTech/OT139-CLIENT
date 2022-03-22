@@ -8,6 +8,8 @@ import NewDetail from '../views/NewDetail/NewDetail.jsx';
 import Contact from '../views/Contact/Contact.jsx';
 import LoginForm from '../components/LoginForm/LoginForm.jsx';
 import RegisterForm from '../components/RegisterForm/RegisterForm.jsx';
+import UserEdit from '../components/UserEdit/FormEditUser';
+import MyProfile from '../views/MyProfile/MyProfile';
 
 export default function AppRoutes() {
   return (
@@ -20,6 +22,10 @@ export default function AppRoutes() {
       <Route path='/news' element={<News />} />
       <Route path='/news/:id' element={<NewDetail />} />
       <Route path='/backoffice/users' element={<UsersList />} />
+      <Route path='/:id/edituser' element={<UserEdit />} />
+      <Route path='/:id/myprofile' element={<MyProfile />} />
+
+
     </Routes>
   );
 }

@@ -41,7 +41,7 @@ export default function FormEditUser() {
   };
   
   return (
-    <div className='p-4 mt-5 width_30 width_95 container_form'>
+    <div className='p-4 mt-5 mb-5 width_30 width_95 container_form'>
       <h1 className='color_red_ong text-center'>Editar Mi Perfil</h1>
       {islogged ? (
         <Formik
