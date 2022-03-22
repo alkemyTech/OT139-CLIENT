@@ -59,7 +59,7 @@ export const register =
     if (data) {
       dispatch({ type: USER_REGISTER_SUCCESS, payload: data });
       setUserInfo(data);
-      setToken(data.password);
+      setToken(data.users.password);
     } else {
       dispatch({
         type: USER_REGISTER_FAIL,
