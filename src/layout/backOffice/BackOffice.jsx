@@ -1,6 +1,6 @@
 import React from 'react';
-import Header from './Header'; //Change path to real component
-import Footer from './Footer'; //Change path to real component
+import Header from './../../components/header/Header';
+import { Footer } from './../../components/footer/Footer';
 
 const BackOffice = ({ children }) => {
   return (
