@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+.max_width_wrapper_small {
+  max-width: 500px;
+}
+
+.edit_form {
+  box-sizing: border-box;
+  padding: 1.5rem 2rem;
+  border: 1px solid rgba(17, 17, 26, 0.1);
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  box-shadow:
+    rgba(17, 17, 26, 0.1) 0px 4px 16px,
+    rgba(17, 17, 26, 0.1) 0px 8px 24px,
+    rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
+
+.edit_form__heading {
+  font-size: 1.25rem;
+  font-weight: normal;
+  margin-bottom: 1.5rem;
+}
+
+.edit_form__input_group {
+  margin-bottom: 1.125rem;
+}
+
+.edit_form__label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.required_field::after {
+  content: ' *';
+}
+
+.edit_form__input {
+  display: block;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  padding: 0.75rem;
+  border: 1px solid lightgray;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.875rem;
+  border-radius: 5px;
+}
+
+.edit_form__invalid_input {
+  border: solid 1px #F25878;
+}
+
+.edit_form__invalid_input:is(:focus, :active) {
+  outline: solid 1px #F25878;
+}
+
+.edit_form__error_msg {
+  margin: 0;
+  margin-left: 0.125rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #F25878;
+}
+
+.edit_form__btn {
+  padding: 0.875rem 0.5rem;
+  border-radius: 4px;
+  border: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.edit_form__btn:not(:last-of-type) {
+  margin-right: 1rem;
+}
+
+@media only screen and (max-width: 29.99em) {
+  .edit_form__btn {
+    font-size: 0.75rem;
+    font-weight: 400;
+    padding: 0.625rem 0.5rem;
+  }
+}
+
+.edit_form__btn_primary {
+  background-color: #1F6DE5;
+  color: #fff;
+}
+
+.edit_form__btn_primary[disabled] {
+  background-color: #71A5F7;
+}
+
+.edit_form__btn_primary:hover:not([disabled]) {
+  background-color: #1A5BBF;
+}
+
+.edit_form__btn_primary:active:not([disabled]) {
+  background-color: #154897;
+}
+
+.edit_form__btn_secondary {
+  color: #1F6DE5;
+  background-color: transparent;
+}
+
+.edit_form__btn_secondary[disabled] {
+  color: #71A5F7;
+}
+
+.edit_form__btn_secondary:hover:not([disabled]) {
+  color: #1A5BBF;
+}
+
+.edit_form__btn_secondary:active:not([disabled]) {
+  color: #154897;
+}
