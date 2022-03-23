@@ -4,11 +4,15 @@ import { Button } from 'react-bootstrap';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import styles from './loginForm.module.css';
 import { useNavigate } from 'react-router-dom';
-import { post } from '../../services/apiService';
 import { ErrorAlert } from '../Alert';
-
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { login } from '../../actions/userActions';
+import Loader from '../loader/Loader';
 const LoginForm = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const validateEmail = (values, errors) => {
     const regExEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
@@ -41,54 +45,66 @@ const LoginForm = () => {
     return errors;
   };
 
-  const onSubmit = async (values) => {
-    const url = 'http://localhost:3000/users/auth/login';
-    const {error, data} = await post(url);
-    if(error){
-      ErrorAlert('Error!', 'Ocurrio un error');
-    }else{
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo, loading, error } = userLogin;
+
+  useEffect(() => {
+    if (userInfo) {
       navigate('/');
     }
-    
+  }, [userInfo, navigate]);
+
+  const onSubmit = (values) => {
+    dispatch(login(values.email, values.password));
   };
 
   return (
     <div className={styles.container}>
-      <Formik
-        initialValues={{ email: '', password: '' }}
-        validate={validate}
-        onSubmit={onSubmit}
-      >
-        <Form className={styles.form}>
-          <h2>Iniciar sesión</h2>
+      {loading ? (
+        <Loader />
+      ) : error ? (
+        ErrorAlert('Error', error)
+      ) : (
+        <Formik
+          initialValues={{ email: '', password: '' }}
+          validate={validate}
+          onSubmit={onSubmit}
+        >
+          <Form className={styles.form}>
+            <h2>Iniciar sesión</h2>
 
-          <label className={styles.margin_top}>Email</label>
-          <Field
-            className={styles.input}
-            type='email'
-            name='email'
-            placeholder='Introduzca su Email'
-          />
-          <ErrorMessage name='email'>
-            {(message) => <small className={styles.error}>{message}</small>}
-          </ErrorMessage>
+            <label className={styles.margin_top}>Email</label>
+            <Field
+              className={styles.input}
+              type='email'
+              name='email'
+              placeholder='Introduzca su Email'
+            />
+            <ErrorMessage name='email'>
+              {(message) => <small className={styles.error}>{message}</small>}
+            </ErrorMessage>
 
-          <label className={styles.margin_top}>Contraseña</label>
-          <Field
-            className={styles.input}
-            type='password'
-            name='password'
-            placeholder='Introduzca su contraseña'
-          />
-          <ErrorMessage name='password'>
-            {(message) => <small className={styles.error}>{message}</small>}
-          </ErrorMessage>
+            <label className={styles.margin_top}>Contraseña</label>
+            <Field
+              className={styles.input}
+              type='password'
+              name='password'
+              placeholder='Introduzca su contraseña'
+            />
+            <ErrorMessage name='password'>
+              {(message) => <small className={styles.error}>{message}</small>}
+            </ErrorMessage>
 
-          <Button variant='primary' type='submit' className={styles.margin_top}>
-            Iniciar sesión
-          </Button>
-        </Form>
-      </Formik>
+            <Button
+              variant='primary'
+              type='submit'
+              className={styles.margin_top}
+            >
+              Iniciar sesión
+            </Button>
+          </Form>
+        </Formik>
+      )}
     </div>
   );
 };
