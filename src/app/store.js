@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { getUserInfo, getToken } from '../localStorage/storage';
 import {
+  userDetailsReducer,
   userLoginReducer,
   userLogoutReducer,
   userRegisterReducer,
@@ -22,6 +23,7 @@ export default configureStore({
     userLogin: userLoginReducer,
     userLogout: userLogoutReducer,
     userRegister: userRegisterReducer,
+    userDetails: userDetailsReducer,
     usersList: usersListReducer,
   },
   initialState,

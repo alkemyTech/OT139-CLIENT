@@ -10,6 +10,7 @@ import Activities from '../views/Activities/Activities.jsx';
 import LoginForm from '../components/LoginForm/LoginForm.jsx';
 import RegisterForm from '../components/RegisterForm/RegisterForm.jsx';
 import OrganizationEdit from '../views/OrganizationEdit/OrganizationEdit.jsx';
+import Categories from '../views/backOffice/Categories/Categories.jsx';
 
 export default function AppRoutes() {
   return (
@@ -25,6 +26,7 @@ export default function AppRoutes() {
       <Route path='/backoffice'>
         <Route path='users' element={<UsersList />} />
         <Route path='edit-organization' element={<OrganizationEdit />} />
+        <Route path='categories' element={<Categories />} />
       </Route>
     </Routes>
   );
