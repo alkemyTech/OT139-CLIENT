@@ -1,19 +1,16 @@
 import { Container, Form, Button, Row, Col } from 'react-bootstrap';
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
 import Loader from '../loader/Loader';
-import { ErrorAlert } from '../Alert';
-import BackOffice from '../../layout/backOffice/BackOffice';
-import { getCategoryDetails } from '../../actions/categoriesActions';
-import { Footer } from '../footer/Footer';
+import { ErrorAlert, SuccessAlert } from '../Alert';
+import {
+  createCategory,
+  updateCategory,
+} from '../../actions/categoriesActions';
 
 const CategoriesForm = ({ categoryObject }) => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
-
-  const categoryDetails = useSelector((state) => state.categoriesDetails);
-  const { category, loading, error } = categoryDetails;
 
   const categoryCreate = useSelector((state) => state.categoriesCreate);
   const {
@@ -29,31 +26,63 @@ const CategoriesForm = ({ categoryObject }) => {
     error: errorUpdate,
   } = categoryUpdate;
 
-  const { id } = useParams();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (id) {
-      dispatch(getCategoryDetails(id));
+    if (successUpdate) {
+      SuccessAlert('Categoria Creada');
     }
-  }, [id, dispatch]);
+    if (successCreate) {
+      SuccessAlert('Categoria Actualizada');
+    }
+    if (errorCreate) {
+      ErrorAlert('Error al crear categoria', errorCreate);
+    }
+    if (errorUpdate) {
+      ErrorAlert('Error al actualizar categoria', errorUpdate);
+    }
+    if (categoryObject) {
+      setName(categoryObject.name);
+      setDescription(categoryObject.description);
+    }
+  }, [categoryObject, successUpdate, successCreate, errorCreate, errorUpdate]);
 
-  const handleSubmit = () => {};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (categoryObject) {
+      dispatch(updateCategory({ name, description, id: categoryObject._id }));
+    } else {
+      dispatch(createCategory({ name, description }));
+    }
+  };
 
   return (
-    <BackOffice>
-      <Container>
+    <Container>
+      {loadingCreate || loadingUpdate ? (
+        <Loader />
+      ) : (
         <Row className='justify-content-md-center m-5 bg-light py-5 px-1 min-vh-70'>
           <Col xs={12} md={6}>
             <h1>Edit/Create Category</h1>
             <Form>
               <Form.Group>
-                <Form.Label>Name</Form.Label>
-                <Form.Control type='text'></Form.Control>
+                <Form.Label>Nombre</Form.Label>
+                <Form.Control
+                  type='text'
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder='Enter Name'
+                ></Form.Control>
               </Form.Group>
               <Form.Group>
-                <Form.Label>Description</Form.Label>
-                <Form.Control as='textarea' rows={3}></Form.Control>
+                <Form.Label>Descripcion</Form.Label>
+                <Form.Control
+                  as='textarea'
+                  rows={3}
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                ></Form.Control>
               </Form.Group>
               <Button className='my-3 w-100 p-2' onSubmit={handleSubmit}>
                 submit contact
@@ -61,8 +90,8 @@ const CategoriesForm = ({ categoryObject }) => {
             </Form>
           </Col>
         </Row>
-      </Container>
-    </BackOffice>
+      )}
+    </Container>
   );
 };
 

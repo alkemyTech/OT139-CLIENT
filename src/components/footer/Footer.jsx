@@ -21,7 +21,7 @@ export const Footer = () => {
     if (!organization) {
       dispatch(getOrganizationDetails());
     } else {
-      setLogo('/images/LOGO-SOMOS-MAS.png');
+      setLogo(organization.image);
     }
   }, [dispatch, organization]);
 

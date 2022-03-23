@@ -2,26 +2,10 @@ import {
   CATEGORIES_CREATE_ERROR,
   CATEGORIES_CREATE_REQUEST,
   CATEGORIES_CREATE_SUCCESS,
-  CATEGORIES_DETAILS_ERROR,
-  CATEGORIES_DETAILS_REQUEST,
-  CATEGORIES_DETAILS_SUCCESS,
   CATEGORIES_UPDATE_ERROR,
   CATEGORIES_UPDATE_REQUEST,
   CATEGORIES_UPDATE_SUCCESS,
 } from '../constants/categoriesConstants';
-
-const categoriesDetailsReducer = (state = {}, action) => {
-  switch (action.type) {
-    case CATEGORIES_DETAILS_REQUEST:
-      return { loading: true };
-    case CATEGORIES_DETAILS_SUCCESS:
-      return { loading: false, category: action.payload };
-    case CATEGORIES_DETAILS_ERROR:
-      return { loading: false, error: action.payload };
-    default:
-      return state;
-  }
-};
 
 const categoriesCreateReducer = (state = {}, action) => {
   switch (action.type) {
@@ -49,8 +33,4 @@ const categoriesUpdateReducer = (state = {}, action) => {
   }
 };
 
-export {
-  categoriesCreateReducer,
-  categoriesUpdateReducer,
-  categoriesDetailsReducer,
-};
+export { categoriesCreateReducer, categoriesUpdateReducer };
