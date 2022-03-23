@@ -34,20 +34,6 @@ export const put = async (endPoint, body) => {
   const response = {};
 
   try {
-    const { data } = await axios.put(endPoint, body, headers);
-    response.data = data;
-  } catch (error) {
-    response.error = error;
-  }
-
-  return response;
-};
-
-export const put = async (endPoint, body) => {
-  const headers = getPrivateHeaders();
-  const response = {};
-
-  try {
     const data = await axios.put(endPoint, body, headers);
     response.data = data;
   } catch (error) {
