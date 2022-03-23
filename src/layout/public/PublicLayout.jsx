@@ -7,7 +7,7 @@ const Logged = ({ children }) => {
     <>
       <Header />
       {children}
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
@@ -17,7 +17,7 @@ const Unlogged = ({ children }) => {
     <>
       <Header />
       {children}
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
