@@ -8,11 +8,7 @@ import NewDetail from '../views/NewDetail/NewDetail.jsx';
 import Contact from '../views/Contact/Contact.jsx';
 import LoginForm from '../components/LoginForm/LoginForm.jsx';
 import RegisterForm from '../components/RegisterForm/RegisterForm.jsx';
-<<<<<<< HEAD
-import { Categories } from '../components/Backoffice/Categories/Categories.jsx';
-=======
 import OrganizationEdit from '../views/OrganizationEdit/OrganizationEdit.jsx';
->>>>>>> 7cec569bcc03caaba619d5ede18bf73096ee4e57
 
 export default function AppRoutes() {
   return (
