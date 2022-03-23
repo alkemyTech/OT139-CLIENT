@@ -26,7 +26,7 @@ export const login = (email, password) => async (dispatch) => {
   if (data) {
     dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
     setUserInfo(data);
-    setToken(data.password);
+    setToken(data.token);
   } else {
     dispatch({
       type: USER_LOGIN_FAIL,
@@ -59,7 +59,7 @@ export const register =
     if (data) {
       dispatch({ type: USER_REGISTER_SUCCESS, payload: data });
       setUserInfo(data);
-      setToken(data.users.password);
+      setToken(data.token);
     } else {
       dispatch({
         type: USER_REGISTER_FAIL,
