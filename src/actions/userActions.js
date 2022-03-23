@@ -9,6 +9,9 @@ import {
   USERS_LIST_REQUEST,
   USERS_LIST_SUCCESS,
   USERS_LIST_FAIL,
+  USER_DETAILS_REQUEST,
+  USER_DETAILS_SUCCESS,
+  USER_DETAILS_FAIL,
 } from '../constants/userConstants';
 import {
   setUserInfo,
@@ -16,9 +19,14 @@ import {
   setToken,
   deleteToken,
 } from '../localStorage/storage';
-import { loginUser, registerUser, getUsers } from '../services/usersService';
+import {
+  loginUser,
+  registerUser,
+  getUsers,
+  getUser,
+} from '../services/usersService';
 
-export const login = (email, password) => async (dispatch) => {
+const login = (email, password) => async (dispatch) => {
   dispatch({ type: USER_LOGIN_REQUEST });
 
   const { data, error } = await loginUser(email, password);
@@ -50,27 +58,41 @@ const usersList = () => async (dispatch) => {
   }
 };
 
-export const register =
-  (email, password, name, lastName) => async (dispatch) => {
-    dispatch({ type: USER_REGISTER_REQUEST });
+const register = (email, password, name, lastName) => async (dispatch) => {
+  dispatch({ type: USER_REGISTER_REQUEST });
 
-    const { data, error } = await registerUser(email, password, name, lastName);
+  const { data, error } = await registerUser(email, password, name, lastName);
 
-    if (data) {
-      dispatch({ type: USER_REGISTER_SUCCESS, payload: data });
-      setUserInfo(data);
-      setToken(data.token);
-    } else {
-      dispatch({
-        type: USER_REGISTER_FAIL,
-        payload: error.response?.data?.message || error.message,
-      });
-    }
-  };
+  if (data) {
+    dispatch({ type: USER_REGISTER_SUCCESS, payload: data });
+    setUserInfo(data);
+    setToken(data.password);
+  } else {
+    dispatch({
+      type: USER_REGISTER_FAIL,
+      payload: error.response?.data?.message || error.message,
+    });
+  }
+};
 
-export const logout = () => (dispatch) => {
+const logout = () => (dispatch) => {
   deleteUserInfo();
   deleteToken();
   dispatch({ type: USER_LOGOUT_SUCCESS });
 };
-export { usersList };
+
+const getUserDetails = (id) => (dispatch) => {
+  dispatch({ type: USER_DETAILS_REQUEST });
+
+  const { data, error } = getUser();
+  if (data) {
+    dispatch({ type: USER_DETAILS_SUCCESS, payload: data });
+  } else if (error) {
+    dispatch({
+      type: USER_DETAILS_FAIL,
+      payload: error.response?.data?.message || error.message,
+    });
+  }
+};
+
+export { usersList, getUserDetails, logout, login, register };
