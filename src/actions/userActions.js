@@ -55,7 +55,6 @@ export const register =
     dispatch({ type: USER_REGISTER_REQUEST });
 
     const { data, error } = await registerUser(email, password, name, lastName);
-
     if (data) {
       dispatch({ type: USER_REGISTER_SUCCESS, payload: data });
       setUserInfo(data);
