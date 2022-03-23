@@ -1,11 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { ConfirmAlert } from "../../components/Alert";
-
-const entriesNews = [
-  { id: 0, name: "Show", imageUrl: "google.com", createdAt: "20/02/2022" },
-  { id: 1, name: "Snow", imageUrl: "google.com", createdAt: "28/02/2022" },
-  { id: 2, name: "Slow", imageUrl: "google.com", createdAt: "25/02/2022" }
-];
 
 function BackofficeNews() {
 
@@ -14,13 +7,16 @@ function BackofficeNews() {
 
   useEffect(() => {
     async function getBackOfficeNews() {
-
-
-      //TODO @implementación de obtención de News desde el endpoint
-
+      try {
+        const response = await fetch("http://localhost:3000/news");
+        const data = await response.json();
+        setEntries(data);
+      } catch (error) {
+        setError(error);
+      }
     };
-    setEntries(entriesNews);
-  });
+    getBackOfficeNews();
+  }, []);
 
   const handleEditNew = () => {
     //TODO @implementar la funcionalidad de editar 
@@ -52,7 +48,7 @@ function BackofficeNews() {
                   <td>{entriesItem.createdAt}</td>
                   <td>
                     <button type="button" onClick={handleEditNew} class="btn btn-outline-primary">Editar</button>
-                    <button type="button" onClick={handleDeleteNew(entriesItem.id, entriesItem.name)} class="btn btn-outline-danger">Borrar</button>
+                    <button type="button" onClick={handleDeleteNew} class="btn btn-outline-danger">Borrar</button>
                   </td>
                 </tr>
               )
