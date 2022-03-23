@@ -2,7 +2,7 @@ import React from 'react';
 import Header from './../../components/header/Header';
 import { Footer } from './../../components/footer/Footer';
 
-const BackOffice = ({ children }) => {
+const Logged = ({ children }) => {
   return (
     <>
       <Header />
@@ -12,4 +12,14 @@ const BackOffice = ({ children }) => {
   );
 };
 
-export default BackOffice;
+const Unlogged = ({ children }) => {
+  return (
+    <>
+      <Header />
+      {children}
+      <Footer />
+    </>
+  );
+};
+
+export { Logged, Unlogged };
