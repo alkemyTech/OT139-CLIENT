@@ -17,10 +17,11 @@ export const post = async (endPoint, body) => {
 };
 
 export const get = async (endPoint) => {
+  const headerss = getPrivateHeaders();
   const response = {};
-
+  
   try {
-    const { data } = await axios.get(endPoint);
+    const { data } = await axios.get(endPoint ,  { headers: headerss});
     response.data = data;
   } catch (error) {
     response.error = error;

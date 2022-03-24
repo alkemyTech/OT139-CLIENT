@@ -17,4 +17,8 @@ const registerUser = async (email, password, firstName, lastName) => {
   });
 };
 
-export { loginUser, registerUser, getUsers };
+const getUser = async () => {
+  return get('http://localhost:3000/auth/me')
+}
+
+export { loginUser, registerUser, getUsers , getUser };

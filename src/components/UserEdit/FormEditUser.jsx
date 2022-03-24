@@ -1,22 +1,32 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { Button } from 'react-bootstrap';
 import './formedituser.css';
+import { getUser } from '../../services/usersService';
 
 export default function FormEditUser() {
-  const [isAdmin, setIsAdmin] = useState(1);
-  const [islogged, setLogged] = useState(1); 
+  const [user , setUser] = useState()
   const [errorState, setErrorState] = useState({});
 
+  useEffect(() => {
+    const userData = async () => {
+      const { data } = await getUser()
+      setUser(data);
+    }
+    userData();
+  }, []);
+
   const initialValuesForm = {
-    name: '',
-    lastName: '', // here value of user registed
-    roleId: '',
+    firstName: user?.firstName,
+    lastName: user?.lastName,
+    roleId: user?.roleId,
   };
 
+  console.log(initialValuesForm)
+  
   const validateName = (values, errorsObject) => {
-    if (!values.name) {
-      return (errorsObject.name = 'El Nombre es Obligatorio');
+    if (!values.firstName) {
+      return (errorsObject.firstName = 'El Nombre es Obligatorio');
     }
     return errorsObject;
   };
@@ -43,7 +53,7 @@ export default function FormEditUser() {
   return (
     <div className='p-4 mt-5 mb-5 width_30 width_95 container_form'>
       <h1 className='color_red_ong text-center'>Editar Mi Perfil</h1>
-      {islogged ? (
+      {user ? (
         <Formik
           initialValues={initialValuesForm}
           validate={validateField}
@@ -53,10 +63,10 @@ export default function FormEditUser() {
             <Form noValidate className='needs-validation'>
               <div className='container_field d-flex flex-column ms-2'>
                 <div className='text-start'>
-                  <label htmlFor='name'>Nombre</label>
+                  <label htmlFor='firstName'>Nombre</label>
                   <Field
-                    id='name'
-                    name='name'
+                    id='firstName'
+                    name='firstName'
                     type='text'
                     className={
                       !errorState.name
@@ -90,7 +100,7 @@ export default function FormEditUser() {
                     className='color_red'
                   />
                 </div>
-                {isAdmin ? (
+                {user.roleId === 1 ? (
                   <div className='text-start'>
                     <label htmlFor='rolId'>Tipo de Usuario</label>
                     <Field
@@ -102,7 +112,7 @@ export default function FormEditUser() {
                       required
                     >
                       <option value='1'>Administrador</option>
-                      <option value='0'>Usuario</option>
+                      <option value='2'>Usuario</option>
                     </Field>
                     <ErrorMessage
                       name='rolId'
