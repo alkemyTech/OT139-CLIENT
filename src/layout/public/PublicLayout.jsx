@@ -10,7 +10,7 @@ const Logged = ({ children }) => {
       {console.log('estoy en logged')}
       <Header Menu={UserMenu} />
       {children}
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };
@@ -21,7 +21,7 @@ const Unlogged = ({ children }) => {
       {console.log('estoy en unlogged')}
       <Header Menu={LoginRegister} />
       {children}
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };
