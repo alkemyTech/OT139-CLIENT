@@ -5,14 +5,14 @@ import {
 } from '../constants/organizationConstants';
 
 export const organizationDetailsReducer = (
-  state = { organization: {} },
+  state = { organization: null },
   action
 ) => {
   switch (action.type) {
     case ORGANIZATION_DETAILS_REQUEST:
       return { ...state, loading: true };
     case ORGANIZATION_DETAILS_SUCCESS:
-      return { loading: false, organizationInfo: action.payload };
+      return { loading: false, organization: action.payload };
     case ORGANIZATION_DETAILS_FAIL:
       return { loading: false, error: action.payload };
     default:
