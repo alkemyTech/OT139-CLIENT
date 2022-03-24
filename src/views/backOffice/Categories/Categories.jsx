@@ -3,7 +3,7 @@ import { Table, Container } from 'react-bootstrap';
 import { get } from '../../../services/apiService';
 import { ErrorAlert } from '../../../components/Alert';
 
-export const Categories = () => {
+export default function Categories() {
   const [categories, setCategories] = useState([]);
   const url = `http://localhost:3000/categories`;
 
