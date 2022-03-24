@@ -6,10 +6,11 @@ import {
   putTestimonial,
   createTestimonial,
 } from '../../services/testimonialService';
+import { ErrorAlert, SuccessAlert } from '../Alert';
 
 export default function TestimonyForm(props) {
   const [testimonyData, setTestimony] = useState(props.testimony);
-  const [isNew, setIsNew] = useState(testimonyData ? true : false);
+  const [isNew, setIsNew] = useState(!testimonyData.id ? true : false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -25,10 +26,37 @@ export default function TestimonyForm(props) {
     event.preventDefault();
 
     if (isNew) {
-      // TO DO: Create Testimony
-      createTestimonial(testimonyData);
+      createTestimonial(testimonyData).then((res) => {
+        if (res.data) {
+          SuccessAlert(res.data.data.msg).then((res) => {
+            if (res.isConfirmed) {
+              // TODO : volver a pag anterior
+            }
+          });
+        } else if (res.error) {
+          ErrorAlert(res.error.response.data.msg).then((res) => {
+            if (res.isConfirmed) {
+              // TODO : volver a pag anterior
+            }
+          });
+        }
+      });
     } else {
-      putTestimonial(testimonyData.id, testimonyData);
+      putTestimonial(testimonyData.id, testimonyData).then((res) => {
+        if (res.data) {
+          SuccessAlert(res.data.data.msg).then((res) => {
+            if (res.isConfirmed) {
+              // TODO : volver a pag anterior
+            }
+          });
+        } else if (res.error) {
+          ErrorAlert(res.error.response.data.msg).then((res) => {
+            if (res.isConfirmed) {
+              // TODO : volver a pag anterior
+            }
+          });
+        }
+      });
     }
   };
 

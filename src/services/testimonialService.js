@@ -1,12 +1,11 @@
-import { put } from './apiService';
+import { put, post } from './apiService';
 
 const putTestimonial = async (id, data) => {
   return put(`/testimonials/${id}`, data);
 };
 
 const createTestimonial = async (data) => {
-  // TODO: put(`/testimonials/`, data);
-  return;
+  return post(`/testimonials`, data);
 };
 
 export { putTestimonial, createTestimonial };
