@@ -1,7 +1,7 @@
 import { get, post } from './apiService';
 
 const getUsers = async () => {
-  return get('/users');
+  return get('http://localhost:3000/users');
 };
 
 const loginUser = async (email, password) => {

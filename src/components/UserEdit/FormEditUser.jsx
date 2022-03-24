@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { Button } from 'react-bootstrap';
-import './formedituser.css';
+import './formeditUser.css';
 import { getUser } from '../../services/usersService';
 
 export default function FormEditUser() {

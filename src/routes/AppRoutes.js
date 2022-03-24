@@ -11,6 +11,8 @@ import RegisterForm from '../components/RegisterForm/RegisterForm.jsx';
 import UserEdit from '../components/UserEdit/FormEditUser';
 import MyProfile from '../views/MyProfile/MyProfile';
 import OrganizationEdit from '../views/OrganizationEdit/OrganizationEdit.jsx';
+import Categories from '../views/backOffice/Categories/Categories.jsx';
+import BackofficeNews from '../views/Backoffice/News.jsx';
 
 export default function AppRoutes() {
   return (
@@ -27,9 +29,13 @@ export default function AppRoutes() {
       <Route path='/backoffice/users' element={<UsersList />} />
       <Route path='/edituser' element={<UserEdit />} />
       <Route path='/myprofile' element={<MyProfile />} />
-      <Route path='/backoffice'>
       <Route path='users' element={<UsersList />} />
       <Route path='edit-organization' element={<OrganizationEdit />} />
+      <Route path="/backoffice">
+        <Route path='users' element={<UsersList />} />
+        <Route path="edit-organization" element={<OrganizationEdit />} />
+        <Route path="categories" element={<Categories />} />
+        <Route path="news" element={<BackofficeNews />} />
       </Route>
     </Routes>
   );
