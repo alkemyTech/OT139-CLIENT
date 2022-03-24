@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
+import { contactAddReducer } from '../reducers/contactReducers';
 import { getUserInfo, getToken } from '../localStorage/storage';
 import {
   userDetailsReducer,
@@ -25,6 +26,7 @@ export default configureStore({
     userRegister: userRegisterReducer,
     userDetails: userDetailsReducer,
     usersList: usersListReducer,
+    contactAdd: contactAddReducer,
   },
   initialState,
 });
