@@ -21,8 +21,6 @@ export default function FormEditUser() {
     lastName: user?.lastName,
     roleId: user?.roleId,
   };
-
-  console.log(initialValuesForm)
   
   const validateName = (values, errorsObject) => {
     if (!values.firstName) {
@@ -51,7 +49,7 @@ export default function FormEditUser() {
   };
   
   return (
-    <div className='p-4 mt-5 mb-5 width_30 width_95 container_form'>
+    <div className='width_25 width_95 container_form mb-5 pt-4'>
       <h1 className='color_red_ong text-center'>Editar Mi Perfil</h1>
       {user ? (
         <Formik
@@ -61,7 +59,7 @@ export default function FormEditUser() {
         >
           {() => (
             <Form noValidate className='needs-validation'>
-              <div className='container_field d-flex flex-column ms-2'>
+              <div className='container_field d-flex flex-column'>
                 <div className='text-start'>
                   <label htmlFor='firstName'>Nombre</label>
                   <Field
@@ -89,8 +87,8 @@ export default function FormEditUser() {
                     type='text'
                     className={
                       !errorState.lastName
-                        ? 'field me-2 mb-2 mt-2 w-100'
-                        : 'field me-2 mb-2 mt-2 w-100 is-invalid form-control'
+                        ? 'field mb-2 mt-2 w-100'
+                        : 'field mb-2 mt-2 w-100 is-invalid form-control'
                     }
                     required
                   />
@@ -122,7 +120,7 @@ export default function FormEditUser() {
                   </div>
                 ) : null}
                 <div className='mb-3 text-center'>
-                  <Button type='submit' className='button_style mt-3 w-50'>
+                  <Button type='submit' className='button_style mt-3'>
                     Modificar Datos
                   </Button>
                 </div>

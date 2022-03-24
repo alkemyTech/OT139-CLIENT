@@ -5,12 +5,20 @@
   margin-left: auto !important;
 }
 
-.color_red {
-  color: red;
+.container_view {
+  width: 100%;
 }
 
-.width_30 {
-  width: 30%;
+.button_style {
+  width: 75%;
+}
+
+.width_95 {
+  width: 95%;
+}
+
+.color_red {
+  color: red;
 }
 
 .button_style {
@@ -19,7 +27,6 @@
   box-sizing: border-box !important;
   border-radius: 6px !important;
   border: 1px solid #18a0fb !important;
-  width: 25%;
 }
 
 .button_style:hover {
@@ -38,16 +45,8 @@
   color: #db5752;
 }
 
-@media only screen and (max-width: 896px) {
-  .container_view {
-    width: 100% !important;
-  }
-
-  .button_style {
-    width: 75% !important;
-  }
-
-  .width_95 {
-    width: 95% !important;
+@media only screen and (min-width: 896px) {
+  .width_25 {
+    width: 25%;
   }
 }

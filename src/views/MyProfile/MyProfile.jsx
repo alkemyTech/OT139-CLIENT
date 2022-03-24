@@ -32,7 +32,6 @@ export default function MyProfile() {
         }
 
         const data = {
-          id: 5 ,
           firstName: 'John',
           lastName: 'Smith',
           email: 'johnsmith@example.com',
@@ -85,7 +84,7 @@ export default function MyProfile() {
                 {profileData?.email}
               </Col>
             </Row>
-            <Link to={`/${profileData.id}/edituser/`}>
+            <Link to={`/edituser/`}>
             <Button
               className='mb-5'
               disabled={!profileData}
