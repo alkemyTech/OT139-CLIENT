@@ -1,4 +1,6 @@
+import { getToken, getUserInfo } from '../localStorage/storage';
 import { get, post } from './apiService';
+import axios from 'axios';
 
 const getUsers = async () => {
   return get('http://localhost:3000/users');
@@ -18,7 +20,20 @@ const registerUser = async (email, password, firstName, lastName) => {
 };
 
 const getUser = async () => {
-  return get(`http://localhost:3000/users/me`);
+  const response = {};
+  const token = getToken();
+  try {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    const { data } = await axios.get(`http://localhost:3000/auth/me`, config);
+    response.data = data;
+  } catch (error) {
+    response.error = error;
+  }
+  return response;
 };
 
 export { loginUser, registerUser, getUsers, getUser };

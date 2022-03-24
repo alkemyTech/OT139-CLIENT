@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 import CustomLink from '../CustomLink/CustomLink';
 import { get } from '../../services/apiService';
-import { Menu } from '../Backoffice/Menu/Menu';
 
 import './header.css';
 
@@ -21,13 +20,15 @@ const menu = [
   },
 ];
 
-export default function Header() {
+export default function Header({ Menu }) {
   const [logo, setLogo] = useState('');
   const [errors, setError] = useState(null);
 
   useEffect(() => {
     async function getOrganizationLogo() {
-      const { data, error } = await get('http://localhost:3000/organizations/1/public');
+      const { data, error } = await get(
+        'http://localhost:3000/organizations/1/public'
+      );
 
       if (!error) {
         setLogo(data.image);
