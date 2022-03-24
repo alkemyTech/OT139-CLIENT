@@ -28,8 +28,6 @@ export default function AppRoutes() {
         <Route path="categories" element={<Categories />} />
         <Route path="news" element={<BackofficeNews />} />
       </Route>
-      <Route path='/news' element={<News />} />
-      <Route path='/news/:id' element={<NewDetail />} />
     </Routes>
   );
 }
