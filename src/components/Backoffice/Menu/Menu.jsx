@@ -9,15 +9,15 @@ export const Menu = () => {
   const user = getUserInfo();
   
   useEffect(()=>{
-    if(user && !user.msg){
-      setUserRole(user.user.roleId)
+    if(user && !user.users.msg){
+      setUserRole(user.users.roleId)
     }
   }, [userRole, setUserRole])
 
   if (userRole === 1) {
     return <AdminMenu />;
   } else if (userRole === 2) {
-    return <UserMenu user={ user.user.firstName } />;
+    return <UserMenu user={ user.users.firstName } />;
   } else {
     return <LoginRegister />
   }
