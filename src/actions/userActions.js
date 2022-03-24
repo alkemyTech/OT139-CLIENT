@@ -33,7 +33,7 @@ const login = (email, password) => async (dispatch) => {
 
   if (data) {
     dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
-    setUserInfo(data);
+    setUserInfo(data.user);
     setToken(data.token);
   } else {
     dispatch({
