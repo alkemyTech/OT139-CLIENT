@@ -3,9 +3,9 @@ import {
   categoriesCreateReducer,
   categoriesUpdateReducer,
 } from '../reducers/categoriesReducers';
-import { organizationsDetailsReducer } from '../reducers/organizationsReducers';
 import { getUserInfo, getToken } from '../localStorage/storage';
 import {
+  userDetailsReducer,
   userLoginReducer,
   userLogoutReducer,
   userRegisterReducer,
@@ -25,10 +25,10 @@ export default configureStore({
   reducer: {
     categoriesCreate: categoriesCreateReducer,
     categoriesUpdate: categoriesUpdateReducer,
-    organizationsDetails: organizationsDetailsReducer,
     userLogin: userLoginReducer,
     userLogout: userLogoutReducer,
     userRegister: userRegisterReducer,
+    userDetails: userDetailsReducer,
     usersList: usersListReducer,
   },
   initialState,
