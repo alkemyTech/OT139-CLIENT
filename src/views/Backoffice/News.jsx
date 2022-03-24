@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { get } from "../../services/apiService";
 
 function BackofficeNews() {
 
@@ -8,7 +9,7 @@ function BackofficeNews() {
   useEffect(() => {
     async function getBackOfficeNews() {
       try {
-        const response = await fetch("http://localhost:3000/news");
+        const response = await get("http://localhost:3000/news");
         const data = await response.json();
         setEntries(data);
       } catch (error) {
