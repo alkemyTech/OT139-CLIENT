@@ -34,7 +34,7 @@ export const put = async (endPoint, body) => {
   const response = {};
 
   try {
-    const data = await axios.put(endPoint, body, headers);
+    const { data } = await axios.put(endPoint, body, headers);
     response.data = data;
   } catch (error) {
     response.error = error;

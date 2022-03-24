@@ -12,14 +12,14 @@ form {
   font-size: 20px;
 }
 
-.cont_Img {
+.cont_img {
   width: 50%;
   height: auto;
   margin: 0 auto;
   display: block;
 }
 
-.cont_Img img {
+.cont_img img {
   width: 100%;
   height: auto;
   display: block;
