@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Slider from '../Slider/Slider';
 import style from './home.module.css';
 import './home.css';
 
@@ -35,6 +36,7 @@ const Home = () => {
 
   return (
     <div id='home'>
+      <Slider data={data.slide} />
       <h1 className={style.title}>{data.welcome}</h1>
       <h2 className={style.subtitle}>Ultimas novedades</h2>
       <div className={style.news_container}>
