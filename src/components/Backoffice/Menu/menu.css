@@ -18,8 +18,18 @@
     text-align: center;
   }
 
-  .link-perfil {
-    text-align: center;
-    text-decoration: none;
-    color: #000;
-  }
+.link-perfil {
+  text-align: center;
+  text-decoration: none;
+  color: #000;
+}
+
+.links {
+  text-align: center;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}

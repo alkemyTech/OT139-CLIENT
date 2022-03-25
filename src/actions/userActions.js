@@ -66,7 +66,7 @@ const register = (email, password, name, lastName) => async (dispatch) => {
   if (data) {
     dispatch({ type: USER_REGISTER_SUCCESS, payload: data });
     setUserInfo(data);
-    setToken(data.password);
+    setToken(data.token);
   } else {
     dispatch({
       type: USER_REGISTER_FAIL,
@@ -81,16 +81,18 @@ const logout = () => (dispatch) => {
   dispatch({ type: USER_LOGOUT_SUCCESS });
 };
 
-const getUserDetails = (id) => (dispatch) => {
+const getUserDetails = () => async (dispatch) => {
   dispatch({ type: USER_DETAILS_REQUEST });
 
-  const { data, error } = getUser();
+  const { data, error } = await getUser();
+  console.log(data)
   if (data) {
     dispatch({ type: USER_DETAILS_SUCCESS, payload: data });
   } else if (error) {
     dispatch({
       type: USER_DETAILS_FAIL,
       payload: error.response?.data?.message || error.message,
+      logged: false
     });
   }
 };

@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { NavDropdown } from 'react-bootstrap';
-import { getUserInfo, deleteUserInfo } from '../../../localStorage/storage';
+import { deleteUserInfo } from '../../../localStorage/storage';
 import './menu.css';
 
-export const UserMenu = ({ user }) => {
+export const UserMenu = ({ userInfo }) => {
   const navigate = useNavigate();
 
   const logout = () => {
@@ -13,7 +13,7 @@ export const UserMenu = ({ user }) => {
   }
 
   return (
-    <NavDropdown title={`${ user }`} id='basic-nav-dropdown'>
+    <NavDropdown title={`${ userInfo.firstName }`} id='basic-nav-dropdown'>
       <NavDropdown.Item className='links'>
         <Link to='/my-profile'>Ir a mi perfil</Link>
       </NavDropdown.Item>
