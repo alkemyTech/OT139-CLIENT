@@ -30,7 +30,6 @@ const login = (email, password) => async (dispatch) => {
   dispatch({ type: USER_LOGIN_REQUEST });
 
   const { data, error } = await loginUser(email, password);
-
   if (data) {
     dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
     setUserInfo(data.user);
@@ -61,19 +60,18 @@ const usersList = () => async (dispatch) => {
 const register = (email, password, name, lastName) => async (dispatch) => {
   dispatch({ type: USER_REGISTER_REQUEST });
 
-  const { data, error } = await registerUser(email, password, name, lastName);
-
-  if (data) {
-    dispatch({ type: USER_REGISTER_SUCCESS, payload: data });
-    setUserInfo(data);
-    setToken(data.password);
-  } else {
-    dispatch({
-      type: USER_REGISTER_FAIL,
-      payload: error.response?.data?.message || error.message,
-    });
-  }
-};
+    const { data, error } = await registerUser(email, password, name, lastName);
+    if (data) {
+      dispatch({ type: USER_REGISTER_SUCCESS, payload: data });
+      setUserInfo(data);
+      setToken(data.token);
+    } else {
+      dispatch({
+        type: USER_REGISTER_FAIL,
+        payload: error.response?.data?.message || error.message,
+      });
+    }
+  };
 
 const logout = () => (dispatch) => {
   deleteUserInfo();

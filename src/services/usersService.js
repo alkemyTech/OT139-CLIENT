@@ -36,4 +36,4 @@ const getUser = async () => {
   return response;
 };
 
-export { loginUser, registerUser, getUsers, getUser };
+export { loginUser, registerUser, getUsers , getUser };
