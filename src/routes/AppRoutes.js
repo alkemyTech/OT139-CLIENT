@@ -10,7 +10,7 @@ import LoginForm from '../components/LoginForm/LoginForm.jsx';
 import RegisterForm from '../components/RegisterForm/RegisterForm.jsx';
 import OrganizationEdit from '../views/OrganizationEdit/OrganizationEdit.jsx';
 import Categories from '../views/backOffice/Categories/Categories.jsx';
-import BackofficeNews from '../views/Backoffice/News.jsx';
+import BackofficeNews from '../views/backOffice/News';
 
 export default function AppRoutes() {
   return (

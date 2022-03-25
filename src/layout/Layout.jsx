@@ -1,8 +1,7 @@
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import BackOffice from './backOffice/BackOffice';
 import { Logged, Unlogged } from './public/PublicLayout';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
-import React from 'react';
 import { getUserDetails } from '../actions/userActions';
 import { getUserInfo } from '../localStorage/storage';
 
@@ -20,16 +19,14 @@ const Layout = ({ children }) => {
         dispatch(getUserDetails());
       }
     }
-    console.log(logout)
   }, [dispatch, userInfo, userRegister, userLogin, logout]);
 
   
   return (
     <>
-      {console.log(userInfo)}
       {!userInfo ? (
         <Unlogged>{children}</Unlogged>
-      ) : userInfo.roleId == 1 ? (
+      ) : userInfo.roleId === 1 ? (
         <BackOffice>{children}</BackOffice>
       ) : (
         <Logged userInfo={ userInfo }>{children}</Logged>

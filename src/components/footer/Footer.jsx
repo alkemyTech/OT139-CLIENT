@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Image } from 'react-bootstrap';
-import './footer.css';
-import { useDispatch, useSelector } from 'react-redux';
 import { getOrganizationDetails } from '../../actions/organizationAction';
 import Loader from '../loader/Loader';
+import './footer.css';
 
 export const Footer = () => {
   const [logo, setLogo] = useState([]);
   const [socialMedias, setSocialMedias] = useState([]);
   let arraySocialMedias = [];
-  const [errors, setErrors] = useState([]);
 
   const dispatch = useDispatch();
 
   const organizationDetails = useSelector((state) => state.organizationDetails);
-  const { organization, loading, error } = organizationDetails;
+  const { organization, loading } = organizationDetails;
 
   useEffect(
     () => {
