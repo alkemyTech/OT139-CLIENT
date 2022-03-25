@@ -1,5 +1,6 @@
 import { Table, Button, Container } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import React, { useEffect } from 'react';
 import { usersList } from '../../actions/userActions';
 import Loader from '../../components/loader/Loader';
@@ -49,6 +50,7 @@ const UsersList = () => {
                   <td>{user.email}</td>
                   <td>
                     <div className='text-center'>
+                      <Link to={`/edituser/`}>
                       <Button
                         variant='light'
                         className='btn-sm w-25'
@@ -56,6 +58,7 @@ const UsersList = () => {
                       >
                         <i className='fas fa-edit'></i>
                       </Button>
+                      </Link>
                       <Button
                         variant='danger'
                         className='btn-sm w-25'
