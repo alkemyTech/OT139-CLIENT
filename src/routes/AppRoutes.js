@@ -9,6 +9,7 @@ import Contact from '../views/Contact/Contact.jsx';
 import Activities from '../views/Activities/Activities.jsx';
 import LoginForm from '../components/LoginForm/LoginForm.jsx';
 import RegisterForm from '../components/RegisterForm/RegisterForm.jsx';
+import Activity from '../views/Activities/Activity'
 import UserEdit from '../components/UserEdit/FormEditUser';
 import MyProfile from '../views/MyProfile/MyProfile';
 import OrganizationEdit from '../views/OrganizationEdit/OrganizationEdit.jsx';
@@ -25,6 +26,10 @@ export default function AppRoutes() {
       <Route path='/news/:id' element={<NewDetail />} />
       <Route path='/login' element={<LoginForm />} />
       <Route path='/register' element={<RegisterForm />} />
+      <Route path='/news' element={<News />} />
+      <Route path='/news/:id' element={<NewDetail />} />
+      <Route path='/backoffice/users' element={<UsersList />} />
+      <Route path="/activity/:id" element={<Activity />}/>
       <Route path='/edituser' element={<UserEdit />} />
       <Route path='/myprofile' element={<MyProfile />} />
       <Route path='/backoffice'>
