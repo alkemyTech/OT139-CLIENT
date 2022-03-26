@@ -9,7 +9,9 @@ import {
 import { ErrorAlert, SuccessAlert } from '../Alert';
 
 export default function TestimonyForm(props) {
-  const [testimonyData, setTestimony] = useState(props.testimony);
+  const [testimonyData, setTestimony] = useState(props.testimony || {});
+  const defaultImageToForm =
+    'https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640';
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -84,12 +86,8 @@ export default function TestimonyForm(props) {
           />
           <div className={style.cont_img}>
             <img
-              src={
-                props.testimony?.image
-                  ? testimonyData.image
-                  : 'https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640'
-              }
-              alt='...'
+              src={testimonyData.image || defaultImageToForm}
+              alt='muestra de imagen'
               className='rounded'
             ></img>
           </div>
