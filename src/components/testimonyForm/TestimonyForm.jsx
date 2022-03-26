@@ -10,11 +10,6 @@ import { ErrorAlert, SuccessAlert } from '../Alert';
 
 export default function TestimonyForm(props) {
   const [testimonyData, setTestimony] = useState(props.testimony);
-  const [isNew, setIsNew] = useState(!testimonyData.id ? true : false);
-  console.log({
-    testimonyData,
-    isNew,
-  });
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -29,35 +24,33 @@ export default function TestimonyForm(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (isNew) {
-      async function create() {
-        try {
-          const response = await createTestimony(testimonyData);
-          response.data
-            ? SuccessAlert('Creado con exito')
-            : ErrorAlert(response.data.msg + 'err');
-        } catch (error) {
-          ErrorAlert('Algo salio mal: no se creo');
-        }
+    async function create() {
+      if (!testimonyData.name || !testimonyData.content) {
+        return ErrorAlert('Todos los campos son obligatorios');
       }
-      create();
-    } else {
-      async function update() {
-        try {
-          const response = await updateTestimony(
-            testimonyData.id,
-            testimonyData
-          );
-
-          response.data
-            ? SuccessAlert(response.data.msg)
-            : ErrorAlert(response.data.msg + 'err');
-        } catch (error) {
-          ErrorAlert('Algo salio mal: no se actualizo');
-        }
+      try {
+        const response = await createTestimony(testimonyData);
+        response.data
+          ? SuccessAlert('Creado con exito')
+          : ErrorAlert('Error al crear');
+      } catch (error) {
+        ErrorAlert('Algo salio mal: no se creo');
       }
-      update();
     }
+
+    async function update() {
+      try {
+        const response = await updateTestimony(testimonyData.id, testimonyData);
+
+        response.data
+          ? SuccessAlert(response.data.msg)
+          : ErrorAlert('Error al actualizar');
+      } catch (error) {
+        ErrorAlert('Algo salio mal: no se actualizo');
+      }
+    }
+
+    testimonyData.id ? update() : create();
   };
 
   return (
