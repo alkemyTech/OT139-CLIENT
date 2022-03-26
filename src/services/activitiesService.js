@@ -1,7 +1,7 @@
 import { get } from './apiService';
 
 const getActivities = async () => {
-  return get('/activities');
+  return await get('/activities');
 };
 
 export { getActivities };
