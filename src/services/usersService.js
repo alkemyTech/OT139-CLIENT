@@ -1,6 +1,5 @@
 import { getToken, getUserInfo } from '../localStorage/storage';
 import { get, post } from './apiService';
-import axios from 'axios';
 
 const getUsers = async () => {
   return get('http://localhost:3000/users');
@@ -28,8 +27,12 @@ const getUser = async () => {
         Authorization: `Bearer ${token}`,
       },
     };
-    const { data } = await axios.get(`http://localhost:3000/auth/me`, config);
-    response.data = data;
+    const { data } = await get(`http://localhost:3000/auth/me`, config);
+    if(data.roleId === 1){
+      response.data = {...data, isAdmin: true};
+    } else {
+      response.data = {...data, isAdmin: false};
+    }
   } catch (error) {
     response.error = error;
   }

@@ -2,15 +2,14 @@ import React from 'react';
 import Header from './../../components/header/Header';
 import { Footer } from './../../components/footer/Footer';
 import { UserMenu } from '../../components/Backoffice/Menu/UserMenu';
-import { LoginRegister } from '../../components/Backoffice/Menu/LoginRegister';
+import { LoginRegister } from '../../components/LoginRegisterButtons/LoginRegister';
 
 const Logged = ({userInfo, children }) => {
   return (
     <>
-      {console.log('estoy en logged')}
       <Header Menu={UserMenu} userInfo={userInfo} />
       {children}
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
@@ -18,10 +17,9 @@ const Logged = ({userInfo, children }) => {
 const Unlogged = ({ children }) => {
   return (
     <>
-      {console.log('estoy en unlogged')}
       <Header Menu={LoginRegister} />
       {children}
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

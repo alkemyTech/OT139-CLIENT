@@ -10,21 +10,21 @@ const Layout = ({ children }) => {
   const userDetails = useSelector((state) => state.userDetails);
   const userLogin = useSelector((state) => state.userLogin.logged);
   const userRegister = useSelector((state) => state.userRegister.logged);
-  const logout = useSelector((state) => state.userLogout.logged);
+  const userLogout = useSelector((state) => state.userLogout.logged);
   const { userInfo } = userDetails;
   
   useEffect(() => {
+    console.log(userLogout)
     if (getUserInfo() && !userInfo) {
       dispatch(getUserDetails());
     }
-  }, [dispatch, userInfo, userRegister, userLogin, logout]);
+  }, [dispatch, userInfo, userRegister, userLogin, userLogout]);
 
-  
   return (
     <>
       {!userInfo ? (
         <Unlogged>{children}</Unlogged>
-      ) : userInfo.roleId === 1 ? (
+      ) : userInfo.isAdmin ? (
         <BackOffice>{children}</BackOffice>
       ) : (
         <Logged userInfo={ userInfo }>{children}</Logged>

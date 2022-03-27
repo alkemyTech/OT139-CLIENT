@@ -1,6 +1,9 @@
 #basic-nav-dropdown {
     text-decoration: none;
     color: #000; 
+    text-align: center;
+    left: 0;
+    right: 0;
 }
 
 .dropdown-item a {
@@ -26,10 +29,20 @@
 
 .links {
   text-align: center;
+  text-decoration: none;
+  color: #000;
+  padding: 10px 0;
 }
 
 button {
   background: none;
   border: none;
   cursor: pointer;
+}
+
+.dropdown-menu.show {
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
 }

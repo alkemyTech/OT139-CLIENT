@@ -8,7 +8,7 @@ const BackOffice = ({ children }) => {
     <>
       <Header Menu={AdminMenu} />
       {children}
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
