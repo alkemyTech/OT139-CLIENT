@@ -14,10 +14,8 @@ const Layout = ({ children }) => {
   const { userInfo } = userDetails;
   
   useEffect(() => {
-    if (getUserInfo()) {
-      if (!userInfo) {
-        dispatch(getUserDetails());
-      }
+    if (getUserInfo() && !userInfo) {
+      dispatch(getUserDetails());
     }
   }, [dispatch, userInfo, userRegister, userLogin, logout]);
 
