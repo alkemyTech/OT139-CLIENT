@@ -9,7 +9,7 @@ const Logged = ({userInfo, children }) => {
     <>
       <Header Menu={UserMenu} userInfo={userInfo} />
       {children}
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };
@@ -19,7 +19,7 @@ const Unlogged = ({ children }) => {
     <>
       <Header Menu={LoginRegister} />
       {children}
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };
