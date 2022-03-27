@@ -1,21 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Card } from 'react-bootstrap';
-import { get } from '../../services/apiService';
 import { ErrorAlert } from '../../components/Alert';
+import { getEntries } from '../../services/newsService';
 
 export const News = () => {
   const [news, setNews] = useState([]);
-  const url = `http://localhost:3000/news`;
 
-  useEffect(async () => {
-    const { data, error } = await get(url);
-    if (error) {
-      ErrorAlert('Error!', 'Ocurrio un error');
-    } else {
-      setNews(data);
-    }
-  }, [url]);
+  useEffect(() => {
+    const getNews = async () => {
+      const { data, error } = await getEntries();
+      if (error) {
+        ErrorAlert('Error!', 'Ocurrio un error');
+      } else {
+        setNews(data);
+      }
+    };
+    getNews();
+  }, []);
 
   return (
     <Container>
