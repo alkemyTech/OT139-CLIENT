@@ -20,8 +20,6 @@ export default function AppRoutes() {
     <Routes>
       <Route path='/' element={<Home />} />
       <Route path='/about' element={<About />} />
-      <Route path='/backoffice/categories' element={<CategoriesForm />} />
-      <Route path='/backoffice/categories/:id' element={<CategoriesForm />} />
       <Route path='/contact' element={<Contact />} />
       <Route path='/news' element={<News />} />
       <Route path='/news/:id' element={<NewDetail />} />
