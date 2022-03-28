@@ -1,4 +1,4 @@
-import { get, put, post, httpDelete } from './apiService';
+import { get, put, post, remove } from './apiService';
 
 const getTestimonials = async () => {
   return get('/testimonials');
@@ -13,7 +13,7 @@ const createTestimony = async (data) => {
 };
 
 const deleteTestimony = async (id) => {
-  return httpDelete(`/testimonials/${id}`);
+  return remove(`/testimonials/${id}`);
 };
 
 export { getTestimonials, updateTestimony, createTestimony, deleteTestimony };

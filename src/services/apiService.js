@@ -44,7 +44,7 @@ export const put = async (endPoint, body) => {
   return response;
 };
 
-export const httpDelete = async (endPoint, body) => {
+export const remove = async (endPoint, body) => {
   const headers = getPrivateHeaders();
   const response = {};
 
