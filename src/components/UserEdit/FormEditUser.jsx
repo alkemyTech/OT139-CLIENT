@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { Button } from 'react-bootstrap';
-import './formedituser.css';
+import './formeditUser.css';
 import { getUser } from '../../services/usersService';
 
 export default function FormEditUser() {
-  const [user , setUser] = useState()
+  const [user, setUser] = useState();
   const [errorState, setErrorState] = useState({});
 
   useEffect(() => {
     const userData = async () => {
-      const { data } = await getUser()
+      const { data } = await getUser();
       setUser(data);
-    }
+    };
     userData();
   }, []);
 
@@ -21,7 +21,7 @@ export default function FormEditUser() {
     lastName: user?.lastName,
     roleId: user?.roleId,
   };
-  
+
   const validateName = (values, errorsObject) => {
     if (!values.firstName) {
       return (errorsObject.firstName = 'El Nombre es Obligatorio');
@@ -44,10 +44,10 @@ export default function FormEditUser() {
     return errorsObject;
   };
 
-  const handleSubmit = ( _, resetForm) => {
+  const handleSubmit = (_, resetForm) => {
     resetForm();
   };
-  
+
   return (
     <div className='width_25 width_95 container_form mb-5 pt-4'>
       <h1 className='color_red_ong text-center'>Editar Mi Perfil</h1>

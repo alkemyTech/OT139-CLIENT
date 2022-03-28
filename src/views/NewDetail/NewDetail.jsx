@@ -2,27 +2,29 @@ import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Card } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
-import { get } from '../../services/apiService';
 import './newDetail.css';
 import { ErrorAlert } from '../../components/Alert';
+import { getNewsById } from '../../services/newsService';
 
 const NewDetail = () => {
   const [data, setData] = useState({});
   const { id } = useParams();
-  const url = `http://localhost3000/news/${id}`;
 
-  useEffect(async () => {
-    const {data, error} = await get(url);
-    if(error){
-      ErrorAlert('Error!', 'Ocurrio un error');
-    }else{
-      setData({
-        ...data,
-        data
-      })                                                                                                                                                                                                         
-    }
-    
-  }, [url]);
+  useEffect(() => {
+    const getNewsDetails = async () => {
+      const { data, error } = await getNewsById(id);
+      if (error) {
+        ErrorAlert('Error!', 'Ocurrio un error');
+      } else {
+        setData({
+          ...data,
+          data,
+        });
+      }
+    };
+
+    getNewsDetails();
+  }, [id]);
 
   return (
     <Card className='card'>
