@@ -8,7 +8,7 @@ import {
   updateCategory,
 } from '../../actions/categoriesActions';
 
-const CategoriesForm = ({ categoryObject }) => {
+const CategoriesForm = (props) => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
 
@@ -41,17 +41,17 @@ const CategoriesForm = ({ categoryObject }) => {
     if (errorUpdate) {
       ErrorAlert('Error al actualizar categoria', errorUpdate);
     }
-    if (categoryObject) {
-      setName(categoryObject.name);
-      setDescription(categoryObject.description);
+    if (props.category) {
+      setName(props.category.name);
+      setDescription(props.category.description);
     }
-  }, [categoryObject, successUpdate, successCreate, errorCreate, errorUpdate]);
+  }, [props.category, successUpdate, successCreate, errorCreate, errorUpdate]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (categoryObject) {
-      dispatch(updateCategory({ name, description, id: categoryObject._id }));
+    if (props.category) {
+      dispatch(updateCategory({ name, description, id: props.category._id }));
     } else {
       dispatch(createCategory({ name, description }));
     }
@@ -64,7 +64,7 @@ const CategoriesForm = ({ categoryObject }) => {
       ) : (
         <Row className='justify-content-md-center m-5 bg-light py-5 px-1 min-vh-70'>
           <Col xs={12} md={6}>
-            <h1>Edit/Create Category</h1>
+            <h1>{props.category ? 'Editar' : 'Crear'} Categoria</h1>
             <Form>
               <Form.Group>
                 <Form.Label>Nombre</Form.Label>
@@ -85,7 +85,7 @@ const CategoriesForm = ({ categoryObject }) => {
                 ></Form.Control>
               </Form.Group>
               <Button className='my-3 w-100 p-2' onSubmit={handleSubmit}>
-                submit contact
+                Enviar categoria
               </Button>
             </Form>
           </Col>
