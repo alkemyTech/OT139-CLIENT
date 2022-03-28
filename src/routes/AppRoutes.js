@@ -28,8 +28,8 @@ export default function AppRoutes() {
         <Route path="edit-organization" element={<OrganizationEdit />} />
         <Route path="categories" element={<Categories />} />
         <Route path="news" element={<BackofficeNews />} />
+        <Route path="contacts" element={<ContactList/>}/>
       </Route>
-      <Route path="/backoffice/contacts" element={<ContactList/>}/>
     </Routes>
   );
 }
