@@ -12,16 +12,15 @@ const NewDetail = () => {
   const url = `http://localhost3000/news/${id}`;
 
   useEffect(async () => {
-    const {data, error} = await get(url);
-    if(error){
+    const { data, error } = await get(url);
+    if (error) {
       ErrorAlert('Error!', 'Ocurrio un error');
-    }else{
+    } else {
       setData({
         ...data,
-        data
-      })                                                                                                                                                                                                         
+        data,
+      });
     }
-    
   }, [url]);
 
   return (

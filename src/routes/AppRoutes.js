@@ -17,7 +17,6 @@ export default function AppRoutes() {
   const userDetails = useSelector((state) => state.userDetails);
   const { userInfo, logged } = userDetails;
   const [isAdmin, setIsAdmin] = useState(false);
-  const privatesRoutes = ['/backoffice', '/backoffice/*'];
 
   useEffect(() => {
     console.log(logged)
