@@ -2,26 +2,23 @@ import React, { useState, useEffect } from 'react';
 import { Table, Button, Container } from 'react-bootstrap';
 import { ErrorAlert } from '../../components/Alert';
 import style from './activities.module.css';
+import { getActivities } from '../../services/activitiesService';
 
 export default function Activities() {
   const [activities, setActivities] = useState();
   const [loading, setLoading] = useState(true);
 
-  const urlActivities = 'http://localhost:3000/activities';
-
-  const getData = async (url) => {
-    fetch(url)
-      .then((res) => res.json())
-      .then((res) => {
-        setActivities(res);
-      })
-      .catch((error) => {
-        ErrorAlert('Ups!!', 'Actividades no encontradas: ' + error.message);
-      });
-  };
-
   useEffect(() => {
-    getData(urlActivities);
+    async function fetchAPI() {
+      let { data, error } = await getActivities('/activities');
+      if (error) {
+        ErrorAlert('Error!', 'Ocurrio un error');
+      } else {
+        setActivities(data);
+      }
+    }
+
+    fetchAPI();
     setLoading(false);
   }, []);
 
@@ -81,9 +78,13 @@ export default function Activities() {
                 </tr>
               ))
             ) : loading ? (
-              <tr className='text-center'>CARGANDO</tr>
+              <tr className='text-center'>
+                <td>CARGANDO</td>
+              </tr>
             ) : (
-              <tr className='text-center'>NO HAY ACTIVIDADES</tr>
+              <tr className='text-center'>
+                <td>NO HAY ACTIVIDADES</td>
+              </tr>
             )}
           </tbody>
         </Table>
