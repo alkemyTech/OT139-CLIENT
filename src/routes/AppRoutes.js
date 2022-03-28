@@ -19,7 +19,6 @@ export default function AppRoutes() {
   const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
-    console.log(logged)
     if (userInfo) {
       const { isAdmin } = userInfo;
       setIsAdmin(isAdmin);
