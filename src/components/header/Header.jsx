@@ -24,7 +24,9 @@ export default function Header() {
 
   useEffect(() => {
     async function getOrganizationLogo() {
-      const { data, error } = await get('/organizations/1/public');
+      const { data, error } = await get(
+        'http://localhost:3000/organizations/1/public'
+      );
 
       if (!error) {
         setLogo(data.image);
@@ -50,9 +52,7 @@ export default function Header() {
       {menu.map((menuItem) => {
         return (
           <li key={menuItem.name}>
-            <CustomLink to={menuItem.url}>
-              {menuItem.name}
-            </CustomLink>
+            <CustomLink to={menuItem.url}>{menuItem.name}</CustomLink>
           </li>
         );
       })}

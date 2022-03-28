@@ -14,7 +14,7 @@ import UserEdit from '../components/UserEdit/FormEditUser';
 import MyProfile from '../views/MyProfile/MyProfile';
 import OrganizationEdit from '../views/OrganizationEdit/OrganizationEdit.jsx';
 import Categories from '../views/backOffice/Categories/Categories.jsx';
-import BackofficeNews from '../views/backOffice/News.jsx';
+import BackofficeNews from '../views/Backoffice/News.jsx';
 
 export default function AppRoutes() {
   return (
