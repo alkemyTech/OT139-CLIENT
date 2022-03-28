@@ -3,7 +3,7 @@ import TestimonyListRow from '../../components/TestimonyListRow/TestimonyListRow
 import TestimonyListEmptyRow from '../../components/TestimonyListEmptyRow/TestimonyListEmptyRow';
 import TestimonyForm from '../../components/testimonyForm/TestimonyForm';
 import { ErrorAlert, ConfirmAlert } from '../../components/Alert';
-import { get, httpDelete } from '../../services/apiService';
+import { getTestimonials, deleteTestimony } from '../../services/testimonyService';
 import './testimonials.css';
 
 export default function Testimonials() {
@@ -33,7 +33,7 @@ export default function Testimonials() {
     );
 
     if (isConfirmed) {
-      const { error } = await httpDelete(`/testimonials/${id}`);
+      const { error } = await deleteTestimony(id);
 
       if (!error) {
         const filteredTestimonials = testimonials.filter(
@@ -50,8 +50,8 @@ export default function Testimonials() {
   };
 
   useEffect(() => {
-    async function getTestimonials() {
-      const { data, error } = await get('/testimonials');
+    async function getTestimonialsData() {
+      const { data, error } = await getTestimonials();
 
       if (!error) {
         setTestimonials(data);
@@ -63,7 +63,7 @@ export default function Testimonials() {
       }
     }
 
-    getTestimonials();
+    getTestimonialsData();
   }, [isFormOpen]);
 
   return (
