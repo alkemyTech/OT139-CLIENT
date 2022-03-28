@@ -26,10 +26,15 @@ export default function AppRoutes() {
       <Route path='/news/:id' element={<NewDetail />} />
       <Route path='/login' element={<LoginForm />} />
       <Route path='/register' element={<RegisterForm />} />
+      <Route path='/news' element={<News />} />
+      <Route path='/news/:id' element={<NewDetail />} />
+      <Route path='/backoffice/users' element={<UsersList />} />
       <Route path='/activity/:id' element={<Activity />} />
+      <Route path='/edituser' element={<UserEdit />} />
+      <Route path='/myprofile' element={<MyProfile />} />
       <Route path='/backoffice'>
-        <Route path='/edituser' element={<UserEdit />} />
-        <Route path='/myprofile' element={<MyProfile />} />
+        <Route path='edituser' element={<UserEdit />} />
+        <Route path='myprofile' element={<MyProfile />} />
         <Route path='users' element={<UsersList />} />
         <Route path='edit-organization' element={<OrganizationEdit />} />
         <Route path='categories' element={<Categories />} />

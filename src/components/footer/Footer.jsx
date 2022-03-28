@@ -1,51 +1,66 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Image } from 'react-bootstrap';
+import { getOrganizationDetails } from '../../actions/organizationActions';
+import Loader from '../loader/Loader';
 import './footer.css';
 
 export const Footer = () => {
-  const [logo, setLogo] = useState([]);
+  const [logo, setLogo] = useState('');
   const [socialMedias, setSocialMedias] = useState([]);
-  const arraySocialMedias = Object.entries(socialMedias);
-  const [errors, setErrors] = useState([]);
+
+  const dispatch = useDispatch();
+
+  const organizationDetails = useSelector((state) => state.organizationDetails);
+  const { organization, loading } = organizationDetails;
 
   useEffect(() => {
-    async function getFooterData() {
-      try {
-        const response = await fetch(
-          'http://localhost:3000/organizations/1/public'
-        );
-        const data = await response.json();
-        setLogo(data.image);
-        setSocialMedias(data.social);
-      } catch (error) {
-        setErrors(error);
-      }
+    if (!organization) {
+      dispatch(getOrganizationDetails());
+    } else {
+      setLogo(organization.image);
+
+      setSocialMedias([
+        { Twitter: organization.twitter },
+        { Flickr: organization.flickr },
+        { Youtube: organization.youtube },
+        { Linkedin: organization.linkedin },
+        { Facebook: organization.facebook },
+        { Vimeo: organization.vimeo },
+      ]);
     }
-    getFooterData();
-  }, []);
+  }, [dispatch, organization]);
 
   return (
     <footer className='footer m-0 p-0 vh-20'>
       <Container>
-        <Row>
-          <Col>
-            {!logo ? (
-              'Logo somos mas'
-            ) : (
-              <img src={logo} alt='Logo somos mas'></img>
-            )}
-          </Col>
-          <Col className='footer-links'>
-            <Link to={`/about`}>Acerca</Link>
-            <Link to={`/contact`}>Nosotros</Link>
-          </Col>
-          <Col className='footer-links'>
-            {arraySocialMedias.map((socialMediaItem) => {
-              return <a href={`${socialMediaItem[1]}`}>{socialMediaItem[0]}</a>;
-            })}
-          </Col>
-        </Row>
+        {loading ? (
+          <Loader />
+        ) : (
+          <Row>
+            <Col>
+              {!logo ? (
+                'Logo somos mas'
+              ) : (
+                <Image src={logo} alt='logo somos mas' />
+              )}
+            </Col>
+            <Col className='footer-links'>
+              <Link to={`/about`}>Acerca</Link>
+              <Link to={`/contact`}>Nosotros</Link>
+            </Col>
+            <Col className='footer-links'>
+              {socialMedias.map((socialMediaItem, id) => {
+                return (
+                  <a key={id} href={`${Object.values(socialMediaItem)[0]}`}>
+                    {Object.keys(socialMediaItem)[0]}
+                  </a>
+                );
+              })}
+            </Col>
+          </Row>
+        )}
       </Container>
     </footer>
   );
