@@ -2,18 +2,23 @@ import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Table } from 'react-bootstrap';
 import {get} from '../../services/apiService'
+import { ErrorAlert } from '../Alert';
 
 const ContactMembers = () => {
-    const [data, setData] = useState({});
-  const url = 'http://localhost3000/members';
+    const [members, setMembers] = useState({data: ''});
+    const url = 'http://localhost3000/members';
 
   useEffect(() => {
-    const {data} = get(url);
-      setData({
-        ...data,
-        data
+    const {data, error} = get(url);
+    if(error){
+      ErrorAlert('Error!', 'Ocurrio un error');
+    }else{
+      setMembers({
+        ...members,
+        data: data
       })
-  }, [data]);
+    }
+  }, [members]);
 
   return (
     <Table striped bordered hover>
@@ -23,7 +28,7 @@ const ContactMembers = () => {
         </tr>
       </thead>
       <tbody>
-        {data.map((member) => (
+        {members.data.map((member) => (
           <tr>
             <td>
               <img src={member.imageUrl} alt='' />
