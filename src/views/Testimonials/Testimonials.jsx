@@ -55,6 +55,11 @@ export default function Testimonials() {
 
       if (!error) {
         setTestimonials(data);
+      } else {
+        ErrorAlert(
+          'Testimonios no encontrados',
+          'Ocurrio un error procesando su solicitud. Vuelva a intentarlo en unos momentos.'
+        );
       }
     }
 
