@@ -1,0 +1,16 @@
+.container_error {
+  border: 1px solid #18a0fb;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(189, 189, 189, 0.472);
+}
+
+@media only screen and (min-width: 896px) {
+  
+  .content_all {
+    width: 75%;
+    margin: auto;
+  }
+}
