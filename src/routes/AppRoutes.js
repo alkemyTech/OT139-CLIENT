@@ -18,7 +18,15 @@ export default function AppRoutes() {
       <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact/>}/>
-      <Route path="/news/create" element={<NovedadesForm news={[]}/>}/>
+      <Route path="/news/create" element={<NovedadesForm />}/>
+      <Route path="/news/update" element={<NovedadesForm news={
+      {
+      id:1,
+      title: 'Novedad 1',
+      content: 'Contenido de la novedad 1',
+      imageUrl:"",
+      categoryID:"news"
+      }}/>}/>
       <Route path="/news" element={<News />} />
       <Route path='/news/:id' element={<NewDetail />} />
       <Route path='/login' element={<LoginForm />} />
