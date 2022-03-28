@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Slider from '../Slider/Slider';
+import Slider from '../../components/Slider/Slider';
 import style from './home.module.css';
 import './home.css';
 

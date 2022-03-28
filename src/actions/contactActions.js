@@ -3,12 +3,12 @@ import {
   CONTACT_ADD_REQUEST,
   CONTACT_ADD_SUCCESS,
 } from '../constants/contactConstants';
-import { post } from '../services/contactService';
+import { postContact } from '../services/contactService';
 
 const addContact = (name, email, message) => async (dispatch) => {
   dispatch({ type: CONTACT_ADD_REQUEST });
 
-  const { data, error } = await post({ name, email, message });
+  const { data, error } = await postContact({ name, email, message });
   if (data) {
     dispatch({ type: CONTACT_ADD_SUCCESS });
   } else {
