@@ -11,12 +11,13 @@ import RegisterForm from '../components/RegisterForm/RegisterForm.jsx';
 import Activity from '../views/Activities/Activity';
 import UserEdit from '../components/UserEdit/FormEditUser';
 import MyProfile from '../views/MyProfile/MyProfile';
-import { PrivateRoutes } from './PrivateRoutes/PrivateRoutes.jsx';
+import { PrivateRoutes } from '../components/Backoffice/PrivateRoutes/PrivateRoutes.jsx';
 
 export default function AppRoutes() {
   const userDetails = useSelector((state) => state.userDetails);
   const { userInfo, logged } = userDetails;
   const [isAdmin, setIsAdmin] = useState(false);
+  const privatesRoutes = ['/backoffice', '/backoffice/*'];
 
   useEffect(() => {
     console.log(logged)
