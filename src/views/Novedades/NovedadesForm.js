@@ -1,41 +1,42 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
+import { Form, Button } from 'react-bootstrap';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import Logo from '../../img/Logo.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'animate.css';
 import './NovedadesForm.css';
 
 export default function NovedadesForm(news) {
   const { register, handleSubmit, setValue, trigger } = useForm();
-  const [dataNews, setData] = useState([]);
   let method = '';
   let url = '';
+  let title = '';
+  let content = '';
+  let imageUrl = '';
+  let id = '';
 
-  if (news) {
+  if (JSON.stringify(news.news) === '{}') {
     method = 'POST';
     url = 'http://localhost:8000/news/news';
   } else {
-    console.log(news);
-    url = `http://localhost:8000/news/${news.id}`;
+    id = news.news.id;
+    title = news.news.title;
+    content = news.news.content;
+    imageUrl = news.news.imageUrl;
+    url = `http://localhost:8000/news/${id}`;
     method = 'PATCH';
-    setData(news);
-    console.log(news.news.title)
   }
-console.log(news)
+
   const onSubmit = async function (data) {
     try {
-      console.log(data);
       const requestOptions = {
         method: method,
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'multipart/form-data' },
         body: JSON.stringify(data),
       };
-      const response = await fetch(url, requestOptions);
-      console.log(response.status);
+      await fetch(url, requestOptions);
     } catch (err) {}
   };
 
@@ -45,8 +46,7 @@ console.log(news)
 
   return (
     <div className='main'>
-      <div className='Novedades_Form animate__animated animate__fadeInLeft '>
-        <img src={Logo} className='Logo' />
+      <div className='Novedades_Form animate__animated animate__fadeInLeft'>
         <Form onSubmit={handleSubmit(onSubmit)}>
           <h2 className='text-center'>Crear Novedades</h2>
           <Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
@@ -55,8 +55,8 @@ console.log(news)
               type='text'
               placeholder=''
               required
+              value={title}
               {...register('title')}
-              value={`${dataNews.title}`}
             />
           </Form.Group>
           <Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
@@ -67,20 +67,10 @@ console.log(news)
             <Form.Label>Contenido</Form.Label>
             <CKEditor
               editor={ClassicEditor}
-              data='<p>Hello from CKEditor 5!</p>'
-              onReady={(editor) => {
-                // You can store the "editor" and use when it is needed.
-                console.log('Editor is ready to use!', editor);
-              }}
+              data={`${content}`}
               onChange={(event, editor) => {
                 setValue('content', editor.getData());
                 trigger('content');
-              }}
-              onBlur={(event, editor) => {
-                console.log('Blur.', editor);
-              }}
-              onFocus={(event, editor) => {
-                console.log(event);
               }}
             />
           </Form.Group>
@@ -101,4 +91,4 @@ console.log(news)
       </div>
     </div>
   );
-};
+}
