@@ -9,7 +9,7 @@ import Contact from '../views/Contact/Contact.jsx';
 import Activities from '../views/Activities/Activities.jsx';
 import LoginForm from '../components/LoginForm/LoginForm.jsx';
 import RegisterForm from '../components/RegisterForm/RegisterForm.jsx';
-import Activity from '../views/Activities/Activity'
+import Activity from '../views/Activities/Activity';
 import UserEdit from '../components/UserEdit/FormEditUser';
 import MyProfile from '../views/MyProfile/MyProfile';
 import OrganizationEdit from '../views/OrganizationEdit/OrganizationEdit.jsx';
