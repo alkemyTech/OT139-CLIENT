@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Home from '../components/Home/Home.jsx';
-import About from '../components/About/About.jsx';
+import Home from '../views/Home/Home.jsx';
+import About from '../views/About/About.jsx';
 import { News } from '../views/News/News.jsx';
 import UsersList from '../views/backOffice/UsersList.jsx';
 import NewDetail from '../views/NewDetail/NewDetail.jsx';
@@ -14,7 +14,7 @@ import UserEdit from '../components/UserEdit/FormEditUser';
 import MyProfile from '../views/MyProfile/MyProfile';
 import OrganizationEdit from '../views/OrganizationEdit/OrganizationEdit.jsx';
 import Categories from '../views/backOffice/Categories/Categories.jsx';
-import BackofficeNews from '../views/Backoffice/News.jsx';
+import BackofficeNews from '../views/backOffice/News.jsx';
 
 export default function AppRoutes() {
   return (
