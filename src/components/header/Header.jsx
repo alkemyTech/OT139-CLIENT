@@ -44,6 +44,7 @@ export default function Header({ Menu, userInfo }) {
     <Navbar bg='light' expand='lg'>
       <Container>
         <Navbar.Brand>
+          {logo && !errors && (
           <img
             src={logo}
             width='auto'
@@ -51,6 +52,7 @@ export default function Header({ Menu, userInfo }) {
             className='d-inline-block align-top'
             alt='Logo somos más'
           />
+        )}
         </Navbar.Brand>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>

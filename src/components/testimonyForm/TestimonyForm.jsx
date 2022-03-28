@@ -38,6 +38,7 @@ export default function TestimonyForm(props) {
       } catch (error) {
         ErrorAlert('Algo salio mal: no se creo');
       }
+      props.closeForm();
     }
 
     async function update() {
@@ -50,6 +51,7 @@ export default function TestimonyForm(props) {
       } catch (error) {
         ErrorAlert('Algo salio mal: no se actualizo');
       }
+      props.closeForm();
     }
 
     testimonyData.id ? update() : create();

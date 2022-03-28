@@ -1,0 +1,53 @@
+.testimony_list_row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 2rem;
+  border: 1px solid #ccc;
+}
+
+.testimony_list_row:first-of-type {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.testimony_list_row:last-of-type {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.testimony_list_row__name {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.testimony_list_row__action_buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.testimony_list_row__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  background: #DDD;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.testimony_list_row__button:hover {
+  background: #CCC;
+}
+
+.testimony_list_row__button:active {
+  background: #BBB;
+}
+
+.testimony_list_row__button > i {
+  color: #666;
+  font-size: 16px;
+}

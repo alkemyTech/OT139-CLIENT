@@ -43,3 +43,17 @@ export const put = async (endPoint, body) => {
 
   return response;
 };
+
+export const remove = async (endPoint, body) => {
+  const headers = getPrivateHeaders();
+  const response = {};
+
+  try {
+    const { data } = await axios.delete(endPoint, body, headers);
+    response.data = data;
+  } catch (error) {
+    response.error = error;
+  }
+
+  return response;
+};

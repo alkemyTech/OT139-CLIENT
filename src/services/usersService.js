@@ -20,14 +20,9 @@ const registerUser = async (email, password, firstName, lastName) => {
 
 const getUser = async () => {
   const response = {};
-  const token = getToken();
+  
   try {
-    const config = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
-    const { data } = await get(`http://localhost:3000/auth/me`, config);
+    const { data } = await get(`http://localhost:3000/auth/me`);
     if(data.roleId === 1){
       response.data = {...data, isAdmin: true};
     } else {
