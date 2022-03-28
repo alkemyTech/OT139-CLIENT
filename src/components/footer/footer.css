@@ -1,18 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
 
 .footer {
-    border-top: 1.5px solid #000;
-    height: 310px;
+  border-top: 1.5px solid #000;
+  height: auto;
+  width: 100%;
+  bottom: 0;
 }
 
 .footer-links {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
 }
 
 .footer-links a {
-    padding: 12px 0;
-    text-decoration: none;
-    color: #000;
-    font-size: 20px;
+  padding: 0.16rem 0;
+  text-decoration: none;
+  color: #000;
+  font-size: 15px;
+  margin: 0.3rem 0.2rem;
+}
+
+.image-footer {
+  max-height: 200px;
 }

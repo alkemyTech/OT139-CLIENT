@@ -4,7 +4,7 @@ import { Card } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import './newDetail.css';
 import { ErrorAlert } from '../../components/Alert';
-import { getEntry } from '../../services/newsService';
+import { getNewsById } from '../../services/newsService';
 
 const NewDetail = () => {
   const [data, setData] = useState({});
@@ -12,7 +12,7 @@ const NewDetail = () => {
 
   useEffect(() => {
     const getNewsDetails = async () => {
-      const { data, error } = await getEntry(id);
+      const { data, error } = await getNewsById(id);
       if (error) {
         ErrorAlert('Error!', 'Ocurrio un error');
       } else {

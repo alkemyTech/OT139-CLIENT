@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import { ErrorAlert } from '../../components/Alert';
-import { getEntries } from '../../services/newsService';
+import { getNews } from '../../services/newsService';
 
 export const News = () => {
   const [news, setNews] = useState([]);
 
   useEffect(() => {
     const getNews = async () => {
-      const { data, error } = await getEntries();
+      const { data, error } = await getNews();
       if (error) {
         ErrorAlert('Error!', 'Ocurrio un error');
       } else {

@@ -1,11 +1,11 @@
 import { get } from './apiService';
 
-const getEntries = async () => {
+const getNews = async () => {
   return await get('http://localhost:3000/news');
 };
 
-const getEntry = async (id) => {
+const getNewsById = async (id) => {
   return await get(`http://localhost:3000/news/${id}`);
 };
 
-export { getEntries, getEntry };
+export { getNews, getNewsById };

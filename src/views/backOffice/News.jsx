@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { ErrorAlert } from '../../components/Alert';
-import { getEntries } from '../../services/newsService';
+import { getNews } from '../../services/newsService';
 import NewsForm from './NewsForm';
 
 function BackofficeNews() {
-  const [entries, setEntries] = useState([]);
+  const [news, setNews] = useState([]);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [formData, setFormData] = useState(null);
 
@@ -14,19 +14,19 @@ function BackofficeNews() {
 
   useEffect(() => {
     const getBackOfficeNews = async () => {
-      const { data, error } = await getEntries();
+      const { data, error } = await getNews();
       if (error) {
         ErrorAlert('Error!', error);
       } else {
-        setEntries(data);
+        setNews(data);
       }
     };
     getBackOfficeNews();
   }, []);
 
   const handleEditNew = async (id) => {
-    const entry = entries.find((entry) => entry.id === id);
-    setFormData({ entry });
+    const newById = news.find((newsItem) => newsItem.id === id);
+    setFormData({ newById });
     setIsFormOpen(true);
   };
 
@@ -37,7 +37,7 @@ function BackofficeNews() {
   return (
     <>
       {isFormOpen ? (
-        <NewsForm closeForm={closeForm} entry={formData?.entry} />
+        <NewsForm closeForm={closeForm} newById={formData?.newById} />
       ) : (
         <div className='.container-lg'>
           <table class='table table-hover'>
@@ -50,16 +50,16 @@ function BackofficeNews() {
               </tr>
             </thead>
             <tbody>
-              {entries.map((entriesItem) => {
+              {news.map((newsItem) => {
                 return (
                   <tr>
-                    <th scope='row'>{entriesItem.name}</th>
-                    <td>{entriesItem.imageUrl}</td>
-                    <td>{entriesItem.createdAt}</td>
+                    <th scope='row'>{newsItem.name}</th>
+                    <td>{newsItem.imageUrl}</td>
+                    <td>{newsItem.createdAt}</td>
                     <td>
                       <button
                         type='button'
-                        onClick={handleEditNew(entriesItem.id)}
+                        onClick={handleEditNew(newsItem.id)}
                         class='btn btn-outline-primary'
                       >
                         Editar
