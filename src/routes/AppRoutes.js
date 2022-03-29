@@ -31,6 +31,8 @@ export default function AppRoutes() {
       <Route path='/edituser' element={<UserEdit />} />
       <Route path='/myprofile' element={<MyProfile />} />
       <Route path='/backoffice'>
+        <Route path='edituser' element={<UserEdit />} />
+        <Route path='myprofile' element={<MyProfile />} />
         <Route path='users' element={<UsersList />} />
         <Route path="edit-organization" element={<OrganizationEdit />} />
         <Route path='testimonials' element={<Testimonials />} />
