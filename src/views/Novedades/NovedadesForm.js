@@ -1,8 +1,9 @@
 import React from 'react';
-import { useEffect } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import { Form, Button } from 'react-bootstrap';
+import { post, put } from '../../services/apiService';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'animate.css';
@@ -10,39 +11,26 @@ import './NovedadesForm.css';
 
 export default function NovedadesForm(news) {
   const { register, handleSubmit, setValue, trigger } = useForm();
-  let method = '';
-  let url = '';
-  let title = '';
-  let content = '';
-  let imageUrl = '';
-  let id = '';
-
-  if (JSON.stringify(news.news) === '{}') {
-    method = 'POST';
-    //url = 'http://localhost:8000/news/news'; it's a example
-  } else {
-    id = news.news.id;
-    title = news.news.title;
-    content = news.news.content;
-    imageUrl = news.news.imageUrl;
-    //url = `http://localhost:8000/news/${id}`; it's a example
-    method = 'PATCH';
-  }
+  let title = news.news.title == undefined ? 'hola' : news.news.title;
+  let content = news.news.content == undefined ? '' : news.news.content;
+  let id = news.news.id == undefined ? '' : news.news.id;
+  let img = news.news.img == undefined ? '' : news.news.img;
 
   const onSubmit = async function (data) {
     try {
-      const requestOptions = {
-        method: method,
-        headers: { 'Content-Type': 'multipart/form-data' },
-        body: JSON.stringify(data),
-      };
-      await fetch(url, requestOptions);
-    } catch (err) {}
+      if (JSON.stringify(news.news) === '{}') {
+        const body = JSON.stringify(data)
+        const request = await post(body, '/news');
+        console.log(request)
+      }
+      else {
+      }
+      const body = JSON.stringify(data)
+      const request = await put(body, '/news/' + id);
+      console.log(request)
+    }
+    catch (err) { }
   };
-
-  useEffect(() => {
-    register('content');
-  });
 
   return (
     <div className='main'>
@@ -56,6 +44,7 @@ export default function NovedadesForm(news) {
               placeholder=''
               required
               value={title}
+              enable={true}
               {...register('title')}
             />
           </Form.Group>
@@ -91,4 +80,4 @@ export default function NovedadesForm(news) {
       </div>
     </div>
   );
-}
+};

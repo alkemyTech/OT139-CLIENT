@@ -16,6 +16,7 @@ import OrganizationEdit from '../views/OrganizationEdit/OrganizationEdit.jsx';
 import Testimonials from '../views/Testimonials/Testimonials.jsx';
 import Categories from '../views/backOffice/Categories/Categories.jsx';
 import BackofficeNews from '../views/backOffice/News.jsx';
+import NovedadesForm from '../views/Novedades/NovedadesForm.js';
 
 export default function AppRoutes() {
   return (
@@ -38,6 +39,7 @@ export default function AppRoutes() {
         <Route path='testimonials' element={<Testimonials />} />
         <Route path='categories' element={<Categories />} />
         <Route path='news' element={<BackofficeNews />} />
+        <Route path='news/create' element={<NovedadesForm news={{}}/>} />
         <Route path='activities' element={<Activities />} />
       </Route>
     </Routes>
