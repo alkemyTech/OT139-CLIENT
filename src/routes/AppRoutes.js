@@ -15,15 +15,14 @@ import { PrivateRoutes } from './PrivateRoutes/PrivateRoutes.jsx';
 
 export default function AppRoutes() {
   const userDetails = useSelector((state) => state.userDetails);
-  const { userInfo, logged } = userDetails;
   const [isAdmin, setIsAdmin] = useState(false);
-
-  useEffect(() => {
-    if (userInfo) {
-      const { isAdmin } = userInfo;
+  
+  useEffect(() => {    
+    if (userDetails.userInfo) {
+      const { isAdmin } = userDetails.userInfo;
       setIsAdmin(isAdmin);
     }
-  }, [userInfo, logged]);
+  }, [userDetails]);
 
   return (
     <Routes>
@@ -33,8 +32,8 @@ export default function AppRoutes() {
       <Route path='/news' element={<News />} />
       <Route path='/news/:id' element={<NewDetail />} />
       <Route path='/activity/:id' element={<Activity />} />
-      <Route path='/edituser' element={logged ? <UserEdit /> : <Navigate to='/login' />} />
-      <Route path='/myprofile' element={logged ? <MyProfile /> : <Navigate to='/login' />} />
+      <Route path='/edituser' element={userDetails.logged ? <UserEdit /> : <Navigate to='/login' />} />
+      <Route path='/myprofile' element={userDetails.logged ? <MyProfile /> : <Navigate to='/login' />} />
       <Route path='/login' element={<LoginForm />} />
       <Route path='/register' element={<RegisterForm />} />
       <Route
