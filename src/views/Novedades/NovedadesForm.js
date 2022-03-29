@@ -19,13 +19,13 @@ export default function NovedadesForm(news) {
 
   if (JSON.stringify(news.news) === '{}') {
     method = 'POST';
-    url = 'http://localhost:8000/news/news';
+    //url = 'http://localhost:8000/news/news'; it's a example
   } else {
     id = news.news.id;
     title = news.news.title;
     content = news.news.content;
     imageUrl = news.news.imageUrl;
-    url = `http://localhost:8000/news/${id}`;
+    //url = `http://localhost:8000/news/${id}`; it's a example
     method = 'PATCH';
   }
 
