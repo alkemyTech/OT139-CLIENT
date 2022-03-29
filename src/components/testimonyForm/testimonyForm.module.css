@@ -1,0 +1,36 @@
+.container {
+  width: 70%;
+  margin: 50px auto;
+}
+
+h1 {
+  text-align: center;
+  color: #db5752;
+}
+
+form {
+  font-size: 20px;
+}
+
+.cont_img {
+  width: 50%;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+}
+
+.cont_img img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 10px;
+}
+
+.ckeditor {
+  font-size: 5px;
+}
+
+.btn_submit {
+  margin-top: 50px;
+  font-size: 20px;
+}
