@@ -5,6 +5,7 @@ import { Container, Row, Col, Image } from 'react-bootstrap';
 import { getOrganizationDetails } from '../../actions/organizationActions';
 import Loader from '../loader/Loader';
 import './footer.css';
+import 'animate.css';
 
 export const Footer = () => {
   const [logo, setLogo] = useState('');
@@ -33,7 +34,7 @@ export const Footer = () => {
   }, [dispatch, organization]);
 
   return (
-    <footer className='footer m-0 p-0 vh-20'>
+    <footer className='footer m-0 p-0 vh-20 animate__animated animate__fadeIn'>
       <Container>
         {loading ? (
           <Loader />

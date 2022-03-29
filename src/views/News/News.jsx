@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import { get } from '../../services/apiService';
 import { ErrorAlert } from '../../components/Alert';
+import 'animate.css';
 
 export const News = () => {
   const [news, setNews] = useState([]);
@@ -18,7 +19,7 @@ export const News = () => {
   }, [url]);
 
   return (
-    <Container>
+    <Container className="animate__animated animate__fadeIn">
       <Row>
         {news.map((item) => {
           return (

@@ -1,9 +1,10 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
+import 'animate.css';
 
 export default function About() {
   return (
-    <Container className='text-center' fluid='lg'>
+    <Container className='text-center animate__animated animate__fadeInUp' fluid='lg'>
       <h1>Sobre Nosotros</h1>
       <p>
         Desde 1997 en Somos Más trabajamos con los chicos y chicas, mamás y

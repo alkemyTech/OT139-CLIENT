@@ -4,12 +4,13 @@ import { Link } from 'react-router-dom';
 import './activity.css';
 import "../../shared/style/baseStyle.css";
 import "../../shared/style/colorOng.css";
+import 'animate.css';
 
 export default function ActivityView() {
   const [data, setData] = useState();
 
   return (
-    <div className='text-center content_all'>
+    <div className='text-center content_all animate__animated animate__fadeInUp'>
       {!data ? (
       <div className='container_error color_red_ong mt-5'><h1>Error no hay datos para esta actividad!</h1></div>
       ) : (

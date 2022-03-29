@@ -3,6 +3,7 @@ import { Table, Button, Container } from 'react-bootstrap';
 import { ErrorAlert } from '../../components/Alert';
 import style from './activities.module.css';
 import { getActivities } from '../../services/activitiesService';
+import 'animate.css';
 
 export default function Activities() {
   const [activities, setActivities] = useState();
@@ -33,7 +34,7 @@ export default function Activities() {
   };
 
   return (
-    <div className={style.container}>
+    <div className={`${style.container} animate__animated animate__fadeInUp`}>
       <div className={style.title}>
         <h1>Actividades</h1>
       </div>
