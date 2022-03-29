@@ -17,10 +17,11 @@ export const post = async (endPoint, body) => {
 };
 
 export const get = async (endPoint) => {
+  const createHeaders = getPrivateHeaders();
   const response = {};
-
+  
   try {
-    const { data } = await axios.get(endPoint);
+    const { data } = await axios.get(endPoint ,  { headers: createHeaders});
     response.data = data;
   } catch (error) {
     response.error = error;
@@ -35,6 +36,20 @@ export const put = async (endPoint, body) => {
 
   try {
     const { data } = await axios.put(endPoint, body, headers);
+    response.data = data;
+  } catch (error) {
+    response.error = error;
+  }
+
+  return response;
+};
+
+export const remove = async (endPoint, body) => {
+  const headers = getPrivateHeaders();
+  const response = {};
+
+  try {
+    const { data } = await axios.delete(endPoint, body, headers);
     response.data = data;
   } catch (error) {
     response.error = error;
