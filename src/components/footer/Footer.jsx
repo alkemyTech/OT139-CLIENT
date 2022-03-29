@@ -40,7 +40,7 @@ export const Footer = () => {
           <Loader />
         ) : (
           <Row>
-            <Col>
+            <Col className='footer-links'>
               {!logo ? (
                 'Logo somos mas'
               ) : (
