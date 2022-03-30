@@ -13,7 +13,7 @@ export default function Slider(props) {
                 src={item.imageUrl}
                 alt={item.text}
               />
-              <Carousel.Caption>
+              <Carousel.Caption style={{ textShadow: '2px 2px black' }}>
                 <p>{item.text}</p>
               </Carousel.Caption>
             </Carousel.Item>

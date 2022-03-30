@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { get } from '../../services/apiService';
 import './newDetail.css';
 import { ErrorAlert } from '../../components/Alert';
+import 'animate.css';
 
 const NewDetail = () => {
   const [data, setData] = useState({});
@@ -27,7 +28,7 @@ const NewDetail = () => {
   }, [url]);
 
   return (
-    <Card className='card'>
+    <Card className='card animate__animated animate__fadeInUp'>
       <Card.Img variant='top' src={data.image} />
       <Card.Body>
         <Card.Title>{data.name}</Card.Title>
