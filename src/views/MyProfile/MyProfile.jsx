@@ -6,6 +6,7 @@ import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import 'animate.css';
+import { getUserInfo } from '../../localStorage/storage';
 
 import ErrorCard from '../../components/ErrorCard/ErrorCard';
 import LoadingCard from '../../components/LoadingCard/LoadingCard';
@@ -32,13 +33,9 @@ export default function MyProfile() {
           throw new Error('Data could not be retrieved');
         }
 
-        const data = {
-          firstName: 'John',
-          lastName: 'Smith',
-          email: 'johnsmith@example.com',
-        };
-
-        setProfileData(data);
+        const data = getUserInfo()
+        
+        setProfileData(data.user);
       } catch (err) {
         setError(true);
       }
