@@ -7,15 +7,17 @@ export default function Categories() {
   const [categories, setCategories] = useState([]);
   const url = `http://localhost:3000/categories`;
 
-  useEffect(async () => {
-    const { data, error } = await get(url);
+  useEffect(() => {
+    async function fetchData() {
+      const { data, error } = await get(url);
 
-    if(error){
-      ErrorAlert('Error!', 'Ocurrio un error');
-    }else{
-      setCategories(data)                                                                                                                                                                                                         
+      if (error) {
+        ErrorAlert('Error!', 'Ocurrio un error');
+      } else {
+        setCategories(data);
+      }
     }
-    
+    fetchData();
   }, [url]);
 
   return (
@@ -42,4 +44,4 @@ export default function Categories() {
       </Table>
     </Container>
   );
-};
+}

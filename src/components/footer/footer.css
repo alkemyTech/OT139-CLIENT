@@ -1,10 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
 
 .footer {
-  border-top: 1.5px solid #000;
   height: auto;
   width: 100%;
   bottom: 0;
+  padding: 20px 0 10px;
+  background-color: rgba(230, 228, 228, 0.253);
+  margin-top: 50px;
 }
 
 .footer-links {
@@ -12,16 +14,22 @@
   flex-direction: column;
   margin: 0;
   padding: 0;
+  align-items: center;
 }
 
 .footer-links a {
   padding: 0.16rem 0;
   text-decoration: none;
-  color: #000;
+  color: rgb(110, 110, 110);
   font-size: 15px;
+  font-weight: 700;
   margin: 0.3rem 0.2rem;
 }
 
-.image-footer {
+.footer-links a:hover {
+  color: rgb(92, 226, 219);
+}
+
+  .image-footer {
   max-height: 200px;
 }
