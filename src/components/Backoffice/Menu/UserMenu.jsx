@@ -21,7 +21,7 @@ export const UserMenu = ({ userInfo }) => {
 
   return (
     <NavDropdown title={`${userInfo.firstName}`} id='basic-nav-dropdown'>
-      <Link to='/my-profile' className='links'>
+      <Link to='/myprofile' className='links'>
         Ir a mi perfil
       </Link>
       <NavDropdown.Item className='links'>
