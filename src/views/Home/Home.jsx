@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Slider from '../../components/Slider/Slider';
-import style from './home.module.css';
+import { News } from '../News/News';
+import './home.module.css';
 import './home.css';
 import 'animate.css';
 
@@ -21,35 +22,20 @@ const Home = () => {
       text: 'Construccion colectiva',
     },
   ];
-  const news = [
-    {
-      imageUrl: '',
-      text: '',
-    },
-  ];
+  
   const welcomeText = 'Bienvenidos';
 
   const [data] = useState({
     welcome: welcomeText,
     slide: dataSlide,
-    news: news,
   });
 
   return (
     <div id='home' className='animate__animated animate__fadeIn'>
       <Slider data={data.slide} />
-      <h1 className={style.title}>{data.welcome}</h1>
-      <h2 className={style.subtitle}>Ultimas novedades</h2>
-      <div className={style.news_container}>
-        {data.news.map((item, index) => {
-          return (
-            <article className={style.news} key={index}>
-              <img src={item.imageUrl} alt='' />
-              <p>{item.text}</p>
-            </article>
-          );
-        })}
-      </div>
+      <h1 className="title">{data.welcome}</h1>
+      <h2 className="subtitle">Ultimas novedades</h2>
+      <News />
     </div>
   );
 };

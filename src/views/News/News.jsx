@@ -26,9 +26,9 @@ export const News = () => {
       <Row>
         {news.map((item) => {
           return (
-            <Col className='mt-5'>
+            <Col>
               <Card style={{ width: '18rem' }}>
-                <Card.Img variant='top' src={item.image} />
+                <Card.Img variant='top' src={item.imageUrl} />
                 <Card.Body>
                   <Card.Title>{item.name}</Card.Title>
                   <Link to={`/news/${item.id}`} variant='primary'>
