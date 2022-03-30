@@ -12,6 +12,7 @@ import Activity from '../views/Activities/Activity';
 import UserEdit from '../components/UserEdit/FormEditUser';
 import MyProfile from '../views/MyProfile/MyProfile';
 import { PrivateRoutes } from './PrivateRoutes/PrivateRoutes.jsx';
+import NewsForm from '../views/News/NewsForm.js';
 
 export default function AppRoutes() {
   const userDetails = useSelector((state) => state.userDetails);
@@ -31,6 +32,7 @@ export default function AppRoutes() {
       <Route path='/contact' element={<Contact />} />
       <Route path='/news' element={<News />} />
       <Route path='/news/:id' element={<NewDetail />} />
+      <Route path='/news/create' element={<NewsForm news={{}}/>} />
       <Route path='/activity/:id' element={<Activity />} />
       <Route path='/edituser' element={userDetails.logged ? <UserEdit /> : <Navigate to='/login' />} />
       <Route path='/myprofile' element={userDetails.logged ? <MyProfile /> : <Navigate to='/login' />} />

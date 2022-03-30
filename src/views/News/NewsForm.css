@@ -1,5 +1,4 @@
 .main {
-  position: absolute;
   width: 50%;
   height: 50%;
   display: -webkit-flex;
@@ -10,6 +9,7 @@
   justify-content: center;
   margin-left: 25%;
   margin-right: 25%;
+
 }
 
 .Novedades_Form img {
