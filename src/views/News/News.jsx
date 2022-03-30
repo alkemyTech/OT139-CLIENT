@@ -8,13 +8,16 @@ export const News = () => {
   const [news, setNews] = useState([]);
   const url = `http://localhost:3000/news`;
 
-  useEffect(async () => {
-    const { data, error } = await get(url);
-    if (error) {
-      ErrorAlert('Error!', 'Ocurrio un error');
-    } else {
-      setNews(data);
+  useEffect(() => {
+    async function fetchData() {
+      const { data, error } = await get(url);
+      if (error) {
+        ErrorAlert('Error!', 'Ocurrio un error');
+      } else {
+        setNews(data);
+      }
     }
+    fetchData();
   }, [url]);
 
   return (
