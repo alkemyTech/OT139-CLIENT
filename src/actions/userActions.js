@@ -79,10 +79,10 @@ const logout = () => (dispatch) => {
   dispatch({ type: USER_LOGOUT_SUCCESS });
 };
 
-const getUserDetails = (id) => (dispatch) => {
+const getUserDetails = () => async (dispatch) => {
   dispatch({ type: USER_DETAILS_REQUEST });
 
-  const { data, error } = getUser();
+  const { data, error } = await getUser();
   if (data) {
     dispatch({ type: USER_DETAILS_SUCCESS, payload: data });
   } else if (error) {

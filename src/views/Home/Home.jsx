@@ -3,21 +3,22 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Slider from '../../components/Slider/Slider';
 import style from './home.module.css';
 import './home.css';
+import 'animate.css';
 
 const Home = () => {
   const dataSlide = [
     {
       imageUrl:
         'https://somosmas.org/wp-content/uploads/2018/03/como-lo-hacemos.jpg',
-      text: 'Slide uno',
+      text: 'Somos Mas',
     },
     {
       imageUrl: 'https://somosmas.org/wp-content/uploads/2020/04/vaki-1.jpg',
-      text: 'Slide 2',
+      text: 'Juntos por el Poder Colectivo',
     },
     {
       imageUrl: 'https://somosmas.org/wp-content/uploads/2018/03/historia.jpg',
-      text: '',
+      text: 'Construccion colectiva',
     },
   ];
   const news = [
@@ -28,14 +29,14 @@ const Home = () => {
   ];
   const welcomeText = 'Bienvenidos';
 
-  const [data, setData] = useState({
+  const [data] = useState({
     welcome: welcomeText,
     slide: dataSlide,
     news: news,
   });
 
   return (
-    <div id='home'>
+    <div id='home' className='animate__animated animate__fadeIn'>
       <Slider data={data.slide} />
       <h1 className={style.title}>{data.welcome}</h1>
       <h2 className={style.subtitle}>Ultimas novedades</h2>

@@ -1,7 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
+import {
+  categoriesCreateReducer,
+  categoriesUpdateReducer,
+} from '../reducers/categoriesReducers';
 import { contactAddReducer } from '../reducers/contactReducers';
-import { organizationDetailsReducer } from '../reducers/organizationReducers';
 import { getUserInfo, getToken } from '../localStorage/storage';
+import { organizationDetailsReducer } from '../reducers/organizationReducers';
 import {
   userDetailsReducer,
   userLoginReducer,
@@ -19,9 +23,10 @@ const initialState = {
     token: tokenFromStorage,
   },
 };
-
 export default configureStore({
   reducer: {
+    categoriesCreate: categoriesCreateReducer,
+    categoriesUpdate: categoriesUpdateReducer,
     userLogin: userLoginReducer,
     userLogout: userLogoutReducer,
     userRegister: userRegisterReducer,

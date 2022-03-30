@@ -5,6 +5,7 @@ import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
+import 'animate.css';
 
 import ErrorCard from '../../components/ErrorCard/ErrorCard';
 import LoadingCard from '../../components/LoadingCard/LoadingCard';
@@ -48,7 +49,7 @@ export default function MyProfile() {
   }, []);
 
   return (
-    <div className='max_width_wrapper_medium mx-auto my-4'>
+    <div className='max_width_wrapper_medium mx-auto my-4 animate__animated animate__fadeIn'>
       {isLoading && <LoadingCard />}
       {!isLoading && error && <ErrorCard />}
       {!isLoading && profileData && (

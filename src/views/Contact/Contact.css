@@ -2,7 +2,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 100px;
+  margin-left: 10vw;
+  margin-right: 10vw;
+  padding: 20px 0;
+  top: 25%;
+}
+
+h2 {
+  padding: 15px 0;
+}
+
+.flex-child {
+  display: flex;
+  flex-direction: column;
 }
 
 .flex-child p {

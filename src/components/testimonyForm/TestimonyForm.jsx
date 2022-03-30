@@ -19,7 +19,36 @@ export default function TestimonyForm(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // TO DO: Save Testimony
+
+    async function create() {
+      if (!testimonyData.name || !testimonyData.content) {
+        return ErrorAlert('Todos los campos son obligatorios');
+      }
+      try {
+        const response = await createTestimony(testimonyData);
+        response.data
+          ? SuccessAlert('Creado con exito')
+          : ErrorAlert('Error al crear');
+      } catch (error) {
+        ErrorAlert('Algo salio mal: no se creo');
+      }
+      props.closeForm();
+    }
+
+    async function update() {
+      try {
+        const response = await updateTestimony(testimonyData.id, testimonyData);
+
+        response.data
+          ? SuccessAlert(response.data.msg)
+          : ErrorAlert('Error al actualizar');
+      } catch (error) {
+        ErrorAlert('Algo salio mal: no se actualizo');
+      }
+      props.closeForm();
+    }
+
+    testimonyData.id ? update() : create();
   };
 
   return (

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { Navbar, Container, Nav } from 'react-bootstrap';
 import CustomLink from '../CustomLink/CustomLink';
 import { get } from '../../services/apiService';
+
 import './header.css';
 
 const menu = [
@@ -18,7 +20,7 @@ const menu = [
   },
 ];
 
-export default function Header() {
+export default function Header({ Menu, userInfo }) {
   const [logo, setLogo] = useState('');
   const [errors, setError] = useState(null);
 
@@ -39,23 +41,32 @@ export default function Header() {
   }, []);
 
   return (
-    <ul>
-      {logo && !errors && (
-        <img
-          src={logo}
-          width='auto'
-          height='40'
-          className='d-inline-block align-top'
-          alt='Logo somos más'
-        />
-      )}
-      {menu.map((menuItem) => {
-        return (
-          <li key={menuItem.name}>
-            <CustomLink to={menuItem.url}>{menuItem.name}</CustomLink>
-          </li>
-        );
-      })}
-    </ul>
+    <Navbar bg='light' expand='lg'>
+      <Container>
+        <Navbar.Brand>
+          {logo && !errors && (
+            <img
+              src={logo}
+              width='100px'
+              className='d-inline-block align-top'
+              alt='Logo somos más'
+            />
+          )}
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls='basic-navbar-nav' />
+        <Navbar.Collapse id='basic-navbar-nav'>
+          <Nav className='me-auto'>
+            {menu.map((menuItem) => {
+              return (
+                <li key={menuItem.name}>
+                  <CustomLink to={menuItem.url}>{menuItem.name}</CustomLink>
+                </li>
+              );
+            })}
+          </Nav>
+          <Menu userInfo={userInfo} />
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 }
