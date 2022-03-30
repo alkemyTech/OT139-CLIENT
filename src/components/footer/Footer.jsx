@@ -33,13 +33,13 @@ export const Footer = () => {
   }, [dispatch, organization]);
 
   return (
-    <footer className='footer m-0 p-0 vh-20'>
+    <footer className='footer'>
       <Container>
         {loading ? (
           <Loader />
         ) : (
           <Row>
-            <Col>
+            <Col className='footer-links'>
               {!logo ? (
                 'Logo somos mas'
               ) : (
