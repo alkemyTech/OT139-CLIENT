@@ -7,18 +7,19 @@ import { post, put } from '../../services/apiService';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'animate.css';
-import './NovedadesForm.css';
+import './NewsForm.css';
 
-export default function NovedadesForm(news) {
+export default function NewsForm({ news }) {
   const { register, handleSubmit, setValue, trigger } = useForm();
-  let title = news.news.title == undefined ? 'hola' : news.news.title;
-  let content = news.news.content == undefined ? '' : news.news.content;
-  let id = news.news.id == undefined ? '' : news.news.id;
-  let img = news.news.img == undefined ? '' : news.news.img;
+  let title = news.title == undefined ? '' : news.title;
+  let content = news.content == undefined ? '' : news.content;
+  let id = news.id == undefined ? '' : news.id;
+  let img = news.img == undefined ? '' : news.news.img;
 
   const onSubmit = async function (data) {
     try {
-      if (JSON.stringify(news.news) === '{}') {
+      console.log(data);
+      if (JSON.stringify(news) === '{}') {
         const body = JSON.stringify(data)
         const request = await post(body, '/news');
         console.log(request)
@@ -44,8 +45,9 @@ export default function NovedadesForm(news) {
               placeholder=''
               required
               value={title}
-              enable={true}
               {...register('title')}
+              name='title'
+
             />
           </Form.Group>
           <Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
