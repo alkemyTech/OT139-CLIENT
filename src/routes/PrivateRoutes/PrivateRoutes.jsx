@@ -6,6 +6,7 @@ import BackofficeNews from '../../views/backOffice/News.jsx';
 import Activities from '../../views/Activities/Activities';
 import UsersList from '../../views/backOffice/UsersList.jsx';
 import Testimonials from '../../views/Testimonials/Testimonials';
+import ContactList from '../../views/ContactList/ContactList.jsx';
 
 export const PrivateRoutes = () => {
   return (
@@ -16,6 +17,7 @@ export const PrivateRoutes = () => {
       <Route path='news' element={<BackofficeNews />} />
       <Route path='activities' element={<Activities />} />
       <Route path='testimonials' element={<Testimonials />} />
+      <Route path="contacts" element={<ContactList/>}/>
     </Routes>
   );
 };

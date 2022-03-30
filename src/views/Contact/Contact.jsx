@@ -35,11 +35,11 @@ export default function Contact() {
       ) : (
         <>
           <div className='flex-child animate__animated animate__fadeInLeft '>
-            <img src={Logo} className='Logo' />
+            <img src={Logo} className='Logo' alt='logo' />
             <p className='text-center'>
               Si estas interesado en ser voluntario de nuestra comunidad o
               simplemente dar apoyo economicamente, No dudes en contactarte con
-              nosotros😊.
+              nosotros. {`\u{1F60A}`}
             </p>
           </div>
           <div className='Form-Contact flex-child animate__animated animate__fadeInRight'>
