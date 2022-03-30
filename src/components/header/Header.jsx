@@ -18,6 +18,10 @@ const menu = [
     name: 'Contacto',
     url: '/contact',
   },
+  {
+    name: 'Novedades',
+    url: '/news',
+  },
 ];
 
 export default function Header({ Menu, userInfo }) {

@@ -19,6 +19,7 @@ export const AdminMenu = () => {
       <Link to='/backoffice/news' className='links'>Novedades</Link>
       <Link to='/backoffice/categories' className='links'>Categorias</Link>
       <Link to='/backoffice/testimonials' className='links'>Testimonios</Link>
+      <Link to='/backoffice/activities' className='links'>Actividades</Link>
       <NavDropdown.Item className='links'>
         <button className="item" onClick={logoutUser}>Cerrar sesión</button>
       </NavDropdown.Item>

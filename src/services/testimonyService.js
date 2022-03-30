@@ -1,19 +1,19 @@
 import { get, put, post, remove } from './apiService';
 
 const getTestimonials = async () => {
-  return get('/testimonials');
+  return get('http://localhost:3000/testimonials');
 };
 
 const updateTestimony = async (id, data) => {
-  return put(`/testimonials/${id}`, data);
+  return put(`http://localhost:3000/testimonials/${id}`, data);
 };
 
 const createTestimony = async (data) => {
-  return post(`/testimonials`, data);
+  return post(`http://localhost:3000/testimonials`, data);
 };
 
 const deleteTestimony = async (id) => {
-  return remove(`/testimonials/${id}`);
+  return remove(`http://localhost:3000/testimonials/${id}`);
 };
 
 export { getTestimonials, updateTestimony, createTestimony, deleteTestimony };
