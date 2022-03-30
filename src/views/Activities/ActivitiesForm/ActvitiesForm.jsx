@@ -15,11 +15,11 @@ export default function ActivitiesForm({ activities }) {
     try {
       if (Object.keys(activities).length === 0) {
         const body = JSON.stringify(data)
-        await post(body, '/news');
+        await post(body, '/activities');
       }
       else {
         const body = JSON.stringify(data)
-        await put(body, '/news/' + activities.id);
+        await put(body, '/activities/' + activities.id);
       }
     }
     catch (err) { alert(err); }
