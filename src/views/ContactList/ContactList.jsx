@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Table from 'react-bootstrap/Table';
-import { get } from '../../services/apiService';
+import { getContacts } from '../../services/contactsService';
 import { ErrorAlert } from '../../components/Alert';
 
 const ContactList = () => {
   const [contacts, setContacts] = useState(null);
 
   useEffect(() => {
-    async function getContacts() {
-      const { data, error } = await get('http://localhost:3001/contacts');
+    async function getContactsData() {
+      const { data, error } = await getContacts();
 
       if (!error) {
         setContacts(data?.result);
@@ -21,7 +21,7 @@ const ContactList = () => {
       }
     }
 
-    getContacts();
+    getContactsData();
   }, []);
 
   return (
