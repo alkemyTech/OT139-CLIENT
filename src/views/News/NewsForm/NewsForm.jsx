@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import { Form, Button } from 'react-bootstrap';
-import { post, put } from '../../services/apiService';
+import { post, put } from '../../../services/apiService';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'animate.css';
