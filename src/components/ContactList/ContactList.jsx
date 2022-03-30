@@ -1,23 +1,31 @@
 import React, { useEffect, useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import {Table} from 'react-bootstrap';
+import Container from 'react-bootstrap/Container';
+import Table from 'react-bootstrap/Table';
 import { get } from '../../services/apiService';
+import { ErrorAlert } from '../Alert';
 
 const ContactList = () => {
-  const [data, setData] = useState({});
-    const url = "http://localhost:3000/contacts";
+  const [contacts, setContacts] = useState(null);
 
-    useEffect(()=>{
-      const contact = get(url);
-      setData({
-        ...data,
-        contact
-      })
-    }, [data]);
+  useEffect(() => {
+    async function getContacts() {
+      const { data, error } = await get('http://localhost:3001/contacts');
 
+      if (!error) {
+        setContacts(data?.result);
+      } else {
+        ErrorAlert(
+          'Contactos no encontrados',
+          'Ocurrio un error procesando su solicitud. Vuelva a intentarlo en unos momentos.'
+        );
+      }
+    }
+
+    getContacts();
+  }, []);
 
   return (
-    <Table striped bordered hover>
+    <Container as={Table} striped bordered hover>
       <thead>
         <tr>
           <th>ID</th>
@@ -26,17 +34,17 @@ const ContactList = () => {
         </tr>
       </thead>
       <tbody>
-          {data.map(contact => {
-            return (
-              <tr>
+        {contacts?.map((contact) => {
+          return (
+            <tr>
               <td>{contact.id}</td>
               <td>{contact.name}</td>
               <td>{contact.email}</td>
             </tr>
-            );
-          })}
+          );
+        })}
       </tbody>
-    </Table>
+    </Container>
   );
 };
 
