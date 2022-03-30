@@ -1,5 +1,6 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
+import './about.css';
 import 'animate.css';
 
 export default function About() {
