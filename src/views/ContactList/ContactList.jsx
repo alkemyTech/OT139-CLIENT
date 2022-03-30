@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Table from 'react-bootstrap/Table';
 import { get } from '../../services/apiService';
-import { ErrorAlert } from '../Alert';
+import { ErrorAlert } from '../../components/Alert';
 
 const ContactList = () => {
   const [contacts, setContacts] = useState(null);
@@ -36,7 +36,7 @@ const ContactList = () => {
       <tbody>
         {contacts?.map((contact) => {
           return (
-            <tr>
+            <tr key={contact.id}>
               <td>{contact.id}</td>
               <td>{contact.name}</td>
               <td>{contact.email}</td>

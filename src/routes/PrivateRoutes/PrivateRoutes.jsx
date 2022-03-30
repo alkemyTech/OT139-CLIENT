@@ -5,7 +5,7 @@ import Categories from '../../views/backOffice/Categories/Categories.jsx';
 import BackofficeNews from '../../views/backOffice/News.jsx';
 import Activities from '../../views/Activities/Activities';
 import UsersList from '../../views/backOffice/UsersList.jsx';
-import ContactList from '../../components/ContactList/ContactList.jsx';
+import ContactList from '../../views/ContactList/ContactList.jsx';
 
 export const PrivateRoutes = () => {
   return (
