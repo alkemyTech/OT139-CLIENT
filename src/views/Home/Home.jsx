@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Slider from '../../components/Slider/Slider';
 import style from './home.module.css';
 import './home.css';
+import 'animate.css';
 
 const Home = () => {
   const dataSlide = [
@@ -35,7 +36,7 @@ const Home = () => {
   });
 
   return (
-    <div id='home'>
+    <div id='home' className='animate__animated animate__fadeIn'>
       <Slider data={data.slide} />
       <h1 className={style.title}>{data.welcome}</h1>
       <h2 className={style.subtitle}>Ultimas novedades</h2>
