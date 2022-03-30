@@ -21,6 +21,9 @@ export const AdminMenu = () => {
 
   return (
     <NavDropdown title='Backoffice' id='basic-nav-dropdown'>
+      <Link to='/backoffice/users' className='links'>
+        Usuarios
+      </Link>
       <Link to='/backoffice/news' className='links'>
         Novedades
       </Link>
