@@ -21,9 +21,6 @@ export const AdminMenu = () => {
 
   return (
     <NavDropdown title='Backoffice' id='basic-nav-dropdown'>
-      <Link to='/backoffice/users' className='links'>
-        Usuarios
-      </Link>
       <Link to='/backoffice/news' className='links'>
         Novedades
       </Link>
@@ -35,6 +32,9 @@ export const AdminMenu = () => {
       </Link>
       <Link to='/backoffice/activities' className='links'>
         Actividades
+      </Link>
+      <Link to='/backoffice/contacts' className='links'>
+        Contactos
       </Link>
       <NavDropdown.Item className='links'>
         <button className='item' onClick={logoutUser}>

@@ -5,7 +5,7 @@ import { getContacts } from '../../services/contactsService';
 import { ErrorAlert } from '../../components/Alert';
 
 const ContactList = () => {
-  const [contacts, setContacts] = useState(null);
+  const [contacts, setContacts] = useState([]);
 
   useEffect(() => {
     async function getContactsData() {
