@@ -12,16 +12,19 @@ const NewDetail = () => {
   const { id } = useParams();
   const url = `http://localhost3000/news/${id}`;
 
-  useEffect(async () => {
-    const { data, error } = await get(url);
-    if (error) {
-      ErrorAlert('Error!', 'Ocurrio un error');
-    } else {
-      setData({
-        ...data,
-        data,
-      });
+  useEffect(() => {
+    async function fetchData() {
+      const { data, error } = await get(url);
+      if (error) {
+        ErrorAlert('Error!', 'Ocurrio un error');
+      } else {
+        setData({
+          ...data,
+          data,
+        });
+      }
     }
+    fetchData();
   }, [url]);
 
   return (
