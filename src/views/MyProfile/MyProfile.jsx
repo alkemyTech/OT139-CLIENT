@@ -1,24 +1,36 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import 'animate.css';
+import { getUserInfo } from '../../localStorage/storage';
 
 import ErrorCard from '../../components/ErrorCard/ErrorCard';
 import LoadingCard from '../../components/LoadingCard/LoadingCard';
+import { ConfirmAlert } from '../../components/Alert/';
+import { logout } from '../../actions/userActions';
 
 import './myProfile.css';
 
 export default function MyProfile() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [profileData, setProfileData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const handleDeleteAccount = () => {
     // @TODO Implementar la funcionalidad del botón Eliminar Cuenta
+    ConfirmAlert('¿Está seguro que desea eliminar su perfil?', '').then((result) => {
+      if (result.isConfirmed) {
+        dispatch(logout());
+        navigate('/');
+      }
+    });
   };
 
   useEffect(() => {
@@ -32,13 +44,9 @@ export default function MyProfile() {
           throw new Error('Data could not be retrieved');
         }
 
-        const data = {
-          firstName: 'John',
-          lastName: 'Smith',
-          email: 'johnsmith@example.com',
-        };
-
-        setProfileData(data);
+        const data = getUserInfo()
+        
+        setProfileData(data.user);
       } catch (err) {
         setError(true);
       }

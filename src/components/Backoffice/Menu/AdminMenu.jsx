@@ -30,6 +30,12 @@ export const AdminMenu = () => {
       <Link to='/backoffice/testimonials' className='links'>
         Testimonios
       </Link>
+      <Link to='/backoffice/activities' className='links'>
+        Actividades
+      </Link>
+      <Link to='/backoffice/contacts' className='links'>
+        Contactos
+      </Link>
       <NavDropdown.Item className='links'>
         <button className='item' onClick={logoutUser}>
           Cerrar sesión

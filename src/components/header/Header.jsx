@@ -18,6 +18,10 @@ const menu = [
     name: 'Contacto',
     url: '/contact',
   },
+  {
+    name: 'Novedades',
+    url: '/news',
+  },
 ];
 
 export default function Header({ Menu, userInfo }) {
@@ -45,13 +49,14 @@ export default function Header({ Menu, userInfo }) {
       <Container>
         <Navbar.Brand>
           {logo && !errors && (
-            <img
-              src={logo}
-              width='100px'
-              className='d-inline-block align-top'
-              alt='Logo somos más'
-            />
-          )}
+          <img
+            src={logo}
+            width='auto'
+            height='40'
+            className='d-inline-block align-top'
+            alt='Logo somos más'
+          />
+        )}
         </Navbar.Brand>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
