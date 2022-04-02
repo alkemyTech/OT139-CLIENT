@@ -28,6 +28,8 @@ h2 {
 }
 
 .flex-child {
+  display: flex;
+  flex-direction: column;
   flex: 1;
 }
 
@@ -41,12 +43,11 @@ h2 {
   width: 100%;
 }
 
-@media screen and (min-width: 359px) and (max-width: 700px) {
+@media screen and (min-width: 259px) and (max-width: 700px) {
   .main {
     display: flex;
     flex-direction: column;
-    position: absolute;
-    top: 0;
+    margin: 20px;
   }
   .flex-child:first-child {
     border-right: none;
@@ -55,6 +56,6 @@ h2 {
   }
 
   .Form-Contact {
-    margin-bottom: 100%;
+    margin-bottom: 50px;
   }
 }
