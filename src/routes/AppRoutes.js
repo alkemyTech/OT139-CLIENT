@@ -41,5 +41,5 @@ export default function AppRoutes() {
         element={isAdmin ? <PrivateRoutes /> : <Navigate to='/' />}
       />
     </Routes>
-  );
-}
+  )
+};
